@@ -1,0 +1,314 @@
+<title>StockLens Privacy Policy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --bg: #f8f7fc;
+    --surface: #ffffff;
+    --text: #1e1b2e;
+    --text-muted: #635f78;
+    --accent: #4338ca;
+    --accent-soft: #eeecfb;
+    --border: #e3e1ee;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #131020;
+      --surface: #1a1730;
+      --text: #edebf7;
+      --text-muted: #9c97b8;
+      --accent: #8b7ff0;
+      --accent-soft: #241f42;
+      --border: #2c2846;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #131020;
+    --surface: #1a1730;
+    --text: #edebf7;
+    --text-muted: #9c97b8;
+    --accent: #8b7ff0;
+    --accent-soft: #241f42;
+    --border: #2c2846;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #f8f7fc;
+    --surface: #ffffff;
+    --text: #1e1b2e;
+    --text-muted: #635f78;
+    --accent: #4338ca;
+    --accent-soft: #eeecfb;
+    --border: #e3e1ee;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.75rem;
+  }
+
+  header.masthead {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .wordmark {
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+
+  h1 {
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
+    font-weight: 600;
+    font-size: clamp(1.9rem, 4vw, 2.4rem);
+    margin: 0;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+
+  .meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .lede {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 62ch;
+  }
+
+  section.clause {
+    display: flex;
+    gap: 1.25rem;
+    scroll-margin-top: 2rem;
+  }
+
+  .clause-number {
+    flex: none;
+    width: 2.25rem;
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--accent);
+    padding-top: 0.15rem;
+  }
+
+  .clause-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    min-width: 0;
+  }
+
+  .clause-body h2 {
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .clause-body p {
+    margin: 0;
+    max-width: 62ch;
+  }
+
+  .clause-body ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 62ch;
+  }
+
+  .clause-body li::marker {
+    color: var(--accent);
+  }
+
+  strong { font-weight: 600; }
+
+  .callout {
+    background: var(--accent-soft);
+    border-radius: 10px;
+    padding: 1rem 1.15rem;
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+
+  .callout strong { color: var(--accent); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  footer a:hover, footer a:focus-visible {
+    text-decoration: underline;
+  }
+
+  a:focus-visible, li:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 480px) {
+    .clause-number { width: 1.75rem; font-size: 1rem; }
+    section.clause { gap: 0.85rem; }
+  }
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <span class="wordmark">StockLens</span>
+    <h1>Privacy Policy</h1>
+    <span class="meta">Effective August 1, 2026</span>
+  </header>
+
+  <p class="lede">
+    StockLens is an inventory, catalog sharing and stock-management app used internally by
+    garment-manufacturers, wholesalers and retail businesses to track their products,
+    stock, and sales. This page explains what information the app collects, how it's used,
+    and who to contact with questions. It applies to every business using StockLens and
+    their staff.
+  </p>
+
+  <section class="clause" id="collect">
+    <span class="clause-number">1</span>
+    <div class="clause-body">
+      <h2>Information We Collect</h2>
+      <p>StockLens collects only what's needed to run a business's inventory operations:</p>
+      <ul>
+        <li><strong>Business &amp; inventory data</strong> — product details (IDs, categories, sizes, colors, prices), stock transaction records (purchases, sales, quantities, dates, optional notes), and product photos, all entered by the business's own staff.</li>
+        <li><strong>Account credentials</strong> — each business is provisioned with its own sign-in, managed through our backend provider (Supabase). We never see or store passwords in plain text.</li>
+        <li><strong>Staff name</strong> — staff sharing a business's login enter their own first name once, used only to attribute stock entries for that business's own internal accountability. This is never visible to any other business.</li>
+        <li><strong>Optional Google Drive access</strong> — if a business turns on cloud backup, the app requests Google's restricted <code>drive.file</code> scope, which only lets it see and manage backup files it created itself. It cannot see any other file in that Google account's Drive.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="clause" id="not-collect">
+    <span class="clause-number">2</span>
+    <div class="clause-body">
+      <h2>What We Don't Collect</h2>
+      <div class="callout">
+        StockLens has <strong>no advertising SDKs, no analytics or tracking services, and
+        no location tracking</strong>. We never sell data to anyone, for any reason.
+      </div>
+    </div>
+  </section>
+
+  <section class="clause" id="use">
+    <span class="clause-number">3</span>
+    <div class="clause-body">
+      <h2>How Information Is Used</h2>
+      <p>
+        Information is used strictly to operate the app for the business that owns it:
+        storing and displaying that business's catalog and stock records, generating
+        reports and exports the business itself initiates (PDF or spreadsheet), and
+        powering optional cloud backup. Nothing is used for advertising, profiling, or any
+        purpose outside running the app.
+      </p>
+    </div>
+  </section>
+
+  <section class="clause" id="storage">
+    <span class="clause-number">4</span>
+    <div class="clause-body">
+      <h2>Data Storage &amp; Security</h2>
+      <p>
+        Data is stored with Supabase, a PostgreSQL-based backend provider. Each business's
+        data is isolated from every other business at the database level, so one business
+        can never see another's records. On the device itself, an optional PIN or biometric
+        app-lock adds a further layer of protection before the app's contents are shown.
+      </p>
+    </div>
+  </section>
+
+  <section class="clause" id="sharing">
+    <span class="clause-number">5</span>
+    <div class="clause-body">
+      <h2>Data Sharing</h2>
+      <p>
+        We do not share or sell information to third parties for advertising or marketing.
+        Data is only processed by the infrastructure needed to run the app: Supabase for
+        backend storage, and Google, solely if a business enables Drive backup.
+      </p>
+    </div>
+  </section>
+
+  <section class="clause" id="retention">
+    <span class="clause-number">6</span>
+    <div class="clause-body">
+      <h2>Data Retention &amp; Deletion</h2>
+      <p>
+        Data is retained for as long as a business's account stays active. Any business may
+        request an export or full deletion of its data at any time by contacting us at the
+        email below.
+      </p>
+    </div>
+  </section>
+
+  <section class="clause" id="children">
+    <span class="clause-number">7</span>
+    <div class="clause-body">
+      <h2>Children's Privacy</h2>
+      <p>
+        StockLens is a business tool intended for use by adult staff of registered
+        businesses. It is not directed at children, and we do not knowingly collect
+        information from anyone under 18.
+      </p>
+    </div>
+  </section>
+
+  <section class="clause" id="changes">
+    <span class="clause-number">8</span>
+    <div class="clause-body">
+      <h2>Changes to This Policy</h2>
+      <p>
+        If this policy changes, the effective date at the top of this page will be updated
+        to reflect the most recent revision.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Questions about this policy or your business's data?</span>
+    <a href="mailto:chiragforyou2@gmail.com">chiragforyou2@gmail.com</a>
+  </footer>
+</div>
