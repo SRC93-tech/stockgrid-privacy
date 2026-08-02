@@ -1,0 +1,107 @@
+<title>Email Confirmed - StockLens</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --bg: #f8f7fc;
+    --surface: #ffffff;
+    --text: #1e1b2e;
+    --text-muted: #635f78;
+    --accent: #4338ca;
+    --accent-soft: #eeecfb;
+    --border: #e3e1ee;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #131020;
+      --surface: #1a1730;
+      --text: #edebf7;
+      --text-muted: #9c97b8;
+      --accent: #8b7ff0;
+      --accent-soft: #241f42;
+      --border: #2c2846;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #131020; --surface: #1a1730; --text: #edebf7;
+    --text-muted: #9c97b8; --accent: #8b7ff0; --accent-soft: #241f42; --border: #2c2846;
+  }
+  :root[data-theme="light"] {
+    --bg: #f8f7fc; --surface: #ffffff; --text: #1e1b2e;
+    --text-muted: #635f78; --accent: #4338ca; --accent-soft: #eeecfb; --border: #e3e1ee;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+
+  .card {
+    max-width: 420px;
+    margin: 1.5rem;
+    padding: 2.5rem 2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+
+  h1 {
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+    color: var(--text-muted);
+    max-width: 34ch;
+  }
+
+  .wordmark {
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    margin-top: 0.5rem;
+  }
+</style>
+
+<div class="card">
+  <div class="icon">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <h1>Email confirmed</h1>
+  <p>Your email address is verified. Go back to the StockLens app and sign in to finish setting up your business.</p>
+  <span class="wordmark">StockLens</span>
+</div>
