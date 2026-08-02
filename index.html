@@ -55,7 +55,7 @@
   }
 
   .page {
-    max-width: 700px;
+    max-width: 720px;
     margin: 0 auto;
     padding: 4rem 1.5rem 6rem;
     display: flex;
@@ -89,6 +89,9 @@
   }
 
   .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
     font-size: 0.85rem;
     color: var(--text-muted);
     text-transform: uppercase;
@@ -96,9 +99,12 @@
   }
 
   .lede {
-    font-size: 1.05rem;
+    font-size: 1.02rem;
     color: var(--text-muted);
-    max-width: 62ch;
+    max-width: 65ch;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   section.clause {
@@ -121,16 +127,37 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
+    gap: 1.1rem;
     min-width: 0;
   }
 
-  .clause-body h2 {
+  .clause-body > h2 {
     font-family: "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
     font-weight: 600;
     font-size: 1.25rem;
     margin: 0;
     text-wrap: balance;
+  }
+
+  .clause-body > p.intro {
+    margin: 0;
+    max-width: 62ch;
+    color: var(--text-muted);
+  }
+
+  .subsection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .subsection h3 {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--accent);
+    margin: 0;
   }
 
   .clause-body p {
@@ -143,7 +170,7 @@
     padding-left: 1.2rem;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.55rem;
     max-width: 62ch;
   }
 
@@ -152,6 +179,14 @@
   }
 
   strong { font-weight: 600; }
+
+  code {
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 0.1rem 0.4rem;
+    border-radius: 5px;
+    font-size: 0.9em;
+  }
 
   .callout {
     background: var(--accent-soft);
@@ -163,14 +198,28 @@
 
   .callout strong { color: var(--accent); }
 
+  .note {
+    border-left: 3px solid var(--accent);
+    padding: 0.75rem 0 0.75rem 1rem;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    max-width: 62ch;
+  }
+
   footer {
     border-top: 1px solid var(--border);
     padding-top: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.3rem;
     font-size: 0.9rem;
     color: var(--text-muted);
+  }
+
+  footer .org {
+    color: var(--text);
+    font-weight: 600;
+    margin-bottom: 0.3rem;
   }
 
   footer a {
@@ -197,38 +246,93 @@
   <header class="masthead">
     <span class="wordmark">StockLens</span>
     <h1>Privacy Policy</h1>
-    <span class="meta">Effective August 1, 2026</span>
+    <span class="meta">
+      <span>Effective Date: August 2, 2026</span>
+      <span>Last Updated: August 2, 2026</span>
+    </span>
   </header>
 
-  <p class="lede">
-    StockLens is an inventory, catalog sharing and stock-management app used internally by
-    garment-manufacturers, wholesalers and retail businesses to track their products,
-    stock, and sales. This page explains what information the app collects, how it's used,
-    and who to contact with questions. It applies to every business using StockLens and
-    their employees.
-  </p>
+  <div class="lede">
+    <p>
+      Welcome to StockLens ("we," "our," or "us"). StockLens is a B2B inventory tracking,
+      SKU matrix management, and catalog sharing application designed for garment
+      manufacturers, wholesalers, distributors, and retail businesses.
+    </p>
+    <p>
+      We are committed to protecting the privacy, security, and integrity of your
+      commercial and organizational data. This Privacy Policy outlines the types of
+      information StockLens collects, how that information is used and stored, who it may
+      be shared with, and your rights regarding data access, export, and account deletion.
+    </p>
+    <p>
+      This Privacy Policy applies to all businesses, administrators, and authorized
+      employees using the StockLens application, cloud services, and related tools.
+    </p>
+  </div>
 
   <section class="clause" id="collect">
     <span class="clause-number">1</span>
     <div class="clause-body">
       <h2>Information We Collect</h2>
-      <p>StockLens collects only what's needed to run a business's inventory operations:</p>
-      <ul>
-        <li><strong>Business &amp; inventory data</strong> — product details (IDs, categories, sizes, colors, prices), stock transaction records (purchases, sales, quantities, dates, optional notes), and product photos, all entered by the business's own employees.</li>
-        <li><strong>Account credentials</strong> — each business is provisioned with its own sign-in, managed through our backend provider (Supabase). We never see or store passwords in plain text.</li>
-        <li><strong>Employee name</strong> — employees sharing a business's login enter their own first name once, used only to attribute stock entries for that business's own internal accountability. This is never visible to any other business.</li>
-        <li><strong>Optional Google Drive access</strong> — if a business turns on cloud backup, the app requests Google's restricted <code>drive.file</code> scope, which only lets it see and manage backup files it created itself. It cannot see any other file in that Google account's Drive.</li>
-      </ul>
+      <p class="intro">
+        StockLens collects only the minimum necessary information required to operate,
+        synchronize, and secure inventory and catalog management functions for your
+        organization:
+      </p>
+
+      <div class="subsection">
+        <h3>A. Business Account &amp; Authentication Credentials</h3>
+        <ul>
+          <li><strong>Firm Information</strong> — each business is set up in StockLens under a firm name and a shared login email address. This identifies your organization within the system.</li>
+          <li><strong>Authentication Credentials</strong> — each business uses a shared, single-login model per firm. Credentials (email and password) are processed and authenticated securely through our backend infrastructure provider (Supabase). Passwords are always encrypted and salted using industry-standard hashing algorithms; we never store or have access to plain-text passwords.</li>
+          <li><strong>Employee Accountability (Internal Attribution)</strong> — authorized employees sharing an organization's login enter their own first name, used to attribute inventory updates, sales, and purchases for internal accountability. This is stored strictly within your firm's private database workspace and is never visible to or shared with any other business entity or third party.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>B. Product, Inventory &amp; Transaction Data</h3>
+        <ul>
+          <li><strong>Catalog Details</strong> — product metadata entered by your firm's users, including Article Numbers/IDs, product categories, base pricing, size options, color variations, and custom quick-pick preferences.</li>
+          <li><strong>Stock Movement Records</strong> — historical ledgers of all stock updates, inbound purchases, outbound sales, line-item quantities, dates, and optional transaction notes.</li>
+          <li><strong>Product Photography &amp; Media</strong> — commercial product images captured or uploaded by your users to build digital catalogs. These photos are uploaded to secure cloud storage and cached locally on your device for fast offline rendering.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>C. Device Permissions, Security &amp; Biometrics</h3>
+        <ul>
+          <li><strong>Camera &amp; Media Storage Access</strong> — StockLens requests access to your device's camera and photo gallery solely when an employee explicitly takes a photo or selects an existing image to create or edit product catalogs.</li>
+          <li><strong>App Lock Data (PIN &amp; Biometrics)</strong> — to protect commercial pricing and stock levels on shared devices, StockLens supports a local 4-digit App Lock PIN. The PIN is hashed using a salted SHA-256 hash and stored securely on your device. Biometric authentication (fingerprint or face unlock) relies entirely on your device's own native operating system biometric APIs — StockLens never accesses, collects, or transmits your biometric data.</li>
+          <li><strong>File System Access (Exports)</strong> — the app writes temporary image files and PDF documents to your device's local storage when you generate catalog exports or labeled images for sharing.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>D. Optional Cloud Backup Data (Google Drive API)</h3>
+        <p>
+          If your firm explicitly enables automated or manual Google Drive backups,
+          StockLens requests restricted access using the Google Drive API
+          (<code>drive.file</code> scope). Under this restricted permission scope,
+          StockLens can only view, create, edit, and delete the specific backup JSON files
+          that StockLens itself creates. StockLens cannot access, read, or alter any other
+          files, folders, or documents stored in your Google Drive account.
+        </p>
+      </div>
     </div>
   </section>
 
   <section class="clause" id="not-collect">
     <span class="clause-number">2</span>
     <div class="clause-body">
-      <h2>What We Don't Collect</h2>
+      <h2>Information We Do NOT Collect</h2>
+      <p class="intro">To ensure complete commercial privacy and maintain a streamlined application:</p>
       <div class="callout">
-        StockLens has <strong>no advertising SDKs, no analytics or tracking services, and
-        no location tracking</strong>. We never sell data to anyone, for any reason.
+        <strong>No advertising or analytics tracking</strong> — StockLens contains zero
+        third-party advertising SDKs, behavioral tracking scripts, or marketing pixels.
+        <strong>No location tracking</strong> — we do not collect or track GPS data or
+        geographic location identifiers. <strong>No data brokerage</strong> — we do not
+        sell, rent, license, or trade any user data or commercial inventory records to
+        third parties under any circumstances.
       </div>
     </div>
   </section>
@@ -237,50 +341,108 @@
     <span class="clause-number">3</span>
     <div class="clause-body">
       <h2>How Information Is Used</h2>
-      <p>
-        Information is used strictly to operate the app for the business that owns it:
-        storing and displaying that business's catalog and stock records, generating
-        reports and exports the business itself initiates (PDF or spreadsheet), and
-        powering optional cloud backup. Nothing is used for advertising, profiling, or any
-        purpose outside running the app.
+      <p class="intro">
+        StockLens processes and uses collected data strictly to deliver and optimize
+        business operations for the registered business entity:
       </p>
+      <ul>
+        <li><strong>Multi-Device Synchronization</strong> — keeping stock updates, catalog adjustments, and sales entries synced across all authorized devices in your firm.</li>
+        <li><strong>Catalog Generation &amp; Sharing</strong> — processing product images and inventory matrices to generate labeled catalog images or formatted PDF catalogs that your employees explicitly initiate and share to third-party messaging apps (e.g., WhatsApp).</li>
+        <li><strong>Disaster Recovery &amp; Backups</strong> — generating JSON data snapshots to power cloud restores and optional Google Drive backups.</li>
+        <li><strong>Security &amp; Access Control</strong> — verifying firm membership, maintaining server-side Row-Level Security, and enforcing local device App Lock.</li>
+      </ul>
     </div>
   </section>
 
   <section class="clause" id="storage">
     <span class="clause-number">4</span>
     <div class="clause-body">
-      <h2>Data Storage &amp; Security</h2>
-      <p>
-        Data is stored with Supabase, a PostgreSQL-based backend provider. Each business's
-        data is isolated from every other business at the database level, so one business
-        can never see another's records. On the device itself, an optional PIN or biometric
-        app-lock adds a further layer of protection before the app's contents are shown.
-      </p>
+      <h2>Data Storage, Security &amp; Isolation</h2>
+
+      <div class="subsection">
+        <h3>A. Infrastructure &amp; Server Isolation</h3>
+        <p>
+          All primary database records and product media are hosted on Supabase
+          (PostgreSQL infrastructure). Database access is protected by strict Row-Level
+          Security (RLS) policies enforced at the database layer. Each firm's data is
+          partitioned by a unique organizational identifier (<code>firm_id</code>),
+          ensuring that one business can never query, view, or modify the records or
+          images of another business.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h3>B. Encryption</h3>
+        <ul>
+          <li><strong>In Transit</strong> — all communications between StockLens, Supabase servers, Google Drive APIs, and third-party services occur exclusively over HTTPS/TLS encrypted channels.</li>
+          <li><strong>At Rest</strong> — cloud databases and storage buckets are protected with encryption at rest, consistent with standard industry practice for cloud infrastructure.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <section class="clause" id="sharing">
     <span class="clause-number">5</span>
     <div class="clause-body">
-      <h2>Data Sharing</h2>
-      <p>
-        We do not share or sell information to third parties for advertising or marketing.
-        Data is only processed by the infrastructure needed to run the app: Supabase for
-        backend storage, and Google, solely if a business enables Drive backup.
-      </p>
+      <h2>Data Sharing &amp; Third-Party Services</h2>
+      <p class="intro">We do not disclose your commercial records or personal data except as necessary to provide core infrastructure services:</p>
+      <ul>
+        <li><strong>Supabase Inc.</strong> — provides encrypted backend cloud database, authentication, and file storage infrastructure.</li>
+        <li><strong>Google APIs (Google Drive)</strong> — utilized strictly when a firm administrator enables Google Drive disaster-recovery backups.</li>
+        <li><strong>User-Initiated Sharing</strong> — when an employee shares a catalog PDF or labeled image to an external application (such as WhatsApp), the file is handed off via standard Android system share mechanisms. StockLens is not responsible for the privacy practices of third-party communication platforms chosen by the user.</li>
+      </ul>
     </div>
   </section>
 
   <section class="clause" id="retention">
     <span class="clause-number">6</span>
     <div class="clause-body">
-      <h2>Data Retention &amp; Deletion</h2>
-      <p>
-        Data is retained for as long as a business's account stays active. Any business may
-        request an export or full deletion of its data at any time by contacting us at the
-        email below.
+      <h2>Data Retention, Account Deletion &amp; User Rights</h2>
+      <p class="intro">
+        Your firm retains full ownership over all catalog, stock, and business data
+        stored in StockLens. Data is retained for as long as your organization maintains
+        an active account.
       </p>
+
+      <div class="subsection">
+        <h3>A. In-App Item Deletion &amp; Editing</h3>
+        <p>
+          Authorized users can edit, deactivate, or delete individual product listings,
+          custom categories, size options, and transaction entries at any time directly
+          through the StockLens user interface.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h3>B. Comprehensive Account &amp; Data Deletion</h3>
+        <p>
+          In accordance with global privacy standards and Google Play's User Data &amp;
+          Account Deletion policies, any registered firm administrator can request the
+          complete and permanent deletion of their firm's account, database records, and
+          cloud storage files by contacting us directly:
+        </p>
+        <ul>
+          <li>Send a request to <code>chiragforyou2@gmail.com</code></li>
+          <li>Subject line: <code>Account Deletion Request - [Your Registered Firm Name]</code></li>
+          <li>Required details: your registered business email address and firm name, so we can verify account ownership.</li>
+        </ul>
+        <div class="note">
+          Signing out of the app on a device (Settings → Privacy &amp; Security → Sign Out
+          &amp; Reset This Device) only removes StockLens and Google Drive access on that
+          one device — it does <strong>not</strong> delete or affect your firm's data on
+          our servers. To actually delete your firm's data, use the email request above.
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>C. Deletion Fulfillment Timeline</h3>
+        <p>Upon receiving and verifying an Account Deletion Request by email:</p>
+        <ul>
+          <li>All firm records (Articles, Sizes, Colors, Preferences, and Stock History) will be permanently purged from active Supabase PostgreSQL database tables within 30 calendar days.</li>
+          <li>All product photos stored in Supabase Storage under your firm's path will be permanently deleted.</li>
+          <li>Any active automated background backup schedules associated with your firm will be revoked.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -289,26 +451,48 @@
     <div class="clause-body">
       <h2>Children's Privacy</h2>
       <p>
-        StockLens is a business tool intended for use by adult employees of registered
-        businesses. It is not directed at children, and we do not knowingly collect
-        information from anyone under 18.
+        StockLens is an enterprise B2B workflow management tool intended exclusively for
+        use by adult business owners, operators, and authorized employees. It is not
+        directed toward or intended for children under the age of 18. We do not knowingly
+        collect or maintain personal information from anyone under 18 years of age.
+      </p>
+    </div>
+  </section>
+
+  <section class="clause" id="transfers">
+    <span class="clause-number">8</span>
+    <div class="clause-body">
+      <h2>International Data Transfers</h2>
+      <p>
+        Your business information and product media may be transferred to and maintained
+        on secure cloud servers located outside your state, province, or country. By using
+        StockLens, you consent to the transfer and processing of your data on secure cloud
+        infrastructure governed by international data protection standards.
       </p>
     </div>
   </section>
 
   <section class="clause" id="changes">
-    <span class="clause-number">8</span>
+    <span class="clause-number">9</span>
     <div class="clause-body">
-      <h2>Changes to This Policy</h2>
+      <h2>Changes to This Privacy Policy</h2>
       <p>
-        If this policy changes, the effective date at the top of this page will be updated
-        to reflect the most recent revision.
+        We may update our Privacy Policy from time to time to reflect changes in legal
+        requirements, app features, or operational practices. When updates are made, the
+        "Last Updated" date at the top of this policy will be revised accordingly.
+      </p>
+      <p>
+        We encourage firm administrators to review this Privacy Policy periodically.
+        Continued use of StockLens following the posting of an updated policy indicates
+        your acceptance of the revised terms.
       </p>
     </div>
   </section>
 
   <footer>
-    <span>Questions about this policy or your business's data?</span>
+    <span class="org">StockLens Administration</span>
+    <span>Questions, concerns, or formal data requests regarding this Privacy Policy or the handling of your business data:</span>
     <a href="mailto:chiragforyou2@gmail.com">chiragforyou2@gmail.com</a>
+    <a href="https://src93-tech.github.io/stocklens-privacy/">src93-tech.github.io/stocklens-privacy</a>
   </footer>
 </div>
