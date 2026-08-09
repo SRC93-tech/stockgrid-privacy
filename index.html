@@ -248,7 +248,7 @@
     <h1>Privacy Policy</h1>
     <span class="meta">
       <span>Effective Date: August 2, 2026</span>
-      <span>Last Updated: August 2, 2026</span>
+      <span>Last Updated: August 8, 2026</span>
     </span>
   </header>
 
@@ -283,9 +283,11 @@
       <div class="subsection">
         <h3>A. Business Account &amp; Authentication Credentials</h3>
         <ul>
-          <li><strong>Firm Information</strong> — each business is set up in StockLens under a firm name and a shared login email address. This identifies your organization within the system.</li>
-          <li><strong>Authentication Credentials</strong> — each business uses a shared, single-login model per firm. Credentials (email and password) are processed and authenticated securely through our backend infrastructure provider (Supabase). Passwords are always encrypted and salted using industry-standard hashing algorithms; we never store or have access to plain-text passwords.</li>
-          <li><strong>Employee Accountability (Internal Attribution)</strong> — authorized employees sharing an organization's login enter their own first name, used to attribute inventory updates, sales, and purchases for internal accountability. This is stored strictly within your firm's private database workspace and is never visible to or shared with any other business entity or third party.</li>
+          <li><strong>Firm Information</strong> — each business is set up in StockLens under a firm name and an owner/administrator email address. This identifies your organization within the system.</li>
+          <li><strong>Administrator Credentials</strong> — the firm's owner/administrator signs in with an individual email and password, processed and authenticated securely through our backend infrastructure provider (Supabase). Passwords are always encrypted and salted using industry-standard hashing algorithms; we never store or have access to plain-text passwords.</li>
+          <li><strong>Employee PIN Accounts</strong> — the administrator issues each employee their own 6-digit PIN and assigns their name at that time. Each employee's PIN is individually revocable at any time without affecting any other employee. Employees sign in using this PIN together with the administrator's email — they never see or need the administrator's password. PINs are always salted and hashed before storage; the plain-text PIN is shown once to the administrator at the moment it's issued and cannot be retrieved again afterward, by us or anyone else.</li>
+          <li><strong>Master PIN &amp; Recovery Codes</strong> — a separate 6-digit PIN, set and known only by the firm's administrator, gates sensitive actions such as issuing or revoking an employee's PIN and removing a device. It is salted and hashed the same way as employee PINs. A set of one-time backup recovery codes is generated when the Master PIN is first set (and again if regenerated), for use if the administrator ever forgets it — each code is likewise stored only as a salted hash, and is shown in plain text only once, at generation time.</li>
+          <li><strong>Device Registry</strong> — StockLens records a name and last-active timestamp for each device that has signed in to your firm, so the administrator can review which devices have access and remove one at any time (e.g. a lost or reassigned phone). Removing a device does not delete any of the firm's catalog or stock data.</li>
         </ul>
       </div>
 
