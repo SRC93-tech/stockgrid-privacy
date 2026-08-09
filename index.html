@@ -1,4 +1,4 @@
-<title>StockLens Privacy Policy</title>
+<title>StockGrid Privacy Policy</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
   :root {
@@ -244,7 +244,7 @@
 
 <div class="page">
   <header class="masthead">
-    <span class="wordmark">StockLens</span>
+    <span class="wordmark">StockGrid</span>
     <h1>Privacy Policy</h1>
     <span class="meta">
       <span>Effective Date: August 2, 2026</span>
@@ -254,19 +254,19 @@
 
   <div class="lede">
     <p>
-      Welcome to StockLens ("we," "our," or "us"). StockLens is a B2B inventory tracking,
+      Welcome to StockGrid ("we," "our," or "us"). StockGrid is a B2B inventory tracking,
       SKU matrix management, and catalog sharing application designed for garment
       manufacturers, wholesalers, distributors, and retail businesses.
     </p>
     <p>
       We are committed to protecting the privacy, security, and integrity of your
       commercial and organizational data. This Privacy Policy outlines the types of
-      information StockLens collects, how that information is used and stored, who it may
+      information StockGrid collects, how that information is used and stored, who it may
       be shared with, and your rights regarding data access, export, and account deletion.
     </p>
     <p>
       This Privacy Policy applies to all businesses, administrators, and authorized
-      employees using the StockLens application, cloud services, and related tools.
+      employees using the StockGrid application, cloud services, and related tools.
     </p>
   </div>
 
@@ -275,7 +275,7 @@
     <div class="clause-body">
       <h2>Information We Collect</h2>
       <p class="intro">
-        StockLens collects only the minimum necessary information required to operate,
+        StockGrid collects only the minimum necessary information required to operate,
         synchronize, and secure inventory and catalog management functions for your
         organization:
       </p>
@@ -283,11 +283,11 @@
       <div class="subsection">
         <h3>A. Business Account &amp; Authentication Credentials</h3>
         <ul>
-          <li><strong>Firm Information</strong> — each business is set up in StockLens under a firm name and an owner/administrator email address. This identifies your organization within the system.</li>
+          <li><strong>Firm Information</strong> — each business is set up in StockGrid under a firm name and an owner/administrator email address. This identifies your organization within the system.</li>
           <li><strong>Administrator Credentials</strong> — the firm's owner/administrator signs in with an individual email and password, processed and authenticated securely through our backend infrastructure provider (Supabase). Passwords are always encrypted and salted using industry-standard hashing algorithms; we never store or have access to plain-text passwords.</li>
           <li><strong>Employee PIN Accounts</strong> — the administrator issues each employee their own 6-digit PIN and assigns their name at that time. Each employee's PIN is individually revocable at any time without affecting any other employee. Employees sign in using this PIN together with the administrator's email — they never see or need the administrator's password. PINs are always salted and hashed before storage; the plain-text PIN is shown once to the administrator at the moment it's issued and cannot be retrieved again afterward, by us or anyone else.</li>
           <li><strong>Master PIN &amp; Recovery Codes</strong> — a separate 6-digit PIN, set and known only by the firm's administrator, gates sensitive actions such as issuing or revoking an employee's PIN and removing a device. It is salted and hashed the same way as employee PINs. A set of one-time backup recovery codes is generated when the Master PIN is first set (and again if regenerated), for use if the administrator ever forgets it — each code is likewise stored only as a salted hash, and is shown in plain text only once, at generation time.</li>
-          <li><strong>Device Registry</strong> — StockLens records a name and last-active timestamp for each device that has signed in to your firm, so the administrator can review which devices have access and remove one at any time (e.g. a lost or reassigned phone). Removing a device does not delete any of the firm's catalog or stock data.</li>
+          <li><strong>Device Registry</strong> — StockGrid records a name and last-active timestamp for each device that has signed in to your firm, so the administrator can review which devices have access and remove one at any time (e.g. a lost or reassigned phone). Removing a device does not delete any of the firm's catalog or stock data.</li>
         </ul>
       </div>
 
@@ -303,8 +303,8 @@
       <div class="subsection">
         <h3>C. Device Permissions, Security &amp; Biometrics</h3>
         <ul>
-          <li><strong>Camera &amp; Media Storage Access</strong> — StockLens requests access to your device's camera and photo gallery solely when an employee explicitly takes a photo or selects an existing image to create or edit product catalogs.</li>
-          <li><strong>App Lock Data (PIN &amp; Biometrics)</strong> — to protect commercial pricing and stock levels on shared devices, StockLens supports a local 4-digit App Lock PIN. The PIN is hashed using a salted SHA-256 hash and stored securely on your device. Biometric authentication (fingerprint or face unlock) relies entirely on your device's own native operating system biometric APIs — StockLens never accesses, collects, or transmits your biometric data.</li>
+          <li><strong>Camera &amp; Media Storage Access</strong> — StockGrid requests access to your device's camera and photo gallery solely when an employee explicitly takes a photo or selects an existing image to create or edit product catalogs.</li>
+          <li><strong>App Lock Data (PIN &amp; Biometrics)</strong> — to protect commercial pricing and stock levels on shared devices, StockGrid supports a local 4-digit App Lock PIN. The PIN is hashed using a salted SHA-256 hash and stored securely on your device. Biometric authentication (fingerprint or face unlock) relies entirely on your device's own native operating system biometric APIs — StockGrid never accesses, collects, or transmits your biometric data.</li>
           <li><strong>File System Access (Exports)</strong> — the app writes temporary image files and PDF documents to your device's local storage when you generate catalog exports or labeled images for sharing.</li>
         </ul>
       </div>
@@ -313,10 +313,10 @@
         <h3>D. Optional Cloud Backup Data (Google Drive API)</h3>
         <p>
           If your firm explicitly enables automated or manual Google Drive backups,
-          StockLens requests restricted access using the Google Drive API
+          StockGrid requests restricted access using the Google Drive API
           (<code>drive.file</code> scope). Under this restricted permission scope,
-          StockLens can only view, create, edit, and delete the specific backup JSON files
-          that StockLens itself creates. StockLens cannot access, read, or alter any other
+          StockGrid can only view, create, edit, and delete the specific backup JSON files
+          that StockGrid itself creates. StockGrid cannot access, read, or alter any other
           files, folders, or documents stored in your Google Drive account.
         </p>
       </div>
@@ -329,7 +329,7 @@
       <h2>Information We Do NOT Collect</h2>
       <p class="intro">To ensure complete commercial privacy and maintain a streamlined application:</p>
       <div class="callout">
-        <strong>No advertising or analytics tracking</strong> — StockLens contains zero
+        <strong>No advertising or analytics tracking</strong> — StockGrid contains zero
         third-party advertising SDKs, behavioral tracking scripts, or marketing pixels.
         <strong>No location tracking</strong> — we do not collect or track GPS data or
         geographic location identifiers. <strong>No data brokerage</strong> — we do not
@@ -344,7 +344,7 @@
     <div class="clause-body">
       <h2>How Information Is Used</h2>
       <p class="intro">
-        StockLens processes and uses collected data strictly to deliver and optimize
+        StockGrid processes and uses collected data strictly to deliver and optimize
         business operations for the registered business entity:
       </p>
       <ul>
@@ -376,7 +376,7 @@
       <div class="subsection">
         <h3>B. Encryption</h3>
         <ul>
-          <li><strong>In Transit</strong> — all communications between StockLens, Supabase servers, Google Drive APIs, and third-party services occur exclusively over HTTPS/TLS encrypted channels.</li>
+          <li><strong>In Transit</strong> — all communications between StockGrid, Supabase servers, Google Drive APIs, and third-party services occur exclusively over HTTPS/TLS encrypted channels.</li>
           <li><strong>At Rest</strong> — cloud databases and storage buckets are protected with encryption at rest, consistent with standard industry practice for cloud infrastructure.</li>
         </ul>
       </div>
@@ -391,7 +391,7 @@
       <ul>
         <li><strong>Supabase Inc.</strong> — provides encrypted backend cloud database, authentication, and file storage infrastructure.</li>
         <li><strong>Google APIs (Google Drive)</strong> — utilized strictly when a firm administrator enables Google Drive disaster-recovery backups.</li>
-        <li><strong>User-Initiated Sharing</strong> — when an employee shares a catalog PDF or labeled image to an external application (such as WhatsApp), the file is handed off via standard Android system share mechanisms. StockLens is not responsible for the privacy practices of third-party communication platforms chosen by the user.</li>
+        <li><strong>User-Initiated Sharing</strong> — when an employee shares a catalog PDF or labeled image to an external application (such as WhatsApp), the file is handed off via standard Android system share mechanisms. StockGrid is not responsible for the privacy practices of third-party communication platforms chosen by the user.</li>
       </ul>
     </div>
   </section>
@@ -402,7 +402,7 @@
       <h2>Data Retention, Account Deletion &amp; User Rights</h2>
       <p class="intro">
         Your firm retains full ownership over all catalog, stock, and business data
-        stored in StockLens. Data is retained for as long as your organization maintains
+        stored in StockGrid. Data is retained for as long as your organization maintains
         an active account.
       </p>
 
@@ -411,7 +411,7 @@
         <p>
           Authorized users can edit, deactivate, or delete individual product listings,
           custom categories, size options, and transaction entries at any time directly
-          through the StockLens user interface.
+          through the StockGrid user interface.
         </p>
       </div>
 
@@ -430,7 +430,7 @@
         </ul>
         <div class="note">
           Signing out of the app on a device (Settings → Privacy &amp; Security → Sign Out
-          &amp; Reset This Device) only removes StockLens and Google Drive access on that
+          &amp; Reset This Device) only removes StockGrid and Google Drive access on that
           one device — it does <strong>not</strong> delete or affect your firm's data on
           our servers. To actually delete your firm's data, use the email request above.
         </div>
@@ -453,7 +453,7 @@
     <div class="clause-body">
       <h2>Children's Privacy</h2>
       <p>
-        StockLens is an enterprise B2B workflow management tool intended exclusively for
+        StockGrid is an enterprise B2B workflow management tool intended exclusively for
         use by adult business owners, operators, and authorized employees. It is not
         directed toward or intended for children under the age of 18. We do not knowingly
         collect or maintain personal information from anyone under 18 years of age.
@@ -468,7 +468,7 @@
       <p>
         Your business information and product media may be transferred to and maintained
         on secure cloud servers located outside your state, province, or country. By using
-        StockLens, you consent to the transfer and processing of your data on secure cloud
+        StockGrid, you consent to the transfer and processing of your data on secure cloud
         infrastructure governed by international data protection standards.
       </p>
     </div>
@@ -485,14 +485,14 @@
       </p>
       <p>
         We encourage firm administrators to review this Privacy Policy periodically.
-        Continued use of StockLens following the posting of an updated policy indicates
+        Continued use of StockGrid following the posting of an updated policy indicates
         your acceptance of the revised terms.
       </p>
     </div>
   </section>
 
   <footer>
-    <span class="org">StockLens Administration</span>
+    <span class="org">StockGrid Administration</span>
     <span>Questions, concerns, or formal data requests regarding this Privacy Policy or the handling of your business data:</span>
     <a href="mailto:chiragforyou2@gmail.com">chiragforyou2@gmail.com</a>
     <a href="https://src93-tech.github.io/stocklens-privacy/">src93-tech.github.io/stocklens-privacy</a>
