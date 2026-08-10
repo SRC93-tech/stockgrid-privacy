@@ -99,7 +99,8 @@
   .brand-mark .bar-amber  { animation: grid-grow-y 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both; }
   .brand-mark .bar-teal   { animation: grid-grow-x 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both; }
   .brand-mark .bar-pink   { animation: grid-grow-x 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both; }
-  .brand-mark .patch      { animation: grid-fade 0.3s ease-out 0.56s both; }
+  /* Patches are drawn statically, not faded in on a timer - see
+     stockgrid-home's index.html for why. */
   @media (prefers-reduced-motion: reduce) {
     .brand-mark .bar, .brand-mark .patch { animation: none !important; transform: none !important; opacity: 1 !important; }
   }
@@ -461,7 +462,7 @@
           cloud storage files by contacting us directly:
         </p>
         <ul>
-          <li>Send a request to <code>chiragforyou2@gmail.com</code></li>
+          <li>Send a request to <code>src93.appsupport@gmail.com</code></li>
           <li>Subject line: <code>Account Deletion Request - [Your Registered Firm Name]</code></li>
           <li>Required details: your registered business email address and firm name, so we can verify account ownership.</li>
         </ul>
@@ -531,7 +532,7 @@
   <footer>
     <span class="org">StockGrid Administration</span>
     <span>Questions, concerns, or formal data requests regarding this Privacy Policy or the handling of your business data:</span>
-    <a href="mailto:chiragforyou2@gmail.com">chiragforyou2@gmail.com</a>
+    <a href="mailto:src93.appsupport@gmail.com">src93.appsupport@gmail.com</a>
     <a href="https://src93-tech.github.io/stocklens-privacy/">src93-tech.github.io/stocklens-privacy</a>
   </footer>
 </div>
