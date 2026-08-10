@@ -1,0 +1,28 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Absolute pitch black deep background -->
+  <rect width="1024" height="1024" fill="#03020A"/>
+
+  <!-- Clean white square container with substantial corner radius -->
+  <rect width="1024" height="1024" rx="224" fill="white"/>
+
+  <!-- Tilted # cross-hatch group -->
+  <g transform="rotate(8 512 512)">
+
+    <!-- 1. Base Horizontal lines (Bottom layer) -->
+    <rect x="302" y="404" width="420" height="72" rx="36" fill="#14B8A6"/> <!-- Top Teal -->
+    <rect x="302" y="548" width="420" height="72" rx="36" fill="#FB7185"/> <!-- Bottom Pink -->
+
+    <!-- 2. Base Vertical lines (Middle layer) -->
+    <!-- These naturally render on top of the horizontal lines -->
+    <rect x="404" y="302" width="72" height="420" rx="36" fill="#4F46E5"/> <!-- Left Indigo -->
+    <rect x="548" y="302" width="72" height="420" rx="36" fill="#F59E0B"/> <!-- Right Amber -->
+
+    <!-- 3. The Interlocking Patches (Top layer) -->
+    <!-- This patch brings the Top Teal bar OVER the Left Indigo bar -->
+    <rect x="404" y="404" width="72" height="72" fill="#14B8A6"/>
+
+    <!-- This patch brings the Bottom Pink bar OVER the Right Amber bar -->
+    <rect x="548" y="548" width="72" height="72" fill="#FB7185"/>
+
+  </g>
+</svg>
