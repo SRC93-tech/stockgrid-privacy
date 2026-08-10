@@ -114,7 +114,8 @@
   .brand-mark .bar-amber  { animation: grid-grow-y 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both; }
   .brand-mark .bar-teal   { animation: grid-grow-x 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both; }
   .brand-mark .bar-pink   { animation: grid-grow-x 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both; }
-  .brand-mark .patch      { animation: grid-fade 0.3s ease-out 0.56s both; }
+  /* Patches are drawn statically, not faded in on a timer - see
+     stockgrid-home's index.html for why. */
   @media (prefers-reduced-motion: reduce) {
     .brand-mark .bar, .brand-mark .patch { animation: none !important; transform: none !important; opacity: 1 !important; }
   }
