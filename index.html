@@ -1,5 +1,6 @@
 <title>StockGrid Privacy Policy</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
 <style>
   :root {
     --bg: #f8f7fc;
@@ -71,12 +72,36 @@
     border-bottom: 1px solid var(--border);
   }
 
+  .brand-group {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+
   .wordmark {
     font-family: "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
     font-weight: 600;
     font-size: 1.05rem;
     color: var(--accent);
     letter-spacing: 0.02em;
+  }
+
+  /* Brand mark: same locked geometry as assets/icon_source.svg in the app
+     repo - four rounded bars woven into a tilted "#". */
+  .brand-mark .bar, .brand-mark .patch {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  @keyframes grid-grow-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+  @keyframes grid-grow-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+  .brand-mark .bar-indigo { animation: grid-grow-y 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0s both; }
+  .brand-mark .bar-amber  { animation: grid-grow-y 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both; }
+  .brand-mark .bar-teal   { animation: grid-grow-x 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both; }
+  .brand-mark .bar-pink   { animation: grid-grow-x 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both; }
+  .brand-mark .patch      { animation: grid-fade 0.3s ease-out 0.56s both; }
+  @media (prefers-reduced-motion: reduce) {
+    .brand-mark .bar, .brand-mark .patch { animation: none !important; transform: none !important; opacity: 1 !important; }
   }
 
   h1 {
@@ -244,7 +269,19 @@
 
 <div class="page">
   <header class="masthead">
-    <span class="wordmark">StockGrid</span>
+    <span class="brand-group">
+      <svg class="brand-mark" width="34" height="34" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g transform="rotate(8 512 512)">
+          <rect class="bar bar-indigo" x="404" y="302" width="72" height="420" rx="36" fill="#4F46E5"/>
+          <rect class="bar bar-amber" x="548" y="302" width="72" height="420" rx="36" fill="#F59E0B"/>
+          <rect class="bar bar-teal" x="302" y="404" width="420" height="72" rx="36" fill="#14B8A6"/>
+          <rect class="bar bar-pink" x="302" y="548" width="420" height="72" rx="36" fill="#FB7185"/>
+          <rect class="patch" x="404" y="404" width="72" height="72" fill="#14B8A6"/>
+          <rect class="patch" x="548" y="548" width="72" height="72" fill="#FB7185"/>
+        </g>
+      </svg>
+      <span class="wordmark">StockGrid</span>
+    </span>
     <h1>Privacy Policy</h1>
     <span class="meta">
       <span>Effective Date: August 2, 2026</span>
