@@ -1,0 +1,538 @@
+<title>StockGrid Privacy Policy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<style>
+  :root {
+    --bg: #f8f7fc;
+    --surface: #ffffff;
+    --text: #1e1b2e;
+    --text-muted: #635f78;
+    --accent: #4338ca;
+    --accent-soft: #eeecfb;
+    --border: #e3e1ee;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #131020;
+      --surface: #1a1730;
+      --text: #edebf7;
+      --text-muted: #9c97b8;
+      --accent: #8b7ff0;
+      --accent-soft: #241f42;
+      --border: #2c2846;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #131020;
+    --surface: #1a1730;
+    --text: #edebf7;
+    --text-muted: #9c97b8;
+    --accent: #8b7ff0;
+    --accent-soft: #241f42;
+    --border: #2c2846;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #f8f7fc;
+    --surface: #ffffff;
+    --text: #1e1b2e;
+    --text-muted: #635f78;
+    --accent: #4338ca;
+    --accent-soft: #eeecfb;
+    --border: #e3e1ee;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.75rem;
+  }
+
+  header.masthead {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brand-group {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+
+  .wordmark {
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+
+  /* Brand mark: same locked geometry as assets/icon_source.svg in the app
+     repo - four rounded bars woven into a tilted "#". */
+  .brand-mark .bar, .brand-mark .patch {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  @keyframes grid-grow-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+  @keyframes grid-grow-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+  .brand-mark .bar-indigo { animation: grid-grow-y 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0s both; }
+  .brand-mark .bar-amber  { animation: grid-grow-y 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both; }
+  .brand-mark .bar-teal   { animation: grid-grow-x 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both; }
+  .brand-mark .bar-pink   { animation: grid-grow-x 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both; }
+  /* Patches are drawn statically, not faded in on a timer - see
+     stockgrid-home's index.html for why. */
+  @media (prefers-reduced-motion: reduce) {
+    .brand-mark .bar, .brand-mark .patch { animation: none !important; transform: none !important; opacity: 1 !important; }
+  }
+
+  h1 {
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
+    font-weight: 600;
+    font-size: clamp(1.9rem, 4vw, 2.4rem);
+    margin: 0;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .lede {
+    font-size: 1.02rem;
+    color: var(--text-muted);
+    max-width: 65ch;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  section.clause {
+    display: flex;
+    gap: 1.25rem;
+    scroll-margin-top: 2rem;
+  }
+
+  .clause-number {
+    flex: none;
+    width: 2.25rem;
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--accent);
+    padding-top: 0.15rem;
+  }
+
+  .clause-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    min-width: 0;
+  }
+
+  .clause-body > h2 {
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .clause-body > p.intro {
+    margin: 0;
+    max-width: 62ch;
+    color: var(--text-muted);
+  }
+
+  .subsection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .subsection h3 {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--accent);
+    margin: 0;
+  }
+
+  .clause-body p {
+    margin: 0;
+    max-width: 62ch;
+  }
+
+  .clause-body ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    max-width: 62ch;
+  }
+
+  .clause-body li::marker {
+    color: var(--accent);
+  }
+
+  strong { font-weight: 600; }
+
+  code {
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 0.1rem 0.4rem;
+    border-radius: 5px;
+    font-size: 0.9em;
+  }
+
+  .callout {
+    background: var(--accent-soft);
+    border-radius: 10px;
+    padding: 1rem 1.15rem;
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+
+  .callout strong { color: var(--accent); }
+
+  .note {
+    border-left: 3px solid var(--accent);
+    padding: 0.75rem 0 0.75rem 1rem;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    max-width: 62ch;
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  footer .org {
+    color: var(--text);
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+
+  footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  footer a:hover, footer a:focus-visible {
+    text-decoration: underline;
+  }
+
+  a:focus-visible, li:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 480px) {
+    .clause-number { width: 1.75rem; font-size: 1rem; }
+    section.clause { gap: 0.85rem; }
+  }
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <span class="brand-group">
+      <svg class="brand-mark" width="34" height="34" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g transform="rotate(8 512 512)">
+          <rect class="bar bar-teal" x="302" y="404" width="420" height="72" rx="36" fill="#14B8A6"/>
+          <rect class="bar bar-pink" x="302" y="548" width="420" height="72" rx="36" fill="#FB7185"/>
+          <rect class="bar bar-indigo" x="404" y="302" width="72" height="420" rx="36" fill="#4F46E5"/>
+          <rect class="bar bar-amber" x="548" y="302" width="72" height="420" rx="36" fill="#F59E0B"/>
+          <rect class="patch" x="404" y="404" width="72" height="72" fill="#14B8A6"/>
+          <rect class="patch" x="548" y="548" width="72" height="72" fill="#FB7185"/>
+        </g>
+      </svg>
+      <span class="wordmark">StockGrid</span>
+    </span>
+    <h1>Privacy Policy</h1>
+    <span class="meta">
+      <span>Effective Date: August 2, 2026</span>
+      <span>Last Updated: August 8, 2026</span>
+    </span>
+  </header>
+
+  <div class="lede">
+    <p>
+      Welcome to StockGrid ("we," "our," or "us"). StockGrid is a B2B inventory tracking,
+      SKU matrix management, and catalog sharing application designed for garment
+      manufacturers, wholesalers, distributors, and retail businesses.
+    </p>
+    <p>
+      We are committed to protecting the privacy, security, and integrity of your
+      commercial and organizational data. This Privacy Policy outlines the types of
+      information StockGrid collects, how that information is used and stored, who it may
+      be shared with, and your rights regarding data access, export, and account deletion.
+    </p>
+    <p>
+      This Privacy Policy applies to all businesses, administrators, and authorized
+      employees using the StockGrid application, cloud services, and related tools.
+    </p>
+  </div>
+
+  <section class="clause" id="collect">
+    <span class="clause-number">1</span>
+    <div class="clause-body">
+      <h2>Information We Collect</h2>
+      <p class="intro">
+        StockGrid collects only the minimum necessary information required to operate,
+        synchronize, and secure inventory and catalog management functions for your
+        organization:
+      </p>
+
+      <div class="subsection">
+        <h3>A. Business Account &amp; Authentication Credentials</h3>
+        <ul>
+          <li><strong>Firm Information</strong> — each business is set up in StockGrid under a firm name and an owner/administrator email address. This identifies your organization within the system.</li>
+          <li><strong>Administrator Credentials</strong> — the firm's owner/administrator signs in with an individual email and password, processed and authenticated securely through our backend infrastructure provider (Supabase). Passwords are always encrypted and salted using industry-standard hashing algorithms; we never store or have access to plain-text passwords.</li>
+          <li><strong>Employee PIN Accounts</strong> — the administrator issues each employee their own 6-digit PIN and assigns their name at that time. Each employee's PIN is individually revocable at any time without affecting any other employee. Employees sign in using this PIN together with the administrator's email — they never see or need the administrator's password. PINs are always salted and hashed before storage; the plain-text PIN is shown once to the administrator at the moment it's issued and cannot be retrieved again afterward, by us or anyone else.</li>
+          <li><strong>Master PIN &amp; Recovery Codes</strong> — a separate 6-digit PIN, set and known only by the firm's administrator, gates sensitive actions such as issuing or revoking an employee's PIN and removing a device. It is salted and hashed the same way as employee PINs. A set of one-time backup recovery codes is generated when the Master PIN is first set (and again if regenerated), for use if the administrator ever forgets it — each code is likewise stored only as a salted hash, and is shown in plain text only once, at generation time.</li>
+          <li><strong>Device Registry</strong> — StockGrid records a name and last-active timestamp for each device that has signed in to your firm, so the administrator can review which devices have access and remove one at any time (e.g. a lost or reassigned phone). Removing a device does not delete any of the firm's catalog or stock data.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>B. Product, Inventory &amp; Transaction Data</h3>
+        <ul>
+          <li><strong>Catalog Details</strong> — product metadata entered by your firm's users, including Article Numbers/IDs, product categories, base pricing, size options, color variations, and custom quick-pick preferences.</li>
+          <li><strong>Stock Movement Records</strong> — historical ledgers of all stock updates, inbound purchases, outbound sales, line-item quantities, dates, and optional transaction notes.</li>
+          <li><strong>Product Photography &amp; Media</strong> — commercial product images captured or uploaded by your users to build digital catalogs. These photos are uploaded to secure cloud storage and cached locally on your device for fast offline rendering.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>C. Device Permissions, Security &amp; Biometrics</h3>
+        <ul>
+          <li><strong>Camera &amp; Media Storage Access</strong> — StockGrid requests access to your device's camera and photo gallery solely when an employee explicitly takes a photo or selects an existing image to create or edit product catalogs.</li>
+          <li><strong>App Lock Data (PIN &amp; Biometrics)</strong> — to protect commercial pricing and stock levels on shared devices, StockGrid supports a local 4-digit App Lock PIN. The PIN is hashed using a salted SHA-256 hash and stored securely on your device. Biometric authentication (fingerprint or face unlock) relies entirely on your device's own native operating system biometric APIs — StockGrid never accesses, collects, or transmits your biometric data.</li>
+          <li><strong>File System Access (Exports)</strong> — the app writes temporary image files and PDF documents to your device's local storage when you generate catalog exports or labeled images for sharing.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>D. Optional Cloud Backup Data (Google Drive API)</h3>
+        <p>
+          If your firm explicitly enables automated or manual Google Drive backups,
+          StockGrid requests restricted access using the Google Drive API
+          (<code>drive.file</code> scope). Under this restricted permission scope,
+          StockGrid can only view, create, edit, and delete the specific backup JSON files
+          that StockGrid itself creates. StockGrid cannot access, read, or alter any other
+          files, folders, or documents stored in your Google Drive account.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="clause" id="not-collect">
+    <span class="clause-number">2</span>
+    <div class="clause-body">
+      <h2>Information We Do NOT Collect</h2>
+      <p class="intro">To ensure complete commercial privacy and maintain a streamlined application:</p>
+      <div class="callout">
+        <strong>No advertising or analytics tracking</strong> — StockGrid contains zero
+        third-party advertising SDKs, behavioral tracking scripts, or marketing pixels.
+        <strong>No location tracking</strong> — we do not collect or track GPS data or
+        geographic location identifiers. <strong>No data brokerage</strong> — we do not
+        sell, rent, license, or trade any user data or commercial inventory records to
+        third parties under any circumstances.
+      </div>
+    </div>
+  </section>
+
+  <section class="clause" id="use">
+    <span class="clause-number">3</span>
+    <div class="clause-body">
+      <h2>How Information Is Used</h2>
+      <p class="intro">
+        StockGrid processes and uses collected data strictly to deliver and optimize
+        business operations for the registered business entity:
+      </p>
+      <ul>
+        <li><strong>Multi-Device Synchronization</strong> — keeping stock updates, catalog adjustments, and sales entries synced across all authorized devices in your firm.</li>
+        <li><strong>Catalog Generation &amp; Sharing</strong> — processing product images and inventory matrices to generate labeled catalog images or formatted PDF catalogs that your employees explicitly initiate and share to third-party messaging apps (e.g., WhatsApp).</li>
+        <li><strong>Disaster Recovery &amp; Backups</strong> — generating JSON data snapshots to power cloud restores and optional Google Drive backups.</li>
+        <li><strong>Security &amp; Access Control</strong> — verifying firm membership, maintaining server-side Row-Level Security, and enforcing local device App Lock.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="clause" id="storage">
+    <span class="clause-number">4</span>
+    <div class="clause-body">
+      <h2>Data Storage, Security &amp; Isolation</h2>
+
+      <div class="subsection">
+        <h3>A. Infrastructure &amp; Server Isolation</h3>
+        <p>
+          All primary database records and product media are hosted on Supabase
+          (PostgreSQL infrastructure). Database access is protected by strict Row-Level
+          Security (RLS) policies enforced at the database layer. Each firm's data is
+          partitioned by a unique organizational identifier (<code>firm_id</code>),
+          ensuring that one business can never query, view, or modify the records or
+          images of another business.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h3>B. Encryption</h3>
+        <ul>
+          <li><strong>In Transit</strong> — all communications between StockGrid, Supabase servers, Google Drive APIs, and third-party services occur exclusively over HTTPS/TLS encrypted channels.</li>
+          <li><strong>At Rest</strong> — cloud databases and storage buckets are protected with encryption at rest, consistent with standard industry practice for cloud infrastructure.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="clause" id="sharing">
+    <span class="clause-number">5</span>
+    <div class="clause-body">
+      <h2>Data Sharing &amp; Third-Party Services</h2>
+      <p class="intro">We do not disclose your commercial records or personal data except as necessary to provide core infrastructure services:</p>
+      <ul>
+        <li><strong>Supabase Inc.</strong> — provides encrypted backend cloud database, authentication, and file storage infrastructure.</li>
+        <li><strong>Google APIs (Google Drive)</strong> — utilized strictly when a firm administrator enables Google Drive disaster-recovery backups.</li>
+        <li><strong>User-Initiated Sharing</strong> — when an employee shares a catalog PDF or labeled image to an external application (such as WhatsApp), the file is handed off via standard Android system share mechanisms. StockGrid is not responsible for the privacy practices of third-party communication platforms chosen by the user.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="clause" id="retention">
+    <span class="clause-number">6</span>
+    <div class="clause-body">
+      <h2>Data Retention, Account Deletion &amp; User Rights</h2>
+      <p class="intro">
+        Your firm retains full ownership over all catalog, stock, and business data
+        stored in StockGrid. Data is retained for as long as your organization maintains
+        an active account.
+      </p>
+
+      <div class="subsection">
+        <h3>A. In-App Item Deletion &amp; Editing</h3>
+        <p>
+          Authorized users can edit, deactivate, or delete individual product listings,
+          custom categories, size options, and transaction entries at any time directly
+          through the StockGrid user interface.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h3>B. Comprehensive Account &amp; Data Deletion</h3>
+        <p>
+          In accordance with global privacy standards and Google Play's User Data &amp;
+          Account Deletion policies, any registered firm administrator can request the
+          complete and permanent deletion of their firm's account, database records, and
+          cloud storage files by contacting us directly:
+        </p>
+        <ul>
+          <li>Send a request to <code>src93.appsupport@gmail.com</code></li>
+          <li>Subject line: <code>Account Deletion Request - [Your Registered Firm Name]</code></li>
+          <li>Required details: your registered business email address and firm name, so we can verify account ownership.</li>
+        </ul>
+        <div class="note">
+          Signing out of the app on a device (Settings → Privacy &amp; Security → Sign Out
+          &amp; Reset This Device) only removes StockGrid and Google Drive access on that
+          one device — it does <strong>not</strong> delete or affect your firm's data on
+          our servers. To actually delete your firm's data, use the email request above.
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>C. Deletion Fulfillment Timeline</h3>
+        <p>Upon receiving and verifying an Account Deletion Request by email:</p>
+        <ul>
+          <li>All firm records (Articles, Sizes, Colors, Preferences, and Stock History) will be permanently purged from active Supabase PostgreSQL database tables within 30 calendar days.</li>
+          <li>All product photos stored in Supabase Storage under your firm's path will be permanently deleted.</li>
+          <li>Any active automated background backup schedules associated with your firm will be revoked.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="clause" id="children">
+    <span class="clause-number">7</span>
+    <div class="clause-body">
+      <h2>Children's Privacy</h2>
+      <p>
+        StockGrid is an enterprise B2B workflow management tool intended exclusively for
+        use by adult business owners, operators, and authorized employees. It is not
+        directed toward or intended for children under the age of 18. We do not knowingly
+        collect or maintain personal information from anyone under 18 years of age.
+      </p>
+    </div>
+  </section>
+
+  <section class="clause" id="transfers">
+    <span class="clause-number">8</span>
+    <div class="clause-body">
+      <h2>International Data Transfers</h2>
+      <p>
+        Your business information and product media may be transferred to and maintained
+        on secure cloud servers located outside your state, province, or country. By using
+        StockGrid, you consent to the transfer and processing of your data on secure cloud
+        infrastructure governed by international data protection standards.
+      </p>
+    </div>
+  </section>
+
+  <section class="clause" id="changes">
+    <span class="clause-number">9</span>
+    <div class="clause-body">
+      <h2>Changes to This Privacy Policy</h2>
+      <p>
+        We may update our Privacy Policy from time to time to reflect changes in legal
+        requirements, app features, or operational practices. When updates are made, the
+        "Last Updated" date at the top of this policy will be revised accordingly.
+      </p>
+      <p>
+        We encourage firm administrators to review this Privacy Policy periodically.
+        Continued use of StockGrid following the posting of an updated policy indicates
+        your acceptance of the revised terms.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <span class="org">StockGrid Administration</span>
+    <span>Questions, concerns, or formal data requests regarding this Privacy Policy or the handling of your business data:</span>
+    <a href="mailto:src93.appsupport@gmail.com">src93.appsupport@gmail.com</a>
+    <a href="https://src93-tech.github.io/stockgrid-privacy/">src93-tech.github.io/stockgrid-privacy</a>
+  </footer>
+</div>
