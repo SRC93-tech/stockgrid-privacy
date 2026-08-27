@@ -22,7 +22,13 @@
       --c-emerald: #10B981;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       background-color: var(--bg-dark);
@@ -37,6 +43,8 @@
       line-height: 1.6;
       position: relative;
       overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
     }
 
     /* Ambient Lighting */
