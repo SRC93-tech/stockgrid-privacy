@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service — StockGrid</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0B0F17;
+      --bg-card: #131B2E;
+      --border-glass: rgba(255, 255, 255, 0.08);
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-sub: #64748B;
+      --c-teal: #14B8A6;
+      --c-pink: #FB7185;
+      --c-indigo: #4F46E5;
+      --c-amber: #F59E0B;
+      --c-emerald: #10B981;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+      position: relative;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, .brand-font {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Top Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(11, 15, 23, 0.85);
+      border-bottom: 1px solid var(--border-glass);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 74px;
+    }
+    .brand-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+    .logo-icon-svg {
+      width: 36px;
+      height: 36px;
+      transform: rotate(8deg);
+    }
+    .brand-title {
+      font-size: 22px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFFFFF 30%, #94A3B8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .back-btn {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .back-btn:hover { color: #FFFFFF; }
+
+    /* Policy Header */
+    .policy-hero {
+      padding: 60px 0 40px;
+      border-bottom: 1px solid var(--border-glass);
+      margin-bottom: 40px;
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 14px;
+      border-radius: 999px;
+      background: rgba(79, 70, 229, 0.12);
+      border: 1px solid rgba(79, 70, 229, 0.3);
+      color: #818CF8;
+      font-size: 12.5px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .policy-title {
+      font-size: 44px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .policy-meta {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* Layout Grid */
+    .policy-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 48px;
+      align-items: start;
+      padding-bottom: 90px;
+    }
+
+    /* Sticky Sidebar Navigation */
+    .toc-sticky {
+      position: sticky;
+      top: 100px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 20px;
+      padding: 20px;
+    }
+    .toc-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-sub);
+      margin-bottom: 14px;
+    }
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .toc-list a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      transition: all 0.2s;
+      display: block;
+      padding: 4px 8px;
+      border-radius: 8px;
+    }
+    .toc-list a:hover {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Main Policy Content */
+    .policy-content section {
+      margin-bottom: 48px;
+      scroll-margin-top: 110px;
+    }
+    .policy-content h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .policy-content h2 .section-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(79, 70, 229, 0.2);
+      color: #818CF8;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 800;
+    }
+    .policy-content p {
+      color: #CBD5E1;
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+    .policy-content ul {
+      margin-left: 20px;
+      margin-bottom: 18px;
+      color: #CBD5E1;
+      font-size: 14.5px;
+    }
+    .policy-content li {
+      margin-bottom: 8px;
+    }
+
+    /* Highlight Glass Cards */
+    .highlight-card {
+      background: rgba(19, 27, 46, 0.8);
+      border: 1px solid var(--border-glass);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+    .highlight-card.legal {
+      border-left: 4px solid var(--c-indigo);
+    }
+    .highlight-card.security {
+      border-left: 4px solid var(--c-teal);
+    }
+    .highlight-card.billing {
+      border-left: 4px solid var(--c-amber);
+    }
+    .highlight-card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 6px;
+    }
+    .highlight-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
+    /* Mobile Quick Jump Horizontal Scroll Bar */
+    .mobile-quick-nav {
+      display: none;
+      margin-bottom: 24px;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 8px;
+      scrollbar-width: none;
+    }
+    .mobile-quick-nav::-webkit-scrollbar { display: none; }
+    .quick-jump-list {
+      display: inline-flex;
+      gap: 8px;
+      list-style: none;
+    }
+    .quick-jump-list a {
+      color: #94A3B8;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-glass);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .quick-jump-list a:hover,
+    .quick-jump-list a:active {
+      background: rgba(79, 70, 229, 0.18);
+      color: #A5B4FC;
+      border-color: rgba(79, 70, 229, 0.4);
+    }
+
+    /* Floating Back to Top Button */
+    .back-to-top-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #1E293B;
+      border: 1px solid var(--border-glass);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      z-index: 90;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+    .back-to-top-btn.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-glass);
+      padding: 40px 0;
+      color: var(--text-sub);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 840px) {
+      .policy-layout { grid-template-columns: 1fr; gap: 24px; padding-bottom: 50px; }
+      .toc-sticky { display: none; }
+      .mobile-quick-nav { display: block; }
+      .policy-hero { padding: 36px 0 24px; margin-bottom: 24px; }
+      .policy-title { font-size: 32px; }
+      .policy-meta { font-size: 13px; }
+      .policy-content section { margin-bottom: 36px; scroll-margin-top: 85px; }
+      .policy-content h2 { font-size: 20px; }
+      .highlight-card { padding: 16px 18px; border-radius: 14px; margin: 16px 0; }
+      .back-btn span:last-child { display: none; }
+      .back-btn::after { content: 'Back'; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .brand-title { font-size: 19px; }
+      .logo-icon-svg { width: 30px; height: 30px; }
+      .policy-title { font-size: 26px; }
+      .badge-pill { font-size: 11.5px; padding: 4px 10px; }
+      .policy-content p, .policy-content li { font-size: 14px; line-height: 1.55; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo-group">
+        <svg class="logo-icon-svg" viewBox="0 0 1024 1024" fill="none">
+          <rect x="302" y="404" width="420" height="72" rx="36" fill="#14B8A6"/>
+          <rect x="302" y="548" width="420" height="72" rx="36" fill="#FB7185"/>
+          <rect x="404" y="302" width="72" height="420" rx="36" fill="#4F46E5"/>
+          <rect x="548" y="302" width="72" height="420" rx="36" fill="#F59E0B"/>
+        </svg>
+        <span class="brand-title">StockGrid</span>
+      </a>
+
+      <a href="index.html" class="back-btn">
+        <span>←</span>
+        <span>Back to Product Overview</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Hero Title -->
+    <div class="policy-hero">
+      <div class="badge-pill">
+        <span>📜</span>
+        <span>Platform Service Agreement</span>
+      </div>
+      <h1 class="policy-title">Terms of Service</h1>
+      <div class="policy-meta">
+        Effective: August 2026 • Applicable to StockGrid Android & Multi-Device Services
+      </div>
+    </div>
+
+    <!-- Mobile Quick-Jump Nav Bar (Swipeable Pills) -->
+    <nav class="mobile-quick-nav" aria-label="Quick jump sections">
+      <ul class="quick-jump-list">
+        <li><a href="#acceptance">1. Acceptance</a></li>
+        <li><a href="#accounts">2. Accounts & PIN</a></li>
+        <li><a href="#license">3. License</a></li>
+        <li><a href="#ownership">4. Ownership</a></li>
+        <li><a href="#sync-service">5. Sync & Cloud</a></li>
+        <li><a href="#termination">6. Termination</a></li>
+        <li><a href="#liability">7. Liability</a></li>
+        <li><a href="#governing-law">8. Governing Law</a></li>
+        <li><a href="#contact">9. Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Layout -->
+    <div class="policy-layout">
+      <!-- Sticky Table of Contents -->
+      <aside class="toc-sticky">
+        <div class="toc-title">Table of Contents</div>
+        <ul class="toc-list">
+          <li><a href="#acceptance">1. Acceptance of Terms</a></li>
+          <li><a href="#accounts">2. Accounts & Master PIN</a></li>
+          <li><a href="#license">3. Multi-Device License</a></li>
+          <li><a href="#ownership">4. 100% Data Ownership</a></li>
+          <li><a href="#sync-service">5. Cloud Sync & Backups</a></li>
+          <li><a href="#termination">6. Account Termination</a></li>
+          <li><a href="#liability">7. Limitation of Liability</a></li>
+          <li><a href="#governing-law">8. Governing Law</a></li>
+          <li><a href="#contact">9. Contact Information</a></li>
+        </ul>
+      </aside>
+
+      <!-- Terms Sections -->
+      <main class="policy-content">
+        <section id="acceptance">
+          <h2><span class="section-num">1</span> Acceptance of Terms</h2>
+          <p>
+            By downloading, registering for, or using the StockGrid mobile application, database sync engine, or associated services provided by SRC93-tech ("StockGrid", "we", "us"), you agree to be bound by these Terms of Service.
+          </p>
+          <p>
+            If you are creating an account on behalf of a business firm, manufacturing unit, textile wholesale operation, or retail establishment ("Firm"), you represent and warrant that you possess full authority to bind that business entity to these Terms.
+          </p>
+        </section>
+
+        <section id="accounts">
+          <h2><span class="section-num">2</span> Firm Accounts & Master PIN Security</h2>
+          <p>
+            Each registered firm is assigned an isolated database tenant. The primary administrator is responsible for maintaining the confidentiality of login credentials and the firm's 4-digit Master PIN.
+          </p>
+          <div class="highlight-card security">
+            <h4>Access Control Responsibility</h4>
+            <p>Any stock movements, deletions, adjustments, or transactions performed on authorized employee devices will be attributed to your firm's permanent audit trail.</p>
+          </div>
+        </section>
+
+        <section id="license">
+          <h2><span class="section-num">3</span> Multi-Device Operational License</h2>
+          <p>
+            StockGrid grants your firm a non-exclusive, non-transferable, revocable license to deploy and operate the StockGrid Android application across authorized employee smartphones, barcode scanners, and warehouse stations.
+          </p>
+          <ul>
+            <li>You may authorize staff members to perform continuous barcode scanning and stock entries.</li>
+            <li>You agree not to reverse engineer, decompile, or tamper with the application binary or backend APIs.</li>
+            <li>You agree not to use the platform for unlawful, fraudulent, or unauthorized commercial activities.</li>
+          </ul>
+        </section>
+
+        <section id="ownership">
+          <h2><span class="section-num">4</span> 100% Data Ownership & Tenant Privacy</h2>
+          <p>
+            <strong>Your firm retains 100% unconditional ownership and intellectual property rights to all your inventory records, articles, size matrices, pricing, customer catalogs, and product photos.</strong>
+          </p>
+          <div class="highlight-card legal">
+            <h4>Zero Advertising & No Data Resale</h4>
+            <p>StockGrid will never sell, rent, commercialize, or share your proprietary inventory or business data with third-party brokers or advertisers.</p>
+          </div>
+        </section>
+
+        <section id="sync-service">
+          <h2><span class="section-num">5</span> Cloud Synchronization, Service Availability & Backups</h2>
+          <p>
+            StockGrid operates as a real-time, cloud-synchronized inventory platform powered by Supabase PostgreSQL. Recording stock movements, cataloging articles, and synchronizing devices requires an active internet connection (Wi-Fi or cellular).
+          </p>
+          <ul>
+            <li><strong>Network Transparency:</strong> The application includes live connection status verification and immediate error alerts if a network disruption occurs during data entry.</li>
+            <li><strong>Google Drive Disaster Recovery:</strong> Administrators can initiate on-demand or automated encrypted backup exports of their firm's full inventory catalog directly to their own authorized Google Drive account.</li>
+            <li><strong>Service Uptime:</strong> We strive to maintain high service availability and reliable cloud infrastructure across all active regions.</li>
+          </ul>
+        </section>
+
+        <section id="termination">
+          <h2><span class="section-num">6</span> Account Deletion & Data Portability</h2>
+          <p>
+            You may terminate your account or request the export or permanent deletion of your firm's inventory data at any time. Upon verified deletion requests, all tenant database records and uploaded media are permanently expunged in accordance with our <a href="privacy.html" style="color: var(--c-teal); text-decoration: none; font-weight: 600;">Privacy Policy</a>.
+          </p>
+        </section>
+
+        <section id="liability">
+          <h2><span class="section-num">7</span> Limitation of Liability</h2>
+          <p>
+            StockGrid is provided on an "as is" and "as available" basis. While we utilize enterprise-grade encryption, transactional database integrity, and automated cloud backups, StockGrid shall not be liable for indirect, incidental, or consequential damages resulting from local network connectivity outages, operator data entry errors, or hardware failure.
+          </p>
+        </section>
+
+        <section id="governing-law">
+          <h2><span class="section-num">8</span> Governing Law & Jurisdiction</h2>
+          <p>
+            These Terms of Service and any dispute, claim, or controversy arising out of or related to your use of the StockGrid platform shall be governed by and construed in accordance with the laws of India. Any legal proceedings shall be subject to the exclusive jurisdiction of the competent courts in India.
+          </p>
+        </section>
+
+        <section id="contact">
+          <h2><span class="section-num">9</span> Contact Information</h2>
+          <p>If you have any questions or legal inquiries concerning these Terms of Service, please contact our support team:</p>
+          <div class="highlight-card">
+            <h4>StockGrid Legal & Support Desk</h4>
+            <p><strong>Email:</strong> <a href="mailto:src93.appsupport@gmail.com" style="color: var(--c-teal); text-decoration: none;">src93.appsupport@gmail.com</a></p>
+            <p><strong>Platform:</strong> StockGrid for Android (SRC93-tech)</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 StockGrid (SRC93-tech). All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button on Mobile -->
+  <button id="backToTop" class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to top">↑</button>
+
+  <script>
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        btt.classList.add('visible');
+      } else {
+        btt.classList.remove('visible');
+      }
+    });
+  </script>
+</body>
+</html>

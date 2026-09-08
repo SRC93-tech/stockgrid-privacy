@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — StockGrid</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0B0F17;
+      --bg-card: #131B2E;
+      --border-glass: rgba(255, 255, 255, 0.08);
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-sub: #64748B;
+      --c-teal: #14B8A6;
+      --c-pink: #FB7185;
+      --c-indigo: #4F46E5;
+      --c-amber: #F59E0B;
+      --c-emerald: #10B981;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+      position: relative;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, .brand-font {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Top Nav */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(11, 15, 23, 0.85);
+      border-bottom: 1px solid var(--border-glass);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 74px;
+    }
+    .brand-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+    .logo-icon-svg {
+      width: 36px;
+      height: 36px;
+      transform: rotate(8deg);
+    }
+    .brand-title {
+      font-size: 22px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFFFFF 30%, #94A3B8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .back-btn {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .back-btn:hover { color: #FFFFFF; }
+
+    /* Policy Header */
+    .policy-hero {
+      padding: 60px 0 40px;
+      border-bottom: 1px solid var(--border-glass);
+      margin-bottom: 40px;
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 14px;
+      border-radius: 999px;
+      background: rgba(20, 184, 166, 0.12);
+      border: 1px solid rgba(20, 184, 166, 0.3);
+      color: #2DD4BF;
+      font-size: 12.5px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .policy-title {
+      font-size: 44px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .policy-meta {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* Layout Grid */
+    .policy-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 48px;
+      align-items: start;
+      padding-bottom: 90px;
+    }
+
+    /* Sticky Sidebar Navigation */
+    .toc-sticky {
+      position: sticky;
+      top: 100px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 20px;
+      padding: 20px;
+    }
+    .toc-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-sub);
+      margin-bottom: 14px;
+    }
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .toc-list a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      transition: all 0.2s;
+      display: block;
+      padding: 4px 8px;
+      border-radius: 8px;
+    }
+    .toc-list a:hover {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Main Policy Content */
+    .policy-content section {
+      margin-bottom: 48px;
+      scroll-margin-top: 110px;
+    }
+    .policy-content h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .policy-content h2 .section-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(79, 70, 229, 0.2);
+      color: #818CF8;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 800;
+    }
+    .policy-content p {
+      color: #CBD5E1;
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+    .policy-content ul {
+      margin-left: 20px;
+      margin-bottom: 18px;
+      color: #CBD5E1;
+      font-size: 14.5px;
+    }
+    .policy-content li {
+      margin-bottom: 8px;
+    }
+
+    /* Highlight Glass Cards */
+    .highlight-card {
+      background: rgba(19, 27, 46, 0.8);
+      border: 1px solid var(--border-glass);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+    .highlight-card.security {
+      border-left: 4px solid var(--c-teal);
+    }
+    .highlight-card.permission {
+      border-left: 4px solid var(--c-indigo);
+    }
+    .highlight-card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 6px;
+    }
+    .highlight-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
+    /* Mobile Quick Jump Horizontal Scroll Bar */
+    .mobile-quick-nav {
+      display: none;
+      margin-bottom: 24px;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 8px;
+      scrollbar-width: none;
+    }
+    .mobile-quick-nav::-webkit-scrollbar { display: none; }
+    .quick-jump-list {
+      display: inline-flex;
+      gap: 8px;
+      list-style: none;
+    }
+    .quick-jump-list a {
+      color: #94A3B8;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-glass);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .quick-jump-list a:hover,
+    .quick-jump-list a:active {
+      background: rgba(20, 184, 166, 0.15);
+      color: #2DD4BF;
+      border-color: rgba(20, 184, 166, 0.4);
+    }
+
+    /* Floating Back to Top Button */
+    .back-to-top-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #1E293B;
+      border: 1px solid var(--border-glass);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      z-index: 90;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+    .back-to-top-btn.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-glass);
+      padding: 40px 0;
+      color: var(--text-sub);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 840px) {
+      .policy-layout { grid-template-columns: 1fr; gap: 24px; padding-bottom: 50px; }
+      .toc-sticky { display: none; }
+      .mobile-quick-nav { display: block; }
+      .policy-hero { padding: 36px 0 24px; margin-bottom: 24px; }
+      .policy-title { font-size: 32px; }
+      .policy-meta { font-size: 13px; }
+      .policy-content section { margin-bottom: 36px; scroll-margin-top: 85px; }
+      .policy-content h2 { font-size: 20px; }
+      .highlight-card { padding: 16px 18px; border-radius: 14px; margin: 16px 0; }
+      .back-btn span:last-child { display: none; }
+      .back-btn::after { content: 'Back'; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .brand-title { font-size: 19px; }
+      .logo-icon-svg { width: 30px; height: 30px; }
+      .policy-title { font-size: 26px; }
+      .badge-pill { font-size: 11.5px; padding: 4px 10px; }
+      .policy-content p, .policy-content li { font-size: 14px; line-height: 1.55; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo-group">
+        <svg class="logo-icon-svg" viewBox="0 0 1024 1024" fill="none">
+          <rect x="302" y="404" width="420" height="72" rx="36" fill="#14B8A6"/>
+          <rect x="302" y="548" width="420" height="72" rx="36" fill="#FB7185"/>
+          <rect x="404" y="302" width="72" height="420" rx="36" fill="#4F46E5"/>
+          <rect x="548" y="302" width="72" height="420" rx="36" fill="#F59E0B"/>
+        </svg>
+        <span class="brand-title">StockGrid</span>
+      </a>
+
+      <a href="index.html" class="back-btn">
+        <span>←</span>
+        <span>Back to Product Overview</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Hero Title -->
+    <div class="policy-hero">
+      <div class="badge-pill">
+        <span>🔒</span>
+        <span>Privacy & Data Security Standard</span>
+      </div>
+      <h1 class="policy-title">Privacy Policy</h1>
+      <div class="policy-meta">
+        Last Updated: August 2026 • Official Privacy Policy for StockGrid Android
+      </div>
+    </div>
+
+    <!-- Mobile Quick-Jump Nav Bar (Swipeable Pills) -->
+    <nav class="mobile-quick-nav" aria-label="Quick jump sections">
+      <ul class="quick-jump-list">
+        <li><a href="#overview">1. Overview</a></li>
+        <li><a href="#data-collection">2. Collected Data</a></li>
+        <li><a href="#device-permissions">3. Permissions</a></li>
+        <li><a href="#data-security">4. Cloud Security</a></li>
+        <li><a href="#staff-privacy">5. Staff & PIN</a></li>
+        <li><a href="#third-parties">6. Drive Backups</a></li>
+        <li><a href="#user-rights">7. Retention & Rights</a></li>
+        <li><a href="#contact">8. Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Layout -->
+    <div class="policy-layout">
+      <!-- Sticky Table of Contents -->
+      <aside class="toc-sticky">
+        <div class="toc-title">Table of Contents</div>
+        <ul class="toc-list">
+          <li><a href="#overview">1. Overview & Scope</a></li>
+          <li><a href="#data-collection">2. Data We Collect</a></li>
+          <li><a href="#device-permissions">3. Device Permissions</a></li>
+          <li><a href="#data-security">4. Security & Cloud Sync</a></li>
+          <li><a href="#staff-privacy">5. Staff & Admin Access</a></li>
+          <li><a href="#third-parties">6. No Data Selling</a></li>
+          <li><a href="#user-rights">7. Data Retention & Deletion</a></li>
+          <li><a href="#contact">8. Contact Us</a></li>
+        </ul>
+      </aside>
+
+      <!-- Policy Sections -->
+      <main class="policy-content">
+        <section id="overview">
+          <h2><span class="section-num">1</span> Overview & Scope</h2>
+          <p>
+            StockGrid ("we", "our", or "us", operated by SRC93-tech) provides a multi-device inventory operating platform designed specifically for garments, apparel, and textile businesses. This Privacy Policy explains how our mobile application and related cloud services collect, protect, and handle your business data.
+          </p>
+          <p>
+            We adhere to a strict principle of data minimization: we only process data essential to synchronizing your inventory, securing staff access, and providing accurate reporting across your authorized devices.
+          </p>
+        </section>
+
+        <section id="data-collection">
+          <h2><span class="section-num">2</span> Information We Collect</h2>
+          <p>To operate the StockGrid inventory system, the following data categories are processed:</p>
+          
+          <ul>
+            <li><strong>Firm & Account Details:</strong> Firm name, administrator email address, currency format (e.g., INR ₹), and localized timezone settings.</li>
+            <li><strong>Inventory Catalog & Transaction Data:</strong> Article codes, item descriptions, garment & apparel size matrices (e.g., S, M, L, XL, XXL / Waist 28–44), categories, minimum stock thresholds, wholesale/retail pricing, and timestamped stock in/out audit records.</li>
+            <li><strong>Product Photos:</strong> Article reference images captured or uploaded by your team, stored in isolated, encrypted cloud storage buckets.</li>
+            <li><strong>Device Registry Identifiers:</strong> Device hardware model, operating system version, and unique installation tokens used to enforce multi-device authorization and allow remote device revocation.</li>
+          </ul>
+
+          <div class="highlight-card security">
+            <h4>Isolated Tenant Storage</h4>
+            <p>Every firm's database records are strictly segmented using PostgreSQL Row Level Security (RLS). No other firm or external organization can view or access your inventory items.</p>
+          </div>
+        </section>
+
+        <section id="device-permissions">
+          <h2><span class="section-num">3</span> Device Permissions & Usage</h2>
+          <p>The StockGrid mobile application requests specific device permissions strictly for functional inventory operations:</p>
+
+          <div class="highlight-card permission">
+            <h4>📷 Camera Permission</h4>
+            <p>Used exclusively when you activate the live Barcode/QR Scanner or capture a photo for an inventory item. We never access the camera in the background or store continuous camera feeds.</p>
+          </div>
+
+          <div class="highlight-card permission">
+            <h4>💾 Secure Storage & App Preferences</h4>
+            <p>Used to securely store authenticated session tokens in platform hardware keychains (via Flutter Secure Storage / Android Keystore) and manage user interface preferences.</p>
+          </div>
+
+          <div class="highlight-card permission">
+            <h4>🔔 Push Notifications (Optional)</h4>
+            <p>Used to deliver inventory alerts (such as restock shortage thresholds) and device authorization verification notices.</p>
+          </div>
+        </section>
+
+        <section id="data-security">
+          <h2><span class="section-num">4</span> Data Security & Real-Time Sync</h2>
+          <p>
+            We implement enterprise-grade security protocols across all communication channels and backend databases:
+          </p>
+          <ul>
+            <li><strong>Encryption in Transit:</strong> All data exchanged between your devices and our Supabase cloud database is encrypted via TLS 1.3 with HTTPS/WSS protocols.</li>
+            <li><strong>Encryption at Rest:</strong> Database records, authentication tokens, and uploaded media files are encrypted at rest using AES-256 standards.</li>
+            <li><strong>Automated Cloud Backups:</strong> Daily automated cloud database backups and on-demand administrator Google Drive archives safeguard your firm's records.</li>
+          </ul>
+        </section>
+
+        <section id="staff-privacy">
+          <h2><span class="section-num">5</span> Staff Mode & Admin PIN Protection</h2>
+          <p>
+            StockGrid includes role-based access control to protect sensitive financial metrics within your warehouse:
+          </p>
+          <p>
+            When operating in <strong>Staff Mode</strong>, sensitive metrics such as wholesale buy prices and total warehouse inventory valuations are obscured. Full access requires entering the firm's 4-digit Master PIN, which is verified securely and never transmitted in plaintext.
+          </p>
+        </section>
+
+        <section id="third-parties">
+          <h2><span class="section-num">6</span> Third-Party Services & Google Drive Backups</h2>
+          <p>
+            <strong>We do not sell, rent, monetize, or trade your inventory, customer, or transaction data with any third-party advertisers or data brokers under any circumstances.</strong>
+          </p>
+          <div class="highlight-card security">
+            <h4>Optional Google Drive Cloud Backups</h4>
+            <p>When the administrator initiates a manual or scheduled Google Drive backup, an encrypted archive of your inventory catalog and audit history is uploaded directly to your own authorized Google Drive account via official Google OAuth APIs. StockGrid does not access, monetize, or store your Google account credentials.</p>
+          </div>
+        </section>
+
+        <section id="user-rights">
+          <h2><span class="section-num">7</span> Data Retention & Deletion Rights</h2>
+          <p>You maintain complete ownership and control over your inventory records:</p>
+          <ul>
+            <li><strong>Device Reset:</strong> You can instantly revoke and erase cached credentials from any device using the in-app <em>"Sign Out & Reset This Device"</em> feature.</li>
+            <li><strong>Remote De-Authorization:</strong> Administrators can remove lost or decommissioned employee phones from the <em>Device Management</em> console.</li>
+            <li><strong>Permanent Account Deletion:</strong> You may request complete, permanent deletion of your firm's database records and uploaded media at any time by contacting our support team.</li>
+          </ul>
+        </section>
+
+        <section id="contact">
+          <h2><span class="section-num">8</span> Contact Us</h2>
+          <p>If you have any questions, data requests, or security inquiries regarding this Privacy Policy, please reach out to us:</p>
+          <div class="highlight-card">
+            <h4>StockGrid Data Protection Office</h4>
+            <p><strong>Email:</strong> <a href="mailto:src93.appsupport@gmail.com" style="color: var(--c-teal); text-decoration: none;">src93.appsupport@gmail.com</a></p>
+            <p><strong>Platform:</strong> StockGrid for Android (SRC93-tech)</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 StockGrid (SRC93-tech). All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button on Mobile -->
+  <button id="backToTop" class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to top">↑</button>
+
+  <script>
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        btt.classList.add('visible');
+      } else {
+        btt.classList.remove('visible');
+      }
+    });
+  </script>
+</body>
+</html>

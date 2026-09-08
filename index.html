@@ -1,25 +1,33 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy — StockGrid</title>
+  <title>StockGrid — Next-Gen Multi-Device Inventory Platform</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-dark: #0B0F17;
       --bg-card: #131B2E;
+      --bg-card-glass: rgba(19, 27, 46, 0.75);
       --border-glass: rgba(255, 255, 255, 0.08);
       --text-main: #F8FAFC;
       --text-muted: #94A3B8;
       --text-sub: #64748B;
+      
       --c-teal: #14B8A6;
       --c-pink: #FB7185;
       --c-indigo: #4F46E5;
       --c-amber: #F59E0B;
       --c-emerald: #10B981;
+      --c-violet: #8B5CF6;
+      
+      --grad-indigo: linear-gradient(135deg, #4338CA 0%, #312E81 100%);
+      --grad-emerald: linear-gradient(135deg, #059669 0%, #065F46 100%);
+      --grad-violet: linear-gradient(135deg, #6D28D9 0%, #4C1D95 100%);
+      --grad-brand: linear-gradient(135deg, #4F46E5 0%, #14B8A6 100%);
     }
 
     html {
@@ -29,18 +37,26 @@
       max-width: 100%;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       background-color: var(--bg-dark);
       color: var(--text-main);
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.7;
+      line-height: 1.6;
       overflow-x: hidden;
       width: 100%;
       max-width: 100%;
       position: relative;
       -webkit-font-smoothing: antialiased;
+    }
+
+    section, .arch-section, .features-section, .security-section {
+      scroll-margin-top: 95px;
     }
 
     h1, h2, h3, h4, .brand-font {
@@ -49,487 +65,2904 @@
       letter-spacing: -0.02em;
     }
 
+    /* Ambient Background Glows */
+    .ambient-glow-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+      contain: paint;
+    }
+    .glow-sphere {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(130px);
+      pointer-events: none;
+      opacity: 0.35;
+    }
+    .glow-1 { top: -100px; left: 20%; width: 500px; height: 500px; background: #4F46E5; }
+    .glow-2 { top: 600px; right: 10%; width: 450px; height: 450px; background: #14B8A6; }
+    .glow-3 { top: 1600px; left: 15%; width: 600px; height: 600px; background: #8B5CF6; }
+
+    /* Container */
     .container {
-      max-width: 1140px;
+      width: 100%;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 24px;
+      position: relative;
+      z-index: 1;
+      box-sizing: border-box;
     }
 
-    /* Top Nav */
+    /* Navigation Bar */
     header {
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 100;
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      background: rgba(11, 15, 23, 0.85);
+      background: rgba(11, 15, 23, 0.8);
       border-bottom: 1px solid var(--border-glass);
     }
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 74px;
+      height: 80px;
     }
     .brand-logo-group {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       text-decoration: none;
       color: var(--text-main);
     }
     .logo-icon-svg {
-      width: 36px;
-      height: 36px;
+      width: 42px;
+      height: 42px;
       transform: rotate(8deg);
     }
     .brand-title {
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 800;
+      letter-spacing: -0.03em;
       background: linear-gradient(135deg, #FFFFFF 30%, #94A3B8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .back-btn {
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      font-size: 14.5px;
+      font-weight: 500;
       transition: color 0.2s;
     }
-    .back-btn:hover { color: #FFFFFF; }
-
-    /* Policy Header */
-    .policy-hero {
-      padding: 60px 0 40px;
-      border-bottom: 1px solid var(--border-glass);
-      margin-bottom: 40px;
-    }
-    .badge-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 5px 14px;
-      border-radius: 999px;
-      background: rgba(20, 184, 166, 0.12);
-      border: 1px solid rgba(20, 184, 166, 0.3);
-      color: #2DD4BF;
-      font-size: 12.5px;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-    .policy-title {
-      font-size: 44px;
-      font-weight: 800;
-      margin-bottom: 12px;
-    }
-    .policy-meta {
-      color: var(--text-muted);
-      font-size: 14px;
-    }
-
-    /* Layout Grid */
-    .policy-layout {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 48px;
-      align-items: start;
-      padding-bottom: 90px;
-    }
-
-    /* Sticky Sidebar Navigation */
-    .toc-sticky {
-      position: sticky;
-      top: 100px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-glass);
-      border-radius: 20px;
-      padding: 20px;
-    }
-    .toc-title {
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-sub);
-      margin-bottom: 14px;
-    }
-    .toc-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .toc-list a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 13.5px;
-      font-weight: 500;
-      transition: all 0.2s;
-      display: block;
-      padding: 4px 8px;
-      border-radius: 8px;
-    }
-    .toc-list a:hover {
+    .nav-links a:hover {
       color: #FFFFFF;
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .btn-secondary {
+      padding: 10px 20px;
+      border-radius: 12px;
       background: rgba(255, 255, 255, 0.05);
-    }
-
-    /* Main Policy Content */
-    .policy-content section {
-      margin-bottom: 48px;
-      scroll-margin-top: 110px;
-    }
-    .policy-content h2 {
-      font-size: 24px;
-      font-weight: 700;
-      color: #FFFFFF;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .policy-content h2 .section-num {
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
-      background: rgba(79, 70, 229, 0.2);
-      color: #818CF8;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 800;
-    }
-    .policy-content p {
-      color: #CBD5E1;
-      font-size: 15px;
-      margin-bottom: 16px;
-    }
-    .policy-content ul {
-      margin-left: 20px;
-      margin-bottom: 18px;
-      color: #CBD5E1;
-      font-size: 14.5px;
-    }
-    .policy-content li {
-      margin-bottom: 8px;
-    }
-
-    /* Highlight Glass Cards */
-    .highlight-card {
-      background: rgba(19, 27, 46, 0.8);
       border: 1px solid var(--border-glass);
-      border-radius: 16px;
-      padding: 20px 24px;
-      margin: 20px 0;
-    }
-    .highlight-card.security {
-      border-left: 4px solid var(--c-teal);
-    }
-    .highlight-card.permission {
-      border-left: 4px solid var(--c-indigo);
-    }
-    .highlight-card h4 {
-      font-size: 16px;
-      font-weight: 700;
-      color: #FFFFFF;
-      margin-bottom: 6px;
-    }
-    .highlight-card p {
+      color: var(--text-main);
       font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 0;
-    }
-
-    /* Mobile Quick Jump Horizontal Scroll Bar */
-    .mobile-quick-nav {
-      display: none;
-      margin-bottom: 24px;
-      overflow-x: auto;
-      white-space: nowrap;
-      -webkit-overflow-scrolling: touch;
-      padding-bottom: 8px;
-      scrollbar-width: none;
-    }
-    .mobile-quick-nav::-webkit-scrollbar { display: none; }
-    .quick-jump-list {
-      display: inline-flex;
-      gap: 8px;
-      list-style: none;
-    }
-    .quick-jump-list a {
-      color: #94A3B8;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border-glass);
-      border-radius: 999px;
-      padding: 6px 14px;
-      font-size: 12px;
       font-weight: 600;
       text-decoration: none;
       transition: all 0.2s;
+      cursor: pointer;
     }
-    .quick-jump-list a:hover,
-    .quick-jump-list a:active {
-      background: rgba(20, 184, 166, 0.15);
-      color: #2DD4BF;
-      border-color: rgba(20, 184, 166, 0.4);
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .btn-primary {
+      padding: 11px 24px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #4F46E5 0%, #4338CA 100%);
+      color: #FFFFFF;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(79, 70, 229, 0.4);
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(79, 70, 229, 0.6);
     }
 
-    /* Floating Back to Top Button */
-    .back-to-top-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 44px;
-      height: 44px;
+    /* Hero Section */
+    .hero-section {
+      padding: 90px 0 70px;
+      text-align: center;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(79, 70, 229, 0.12);
+      border: 1px solid rgba(79, 70, 229, 0.3);
+      color: #A5B4FC;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 28px;
+    }
+    .hero-pill-dot {
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      background: #1E293B;
+      background: #14B8A6;
+      box-shadow: 0 0 10px #14B8A6;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+    .hero-title {
+      font-size: 60px;
+      line-height: 1.1;
+      font-weight: 800;
+      max-width: 900px;
+      margin: 0 auto 24px;
+    }
+    .hero-title span.grad {
+      background: linear-gradient(135deg, #818CF8 0%, #2DD4BF 50%, #F472B6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      font-size: 19px;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto 36px;
+      font-weight: 400;
+    }
+    .hero-cta-group {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 50px;
+    }
+
+    /* Live Animated Logo Loader Feature Showcase */
+    .hero-loader-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 24px;
+      background: rgba(19, 27, 46, 0.6);
       border: 1px solid var(--border-glass);
+      border-radius: 16px;
+      backdrop-filter: blur(12px);
+      margin-bottom: 60px;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    .loader-anim-mini {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+    }
+    .loader-text {
+      text-align: left;
+      min-width: 0;
+    }
+    .loader-text-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #FFFFFF;
+      word-break: break-word;
+    }
+    .loader-text-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      word-break: break-word;
+    }
+
+    /* ======================================================== */
+    /* REALISTIC ANDROID MOBILE PHONE MOCKUP                    */
+    /* ======================================================== */
+    .phone-mockup-wrapper {
+      width: 100%;
+      max-width: 412px;
+      margin: 0 auto 90px;
+      position: relative;
+      box-sizing: border-box;
+    }
+    .phone-outer-shell {
+      width: 100%;
+      background: #0F172A;
+      border: 8px solid #1E293B;
+      border-radius: 46px;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      position: relative;
+      box-sizing: border-box;
+    }
+    
+    /* Android Status Bar */
+    .phone-status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 18px 4px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #94A3B8;
+      background: #0F172A;
+    }
+    .punch-hole-camera {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #000000;
+      box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.1);
+    }
+    .status-icons {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      font-size: 10px;
+    }
+
+    /* Phone Inner Screen Content */
+    .phone-screen-body {
+      padding: 6px 14px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #0F172A;
+      max-height: 720px;
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+    .phone-screen-body::-webkit-scrollbar { display: none; }
+
+    /* App Bar */
+    .app-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 0;
+    }
+    .app-header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .menu-icon-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: #FFFFFF;
+      cursor: pointer;
+    }
+    .app-brand-mark {
+      width: 30px;
+      height: 30px;
+    }
+    .app-brand-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.2px;
+    }
+
+    /* Greeting Row */
+    .app-greeting-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .app-greeting-text {
+      font-size: 15px;
+      font-weight: 800;
+      color: #F8FAFC;
+    }
+    .admin-mode-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 14px;
+      background: rgba(79, 70, 229, 0.18);
+      border: 1px solid rgba(129, 140, 248, 0.35);
+      color: #A5B4FC;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    /* Swipeable Hero Cards Carousel Container */
+    .hero-carousel-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      width: 100%;
+      min-height: 146px;
+    }
+    .hero-carousel-track {
+      display: flex;
+      transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+      width: 300%;
+    }
+    .hero-carousel-slide {
+      width: 33.333333%;
+      flex-shrink: 0;
+      box-sizing: border-box;
+      padding: 0 2px;
+    }
+
+    /* Card Navigation Buttons */
+    .carousel-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(11, 15, 23, 0.65);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: #FFFFFF;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+      font-size: 14px;
       cursor: pointer;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-      z-index: 90;
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.3s ease;
+      z-index: 10;
+      transition: all 0.2s;
     }
-    .back-to-top-btn.visible {
-      opacity: 1;
-      pointer-events: auto;
+    .carousel-nav-btn:hover { background: rgba(79, 70, 229, 0.8); }
+    .carousel-nav-btn.left { left: 6px; }
+    .carousel-nav-btn.right { right: 6px; }
+
+    /* Card Base Styles */
+    .phone-hero-card {
+      border-radius: 20px;
+      padding: 14px 16px;
+      color: #FFFFFF;
+      min-height: 146px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .card-bg-summary {
+      background: linear-gradient(135deg, #4338CA, #312E81);
+    }
+    .card-bg-value {
+      background: linear-gradient(135deg, #059669, #065F46);
+    }
+    .card-bg-size {
+      background: linear-gradient(135deg, #6D28D9, #4C1D95);
+    }
+
+    .card-head-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card-title-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    /* Authentic Frosted Square Icon Box */
+    .card-leading-icon-box {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.20);
+      border: 1px solid rgba(255, 255, 255, 0.30);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-leading-icon-box svg {
+      width: 15px;
+      height: 15px;
+      color: #FFFFFF;
+    }
+    .card-head-title {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #FFFFFF;
+    }
+    .card-period-pill {
+      padding: 3px 10px;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #FFFFFF;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .card-admin-pill {
+      padding: 3px 9px;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 800;
+      color: #D1FAE5;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Metric Sub Tiles */
+    .metrics-dual-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .metric-sub-card {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      border-radius: 12px;
+      padding: 8px 12px;
+    }
+    .metric-sub-label-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 2px;
+    }
+    .metric-sub-arrow-in { color: #6EE7B7; font-size: 13px; font-weight: 900; }
+    .metric-sub-arrow-out { color: #FDA4AF; font-size: 13px; font-weight: 900; }
+    .metric-sub-tag {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #A5B4FC;
+    }
+    .metric-sub-num {
+      font-size: 24px;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1.1;
+    }
+    .color-in { color: #6EE7B7; }
+    .color-out { color: #FDA4AF; }
+
+    /* Carousel Dot Indicators & Dynamic Hint */
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      margin-top: 6px;
+    }
+    .c-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.25);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .c-dot.active {
+      width: 18px;
+      background: #4F46E5;
+    }
+    .carousel-hint-text {
+      font-size: 11px;
+      color: #94A3B8;
+      text-align: center;
+      margin-top: 3px;
+    }
+
+    /* Option B Multicolor Quick Actions Row */
+    .quick-actions-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    .qa-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .qa-icon-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease;
+    }
+    .qa-item:hover .qa-icon-circle {
+      transform: scale(1.08);
+    }
+    .qa-scan { background: #0C4A6E; color: #38BDF8; }
+    .qa-add { background: #1B3B2B; color: #4ADE80; }
+    .qa-update { background: #312E81; color: #818CF8; }
+    .qa-report { background: #3B1A66; color: #C084FC; }
+    .qa-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #E2E8F0;
+      text-align: center;
+    }
+
+    /* Shortage Alert Banner */
+    .shortage-banner {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(239, 68, 68, 0.12) 100%);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 14px;
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .shortage-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .shortage-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #F8FAFC;
+    }
+    .shortage-sub {
+      font-size: 10.5px;
+      color: #FBBF24;
+    }
+
+    /* Stock Flow Interactive Chart Card */
+    .chart-card-box {
+      background: #1E293B;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 12px 14px;
+    }
+    .chart-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .chart-legend-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #94A3B8;
+    }
+    .chart-legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .dot-in { background: #10B981; }
+    .dot-out { background: #FB7185; }
+
+    .chart-bars-wrap {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      height: 110px;
+      padding-top: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .chart-day-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+    }
+    .chart-pair {
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 90px;
+    }
+    .c-bar {
+      width: 7px;
+      border-radius: 3px 3px 0 0;
+      transition: height 0.3s ease;
+    }
+    .c-bar.in { background: #10B981; }
+    .c-bar.out { background: #FB7185; }
+    .chart-day-label {
+      font-size: 9px;
+      font-weight: 600;
+      color: #64748B;
+    }
+
+    /* Fast Moving Top Sellers Carousel */
+    .phone-section-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2px;
+    }
+    .phone-section-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #F8FAFC;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .phone-section-link {
+      font-size: 11px;
+      font-weight: 600;
+      color: #818CF8;
+      text-decoration: none;
+    }
+    .top-sellers-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 2px;
+    }
+    .top-sellers-scroll::-webkit-scrollbar { display: none; }
+    .top-seller-chip {
+      min-width: 120px;
+      background: #1E293B;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .top-seller-thumb {
+      height: 70px;
+      background: #334155;
+      position: relative;
+    }
+    .top-seller-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .trending-sales-badge {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+      border: 0.8px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 2px 6px rgba(79, 70, 229, 0.45);
+      color: #FFFFFF;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      padding: 2px 6px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .top-seller-info {
+      padding: 6px 8px;
+    }
+    .top-seller-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: #FFFFFF;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .top-seller-meta {
+      font-size: 9.5px;
+      color: #94A3B8;
+    }
+
+    /* Catalog Health Action Center */
+    .catalog-health-card {
+      background: #1E293B;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 10px 12px;
+    }
+    .catalog-health-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .catalog-health-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #F8FAFC;
+    }
+    .catalog-health-score {
+      font-size: 10px;
+      font-weight: 800;
+      color: #4ADE80;
+      background: #1B3B2B;
+      padding: 2px 7px;
+      border-radius: 999px;
+    }
+    .catalog-health-chips {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .catalog-health-chips::-webkit-scrollbar { display: none; }
+    .ch-chip {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 8px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 10px;
+      font-weight: 600;
+      color: #E2E8F0;
+      white-space: nowrap;
+    }
+
+    /* Floating Bottom Dock (5 Tabs) */
+    .phone-bottom-dock {
+      margin-top: 4px;
+      height: 48px;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      padding: 2px 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+    .dock-tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: #94A3B8;
+      font-size: 9px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .dock-tab.active {
+      background: #2E3856;
+      color: #A5B4FC;
+      font-weight: 700;
+    }
+    .dock-tab svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* Android Home Pill */
+    .android-home-bar {
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0F172A;
+    }
+    .android-pill-line {
+      width: 72px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Features Grid */
+    .features-section {
+      padding: 90px 0;
+    }
+    .section-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 60px;
+    }
+    .section-tag {
+      color: #818CF8;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .section-title {
+      font-size: 38px;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 24px;
+      padding: 30px 26px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(79, 70, 229, 0.4);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+    }
+    .feature-icon-box {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      transition: transform 0.2s ease;
+    }
+    .feature-card:hover .feature-icon-box {
+      transform: scale(1.08);
+    }
+    .feature-icon-svg {
+      width: 26px;
+      height: 26px;
+    }
+    .icon-indigo { background: rgba(79, 70, 229, 0.15); color: #818CF8; border: 1px solid rgba(79, 70, 229, 0.3); }
+    .icon-teal { background: rgba(20, 184, 166, 0.15); color: #2DD4BF; border: 1px solid rgba(20, 184, 166, 0.3); }
+    .icon-pink { background: rgba(251, 113, 133, 0.15); color: #FB7185; border: 1px solid rgba(251, 113, 133, 0.3); }
+    .icon-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .icon-emerald { background: rgba(16, 185, 129, 0.15); color: #34D399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .icon-violet { background: rgba(139, 92, 246, 0.15); color: #A78BFA; border: 1px solid rgba(139, 92, 246, 0.3); }
+    .icon-cyan { background: rgba(6, 182, 212, 0.15); color: #38BDF8; border: 1px solid rgba(6, 182, 212, 0.3); }
+    .icon-rose { background: rgba(244, 63, 94, 0.15); color: #FB7185; border: 1px solid rgba(244, 63, 94, 0.3); }
+    .icon-orange { background: rgba(249, 115, 22, 0.15); color: #FB923C; border: 1px solid rgba(249, 115, 22, 0.3); }
+    .icon-purple { background: rgba(168, 85, 247, 0.15); color: #C084FC; border: 1px solid rgba(168, 85, 247, 0.3); }
+
+    .feature-card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 14.5px;
+      line-height: 1.6;
+    }
+
+    /* Architecture Section: Grid Weave Engine */
+    .arch-section {
+      padding: 90px 0;
+      border-top: 1px solid var(--border-glass);
+      position: relative;
+    }
+    .arch-showcase-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: center;
+      margin-top: 50px;
+    }
+    .arch-visual-box {
+      background: radial-gradient(circle at center, rgba(79, 70, 229, 0.15) 0%, rgba(11, 15, 23, 0.8) 70%);
+      border: 1px solid var(--border-glass);
+      border-radius: 32px;
+      padding: 44px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+    .weave-engine-anim {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 24px;
+    }
+    .streams-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .stream-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 18px;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      transition: all 0.3s ease;
+      border-left: 4px solid #14B8A6;
+    }
+    .stream-card.pink-stream { border-left-color: #FB7185; }
+    .stream-card.indigo-stream { border-left-color: #4F46E5; }
+    .stream-card.amber-stream { border-left-color: #F59E0B; }
+    .stream-card:hover {
+      transform: translateX(6px);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .stream-icon {
+      font-size: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.05);
+      flex-shrink: 0;
+    }
+    .stream-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 4px;
+    }
+    .stream-desc {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Security Section */
+    .security-section {
+      padding: 90px 0;
+      border-top: 1px solid var(--border-glass);
+      position: relative;
+    }
+    .security-showcase-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      align-items: start;
+      margin-top: 50px;
+    }
+    .security-card-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 28px;
+      padding: 32px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+    .security-toggle-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border-glass);
+    }
+    .role-toggle-group {
+      display: flex;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 4px;
+      gap: 4px;
+    }
+    .role-btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .role-btn.active {
+      background: #4F46E5;
+      color: #FFFFFF;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.4);
+    }
+    .role-btn.active.staff {
+      background: #14B8A6;
+      color: #0B0F17;
+      box-shadow: 0 2px 8px rgba(20, 184, 166, 0.4);
+    }
+
+    .mockup-item-security-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-glass);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .sec-price-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      transition: all 0.3s;
+    }
+    .sec-price-badge.unlocked {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34D399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .sec-price-badge.locked {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-sub);
+      filter: blur(4px);
+      user-select: none;
+    }
+
+    .sec-metric-dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 14px;
+      background: rgba(0,0,0,0.25);
+      border-radius: 12px;
+    }
+
+    /* Device Registry List in Security Showcase */
+    .device-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .device-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-glass);
+      border-radius: 14px;
+      transition: all 0.3s;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .device-info-name {
+      font-size: 13.5px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .device-info-sub {
+      font-size: 11.5px;
+      color: var(--text-sub);
+    }
+    .btn-revoke {
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 11.5px;
+      font-weight: 700;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #F87171;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-revoke:hover {
+      background: rgba(239, 68, 68, 0.25);
+    }
+
+    /* Feature Pillars */
+    .security-pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 36px;
+    }
+    .pillar-card {
+      background: rgba(19, 27, 46, 0.6);
+      border: 1px solid var(--border-glass);
+      border-radius: 18px;
+      padding: 22px;
+    }
+    .pillar-card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #FFFFFF;
+    }
+    .pillar-card p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Slogan Banner */
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.2) 0%, rgba(20, 184, 166, 0.15) 100%);
+      border: 1px solid rgba(79, 70, 229, 0.3);
+      border-radius: 32px;
+      padding: 60px 40px;
+      text-align: center;
+      margin: 60px 0 100px;
+      position: relative;
+      backdrop-filter: blur(20px);
+    }
+    .cta-banner h2 {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .cta-banner p {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 32px;
     }
 
     /* Footer */
     footer {
       border-top: 1px solid var(--border-glass);
-      padding: 40px 0;
+      padding: 60px 0 40px;
+      background: #080B11;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+    .footer-brand p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-top: 14px;
+      max-width: 320px;
+    }
+    .footer-col h4 {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #FFFFFF;
+      margin-bottom: 18px;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .footer-col ul a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover {
+      color: #FFFFFF;
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
       color: var(--text-sub);
       font-size: 13px;
-      text-align: center;
     }
 
-    /* Responsive */
-    @media (max-width: 840px) {
-      .policy-layout { grid-template-columns: 1fr; gap: 24px; padding-bottom: 50px; }
-      .toc-sticky { display: none; }
-      .mobile-quick-nav { display: block; }
-      .policy-hero { padding: 36px 0 24px; margin-bottom: 24px; }
-      .policy-title { font-size: 32px; }
-      .policy-meta { font-size: 13px; }
-      .policy-content section { margin-bottom: 36px; scroll-margin-top: 85px; }
-      .policy-content h2 { font-size: 20px; }
-      .highlight-card { padding: 16px 18px; border-radius: 14px; margin: 16px 0; }
-      .back-btn span:last-child { display: none; }
-      .back-btn::after { content: 'Back'; }
+    /* FAQ Section */
+    .faq-section {
+      padding: 90px 0;
+      border-top: 1px solid var(--border-glass);
+      scroll-margin-top: 95px;
+    }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .faq-item {
+      background: var(--bg-card-glass);
+      border: 1px solid var(--border-glass);
+      border-radius: 20px;
+      padding: 24px 26px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(12px);
+    }
+    .faq-item:hover {
+      border-color: rgba(79, 70, 229, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+    .faq-item-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .faq-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+    .faq-tag.printing { background: rgba(20, 184, 166, 0.15); color: #2DD4BF; border: 1px solid rgba(20, 184, 166, 0.3); }
+    .faq-tag.sync { background: rgba(79, 70, 229, 0.15); color: #818CF8; border: 1px solid rgba(79, 70, 229, 0.3); }
+    .faq-tag.offline { background: rgba(168, 85, 247, 0.15); color: #C084FC; border: 1px solid rgba(168, 85, 247, 0.3); }
+    .faq-tag.security { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .faq-question {
+      font-size: 16.5px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .faq-answer {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
     }
 
-    @media (max-width: 480px) {
-      .container { padding: 0 16px; }
-      .brand-title { font-size: 19px; }
-      .logo-icon-svg { width: 30px; height: 30px; }
-      .policy-title { font-size: 26px; }
-      .badge-pill { font-size: 11.5px; padding: 4px 10px; }
-      .policy-content p, .policy-content li { font-size: 14px; line-height: 1.55; }
+    /* Mobile Hamburger Menu Button */
+    .mobile-menu-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-glass);
+      color: #FFFFFF;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .mobile-menu-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Mobile Navigation Drawer */
+    .mobile-drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 998;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .mobile-drawer-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 85%;
+      max-width: 320px;
+      height: 100vh;
+      background: #0B0F17;
+      border-left: 1px solid var(--border-glass);
+      z-index: 999;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: right 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.8);
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+    .mobile-drawer.active {
+      right: 0;
+    }
+    .drawer-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+    .close-drawer-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-glass);
+      color: #FFFFFF;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .drawer-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .drawer-nav-list a {
+      color: #E2E8F0;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 12px 14px;
+      border-radius: 12px;
+      display: block;
+      transition: all 0.2s;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .drawer-nav-list a:hover {
+      background: rgba(79, 70, 229, 0.15);
+      color: #A5B4FC;
+      border-color: rgba(79, 70, 229, 0.3);
+    }
+    .drawer-footer-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    /* Comprehensive Mobile Responsive Architecture */
+    @media (max-width: 1024px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .arch-showcase-grid { grid-template-columns: 1fr; gap: 30px; }
+      .security-showcase-grid { grid-template-columns: 1fr; gap: 30px; }
+      .security-pillar-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-actions { display: none; }
+      .mobile-menu-btn { display: flex; }
+      .hero-title { font-size: 42px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      html, body {
+        overflow-x: hidden;
+        width: 100%;
+      }
+      .container {
+        padding: 0 16px;
+      }
+      header {
+        height: 70px;
+      }
+      .nav-inner {
+        height: 70px;
+      }
+      .brand-title {
+        font-size: 20px;
+      }
+      .logo-icon-svg {
+        width: 34px;
+        height: 34px;
+      }
+
+      .hero-section {
+        padding: 40px 0 30px;
+      }
+      .hero-pill {
+        font-size: 11.5px;
+        padding: 5px 12px;
+        margin-bottom: 20px;
+      }
+      .hero-title {
+        font-size: 32px;
+        line-height: 1.18;
+        margin-bottom: 16px;
+        word-break: break-word;
+      }
+      .hero-subtitle {
+        font-size: 15px;
+        line-height: 1.55;
+        margin-bottom: 28px;
+        padding: 0 4px;
+      }
+      .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto 30px;
+        gap: 12px;
+      }
+      .hero-cta-group .btn-primary,
+      .hero-cta-group .btn-secondary {
+        width: 100%;
+        justify-content: center;
+        padding: 13px 20px;
+        box-sizing: border-box;
+      }
+      .hero-loader-badge {
+        width: 100%;
+        max-width: 340px;
+        padding: 10px 14px;
+        gap: 12px;
+        margin-bottom: 40px;
+        box-sizing: border-box;
+      }
+
+      /* Phone Mockup Mobile Fluidity */
+      .phone-mockup-wrapper {
+        width: 100%;
+        max-width: 340px;
+        margin: 0 auto 50px;
+        box-sizing: border-box;
+      }
+      .phone-outer-shell {
+        border-width: 6px;
+        border-radius: 36px;
+      }
+      .phone-screen-body {
+        padding: 6px 10px 16px;
+        gap: 10px;
+        max-height: none;
+      }
+      .app-greeting-text {
+        font-size: 13.5px;
+      }
+      .phone-hero-card {
+        min-height: 130px;
+        padding: 12px 14px;
+      }
+      .hero-card-metric {
+        font-size: 26px !important;
+      }
+
+      /* Sections & Grids */
+      .features-section,
+      .arch-section,
+      .security-section,
+      .faq-section {
+        padding: 50px 0;
+      }
+      .section-header {
+        margin-bottom: 36px;
+      }
+      .section-title {
+        font-size: 26px;
+        line-height: 1.2;
+      }
+      .section-desc {
+        font-size: 14.5px;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .feature-card {
+        padding: 22px 18px;
+        border-radius: 18px;
+      }
+
+      .arch-visual-box {
+        padding: 24px 14px;
+        border-radius: 20px;
+      }
+      .weave-engine-anim {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 16px;
+      }
+      .stream-card {
+        padding: 14px 16px;
+        border-radius: 14px;
+      }
+      .stream-title {
+        font-size: 14px;
+      }
+
+      .security-card-box {
+        padding: 20px 14px;
+        border-radius: 20px;
+      }
+      .security-toggle-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .role-toggle-group {
+        width: 100%;
+        justify-content: stretch;
+      }
+      .role-btn {
+        flex: 1;
+        text-align: center;
+      }
+      .sec-metric-dual-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .security-pillar-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .faq-item {
+        padding: 18px 16px;
+        border-radius: 16px;
+      }
+      .faq-question {
+        font-size: 15px;
+      }
+
+      .cta-banner {
+        padding: 36px 18px;
+        margin: 40px 0 60px;
+        border-radius: 22px;
+      }
+      .cta-banner h2 {
+        font-size: 26px;
+        line-height: 1.2;
+      }
+      .cta-banner p {
+        font-size: 14.5px;
+        margin-bottom: 24px;
+      }
+
+      /* Footer */
+      footer {
+        padding: 40px 0 30px;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        margin-bottom: 36px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Ambient Glows Container with strict overflow clipping -->
+  <div class="ambient-glow-wrapper">
+    <div class="glow-sphere glow-1"></div>
+    <div class="glow-sphere glow-2"></div>
+    <div class="glow-sphere glow-3"></div>
+  </div>
+
+  <!-- Header -->
   <header>
     <div class="container nav-inner">
-      <a href="index.html" class="brand-logo-group">
+      <a href="#" class="brand-logo-group">
+        <!-- Authentic StockGrid Brand Mark SVG -->
         <svg class="logo-icon-svg" viewBox="0 0 1024 1024" fill="none">
+          <!-- Teal Bar -->
           <rect x="302" y="404" width="420" height="72" rx="36" fill="#14B8A6"/>
+          <!-- Pink Bar -->
           <rect x="302" y="548" width="420" height="72" rx="36" fill="#FB7185"/>
+          <!-- Indigo Bar -->
           <rect x="404" y="302" width="72" height="420" rx="36" fill="#4F46E5"/>
+          <!-- Amber Bar -->
           <rect x="548" y="302" width="72" height="420" rx="36" fill="#F59E0B"/>
+          <!-- Interlocking Weave Patches -->
+          <rect x="404" y="404" width="72" height="72" fill="#14B8A6"/>
+          <rect x="548" y="548" width="72" height="72" fill="#FB7185"/>
         </svg>
         <span class="brand-title">StockGrid</span>
       </a>
 
-      <a href="index.html" class="back-btn">
-        <span>←</span>
-        <span>Back to Product Overview</span>
-      </a>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#architecture">Cloud & Sync</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#faq">Help & FAQs</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="privacy.html" class="btn-secondary">Privacy Center</a>
+        <a href="#download" class="btn-primary">
+          <span>Get StockGrid</span>
+          <span>→</span>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
     </div>
   </header>
 
-  <div class="container">
-    <!-- Hero Title -->
-    <div class="policy-hero">
-      <div class="badge-pill">
-        <span>🔒</span>
-        <span>Privacy & Data Security Standard</span>
+  <!-- Mobile Slide-out Drawer Navigation -->
+  <div class="mobile-drawer-backdrop" id="drawerBackdrop" onclick="toggleMobileMenu()"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div>
+      <div class="drawer-top-row">
+        <div class="brand-logo-group">
+          <svg style="width: 28px; height: 28px; transform: rotate(8deg);" viewBox="0 0 1024 1024" fill="none">
+            <rect x="302" y="404" width="420" height="72" rx="36" fill="#14B8A6"/>
+            <rect x="302" y="548" width="420" height="72" rx="36" fill="#FB7185"/>
+            <rect x="404" y="302" width="72" height="420" rx="36" fill="#4F46E5"/>
+            <rect x="548" y="302" width="72" height="420" rx="36" fill="#F59E0B"/>
+            <rect x="404" y="404" width="72" height="72" fill="#14B8A6"/>
+            <rect x="548" y="548" width="72" height="72" fill="#FB7185"/>
+          </svg>
+          <span class="brand-title" style="font-size: 19px;">StockGrid</span>
+        </div>
+        <button class="close-drawer-btn" onclick="toggleMobileMenu()">✕</button>
       </div>
-      <h1 class="policy-title">Privacy Policy</h1>
-      <div class="policy-meta">
-        Last Updated: August 2026 • Official Privacy Policy for StockGrid Android
-      </div>
+
+      <ul class="drawer-nav-list">
+        <li><a href="#features" onclick="toggleMobileMenu()">⚡ Features</a></li>
+        <li><a href="#architecture" onclick="toggleMobileMenu()">☁️ Cloud & Sync Engine</a></li>
+        <li><a href="#security" onclick="toggleMobileMenu()">🔒 Security & Role Suite</a></li>
+        <li><a href="#faq" onclick="toggleMobileMenu()">❓ Help & FAQs</a></li>
+        <li><a href="privacy.html" onclick="toggleMobileMenu()">🛡️ Privacy Policy</a></li>
+        <li><a href="terms.html" onclick="toggleMobileMenu()">📜 Terms of Service</a></li>
+      </ul>
     </div>
 
-    <!-- Mobile Quick-Jump Nav Bar (Swipeable Pills) -->
-    <nav class="mobile-quick-nav" aria-label="Quick jump sections">
-      <ul class="quick-jump-list">
-        <li><a href="#overview">1. Overview</a></li>
-        <li><a href="#data-collection">2. Collected Data</a></li>
-        <li><a href="#device-permissions">3. Permissions</a></li>
-        <li><a href="#data-security">4. Cloud Security</a></li>
-        <li><a href="#staff-privacy">5. Staff & PIN</a></li>
-        <li><a href="#third-parties">6. Drive Backups</a></li>
-        <li><a href="#user-rights">7. Retention & Rights</a></li>
-        <li><a href="#contact">8. Contact</a></li>
-      </ul>
-    </nav>
-
-    <!-- Layout -->
-    <div class="policy-layout">
-      <!-- Sticky Table of Contents -->
-      <aside class="toc-sticky">
-        <div class="toc-title">Table of Contents</div>
-        <ul class="toc-list">
-          <li><a href="#overview">1. Overview & Scope</a></li>
-          <li><a href="#data-collection">2. Data We Collect</a></li>
-          <li><a href="#device-permissions">3. Device Permissions</a></li>
-          <li><a href="#data-security">4. Security & Cloud Sync</a></li>
-          <li><a href="#staff-privacy">5. Staff & Admin Access</a></li>
-          <li><a href="#third-parties">6. No Data Selling</a></li>
-          <li><a href="#user-rights">7. Data Retention & Deletion</a></li>
-          <li><a href="#contact">8. Contact Us</a></li>
-        </ul>
-      </aside>
-
-      <!-- Policy Sections -->
-      <main class="policy-content">
-        <section id="overview">
-          <h2><span class="section-num">1</span> Overview & Scope</h2>
-          <p>
-            StockGrid ("we", "our", or "us", operated by SRC93-tech) provides a multi-device inventory operating platform designed specifically for garments, apparel, and textile businesses. This Privacy Policy explains how our mobile application and related cloud services collect, protect, and handle your business data.
-          </p>
-          <p>
-            We adhere to a strict principle of data minimization: we only process data essential to synchronizing your inventory, securing staff access, and providing accurate reporting across your authorized devices.
-          </p>
-        </section>
-
-        <section id="data-collection">
-          <h2><span class="section-num">2</span> Information We Collect</h2>
-          <p>To operate the StockGrid inventory system, the following data categories are processed:</p>
-          
-          <ul>
-            <li><strong>Firm & Account Details:</strong> Firm name, administrator email address, currency format (e.g., INR ₹), and localized timezone settings.</li>
-            <li><strong>Inventory Catalog & Transaction Data:</strong> Article codes, item descriptions, garment & apparel size matrices (e.g., S, M, L, XL, XXL / Waist 28–44), categories, minimum stock thresholds, wholesale/retail pricing, and timestamped stock in/out audit records.</li>
-            <li><strong>Product Photos:</strong> Article reference images captured or uploaded by your team, stored in isolated, encrypted cloud storage buckets.</li>
-            <li><strong>Device Registry Identifiers:</strong> Device hardware model, operating system version, and unique installation tokens used to enforce multi-device authorization and allow remote device revocation.</li>
-          </ul>
-
-          <div class="highlight-card security">
-            <h4>Isolated Tenant Storage</h4>
-            <p>Every firm's database records are strictly segmented using PostgreSQL Row Level Security (RLS). No other firm or external organization can view or access your inventory items.</p>
-          </div>
-        </section>
-
-        <section id="device-permissions">
-          <h2><span class="section-num">3</span> Device Permissions & Usage</h2>
-          <p>The StockGrid mobile application requests specific device permissions strictly for functional inventory operations:</p>
-
-          <div class="highlight-card permission">
-            <h4>📷 Camera Permission</h4>
-            <p>Used exclusively when you activate the live Barcode/QR Scanner or capture a photo for an inventory item. We never access the camera in the background or store continuous camera feeds.</p>
-          </div>
-
-          <div class="highlight-card permission">
-            <h4>💾 Secure Storage & App Preferences</h4>
-            <p>Used to securely store authenticated session tokens in platform hardware keychains (via Flutter Secure Storage / Android Keystore) and manage user interface preferences.</p>
-          </div>
-
-          <div class="highlight-card permission">
-            <h4>🔔 Push Notifications (Optional)</h4>
-            <p>Used to deliver inventory alerts (such as restock shortage thresholds) and device authorization verification notices.</p>
-          </div>
-        </section>
-
-        <section id="data-security">
-          <h2><span class="section-num">4</span> Data Security & Real-Time Sync</h2>
-          <p>
-            We implement enterprise-grade security protocols across all communication channels and backend databases:
-          </p>
-          <ul>
-            <li><strong>Encryption in Transit:</strong> All data exchanged between your devices and our Supabase cloud database is encrypted via TLS 1.3 with HTTPS/WSS protocols.</li>
-            <li><strong>Encryption at Rest:</strong> Database records, authentication tokens, and uploaded media files are encrypted at rest using AES-256 standards.</li>
-            <li><strong>Automated Cloud Backups:</strong> Daily automated cloud database backups and on-demand administrator Google Drive archives safeguard your firm's records.</li>
-          </ul>
-        </section>
-
-        <section id="staff-privacy">
-          <h2><span class="section-num">5</span> Staff Mode & Admin PIN Protection</h2>
-          <p>
-            StockGrid includes role-based access control to protect sensitive financial metrics within your warehouse:
-          </p>
-          <p>
-            When operating in <strong>Staff Mode</strong>, sensitive metrics such as wholesale buy prices and total warehouse inventory valuations are obscured. Full access requires entering the firm's 4-digit Master PIN, which is verified securely and never transmitted in plaintext.
-          </p>
-        </section>
-
-        <section id="third-parties">
-          <h2><span class="section-num">6</span> Third-Party Services & Google Drive Backups</h2>
-          <p>
-            <strong>We do not sell, rent, monetize, or trade your inventory, customer, or transaction data with any third-party advertisers or data brokers under any circumstances.</strong>
-          </p>
-          <div class="highlight-card security">
-            <h4>Optional Google Drive Cloud Backups</h4>
-            <p>When the administrator initiates a manual or scheduled Google Drive backup, an encrypted archive of your inventory catalog and audit history is uploaded directly to your own authorized Google Drive account via official Google OAuth APIs. StockGrid does not access, monetize, or store your Google account credentials.</p>
-          </div>
-        </section>
-
-        <section id="user-rights">
-          <h2><span class="section-num">7</span> Data Retention & Deletion Rights</h2>
-          <p>You maintain complete ownership and control over your inventory records:</p>
-          <ul>
-            <li><strong>Device Reset:</strong> You can instantly revoke and erase cached credentials from any device using the in-app <em>"Sign Out & Reset This Device"</em> feature.</li>
-            <li><strong>Remote De-Authorization:</strong> Administrators can remove lost or decommissioned employee phones from the <em>Device Management</em> console.</li>
-            <li><strong>Permanent Account Deletion:</strong> You may request complete, permanent deletion of your firm's database records and uploaded media at any time by contacting our support team.</li>
-          </ul>
-        </section>
-
-        <section id="contact">
-          <h2><span class="section-num">8</span> Contact Us</h2>
-          <p>If you have any questions, data requests, or security inquiries regarding this Privacy Policy, please reach out to us:</p>
-          <div class="highlight-card">
-            <h4>StockGrid Data Protection Office</h4>
-            <p><strong>Email:</strong> <a href="mailto:src93.appsupport@gmail.com" style="color: var(--c-teal); text-decoration: none;">src93.appsupport@gmail.com</a></p>
-            <p><strong>Platform:</strong> StockGrid for Android (SRC93-tech)</p>
-          </div>
-        </section>
-      </main>
+    <div class="drawer-footer-actions">
+      <a href="#download" class="btn-primary" style="width: 100%; justify-content: center;" onclick="toggleMobileMenu()">Get StockGrid Android</a>
+      <a href="privacy.html" class="btn-secondary" style="width: 100%; text-align: center;" onclick="toggleMobileMenu()">Privacy Center</a>
     </div>
   </div>
 
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-pill">
+        <span class="hero-pill-dot"></span>
+        <span>Latest Release • Theme 2.0 Live</span>
+      </div>
+
+      <h1 class="hero-title">
+        The Real-Time Multi-Device <br>
+        <span class="grad">Inventory Operating System</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Engineered specifically for garments, apparel & textile businesses. Seamlessly orchestrate cataloging, barcode scanning, stock movements, and staff access across unlimited devices.
+      </p>
+
+      <div class="hero-cta-group">
+        <button class="btn-primary" onclick="alert('Download StockGrid for Android')">
+          <span>Download Android App</span>
+        </button>
+        <a href="#features" class="btn-secondary">Explore Features</a>
+      </div>
+
+      <!-- Live Brand Weave Animation Showcase -->
+      <div class="hero-loader-badge">
+        <svg class="loader-anim-mini" viewBox="0 0 1024 1024">
+          <style>
+            @keyframes weaveTeal { 0%, 100% { transform: translate(0,0); } 50% { transform: translate(-44px, 0); } }
+            @keyframes weavePink { 0%, 100% { transform: translate(0,0); } 50% { transform: translate(44px, 0); } }
+            @keyframes weaveIndigo { 0%, 100% { transform: translate(0,0); } 50% { transform: translate(0, -44px); } }
+            @keyframes weaveAmber { 0%, 100% { transform: translate(0,0); } 50% { transform: translate(0, 44px); } }
+            .w-teal { animation: weaveTeal 0.65s ease-in-out infinite; }
+            .w-pink { animation: weavePink 0.65s ease-in-out infinite 0.325s; }
+            .w-indigo { animation: weaveIndigo 0.65s ease-in-out infinite; }
+            .w-amber { animation: weaveAmber 0.65s ease-in-out infinite 0.325s; }
+          </style>
+          <defs>
+            <clipPath id="pinkClipHero">
+              <rect x="476" y="476" width="548" height="548" />
+            </clipPath>
+          </defs>
+          <g transform="rotate(8 512 512)">
+            <!-- 1. Bottom Pink -->
+            <rect class="w-pink" x="302" y="548" width="420" height="72" rx="36" fill="#FB7185"/>
+            <!-- 2. Left Indigo (Over Pink at bottom-left) -->
+            <rect class="w-indigo" x="404" y="302" width="72" height="420" rx="36" fill="#4F46E5"/>
+            <!-- 3. Top Teal (Continuous unbroken capsule over Indigo at top-left) -->
+            <rect class="w-teal" x="302" y="404" width="420" height="72" rx="36" fill="#14B8A6"/>
+            <!-- 4. Right Amber (Over Teal at top-right) -->
+            <rect class="w-amber" x="548" y="302" width="72" height="420" rx="36" fill="#F59E0B"/>
+            <!-- 5. Pink Weave Crossing (Over Amber at bottom-right) -->
+            <g clip-path="url(#pinkClipHero)">
+              <rect class="w-pink" x="302" y="548" width="420" height="72" rx="36" fill="#FB7185"/>
+            </g>
+          </g>
+        </svg>
+        <div class="loader-text">
+          <div class="loader-text-title">Grid Weave Synchronization Engine</div>
+          <div class="loader-text-sub">Automated Cloud & Multi-Device Synchronization</div>
+        </div>
+      </div>
+
+      <!-- Authentic Android Mobile Phone Mockup -->
+      <div class="phone-mockup-wrapper">
+        <div class="phone-outer-shell">
+          <!-- Android Status Bar with Camera Punch-Hole -->
+          <div class="phone-status-bar">
+            <span>9:41</span>
+            <div class="punch-hole-camera"></div>
+            <div class="status-icons">
+              <span>5G</span>
+              <span>📶</span>
+              <span>100% 🔋</span>
+            </div>
+          </div>
+
+          <!-- App Screen Body -->
+          <div class="phone-screen-body">
+            <!-- 1. App Bar Header Row -->
+            <div class="app-header-row">
+              <div class="app-header-left">
+                <div class="menu-icon-btn">☰</div>
+                <!-- Authentic StockGrid Brand Mark SVG -->
+                <svg class="app-brand-mark" viewBox="0 0 1024 1024" fill="none">
+                  <rect x="302" y="404" width="420" height="72" rx="36" fill="#14B8A6"/>
+                  <rect x="302" y="548" width="420" height="72" rx="36" fill="#FB7185"/>
+                  <rect x="404" y="302" width="72" height="420" rx="36" fill="#4F46E5"/>
+                  <rect x="548" y="302" width="72" height="420" rx="36" fill="#F59E0B"/>
+                  <rect x="404" y="404" width="72" height="72" fill="#14B8A6"/>
+                  <rect x="548" y="548" width="72" height="72" fill="#FB7185"/>
+                </svg>
+                <span class="app-brand-title">StockGrid</span>
+              </div>
+            </div>
+
+            <!-- 2. Greeting Row with Admin Mode Badge -->
+            <div class="app-greeting-row">
+              <span class="app-greeting-text">Hello Raj! 👋</span>
+              <span class="admin-mode-pill">Admin Mode</span>
+            </div>
+
+            <!-- 3. Theme 2.0 Swipeable Hero Cards Carousel -->
+            <div class="hero-carousel-container">
+              <button class="carousel-nav-btn left" onclick="prevPhoneSlide()">‹</button>
+              <button class="carousel-nav-btn right" onclick="nextPhoneSlide()">›</button>
+
+              <div id="phone-track" class="hero-carousel-track">
+                <!-- Slide 1: Indigo Summary Card with Insights Icon -->
+                <div class="hero-carousel-slide">
+                  <div class="phone-hero-card card-bg-summary">
+                    <div class="card-head-line">
+                      <div class="card-title-group">
+                        <div class="card-leading-icon-box">
+                          <!-- Icons.insights_rounded SVG -->
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                            <polyline points="16 7 22 7 22 13"></polyline>
+                          </svg>
+                        </div>
+                        <span class="card-head-title">SUMMARY</span>
+                      </div>
+                      <span class="card-period-pill">This Month ▼</span>
+                    </div>
+
+                    <div class="metrics-dual-row">
+                      <div class="metric-sub-card">
+                        <div class="metric-sub-label-row">
+                          <span class="metric-sub-arrow-in">↓</span>
+                          <span class="metric-sub-tag">STOCK IN</span>
+                        </div>
+                        <div class="metric-sub-num color-in">+1,420</div>
+                      </div>
+                      <div class="metric-sub-card">
+                        <div class="metric-sub-label-row">
+                          <span class="metric-sub-arrow-out">↑</span>
+                          <span class="metric-sub-tag">STOCK OUT</span>
+                        </div>
+                        <div class="metric-sub-num color-out">-860</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 2: Emerald Stock Value Card with Payments Icon -->
+                <div class="hero-carousel-slide">
+                  <div class="phone-hero-card card-bg-value">
+                    <div class="card-head-line">
+                      <div class="card-title-group">
+                        <div class="card-leading-icon-box">
+                          <!-- Icons.payments_outlined SVG -->
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                            <line x1="2" y1="10" x2="22" y2="10"></line>
+                          </svg>
+                        </div>
+                        <span class="card-head-title">STOCK VALUE</span>
+                      </div>
+                      <span class="card-admin-pill">🔒 ADMIN</span>
+                    </div>
+
+                    <div style="font-size: 25px; font-weight: 800; font-family: 'JetBrains Mono', monospace; color: #FFFFFF; letter-spacing: -0.5px;">
+                      ₹ 48,25,000
+                    </div>
+
+                    <div style="padding-top: 6px; border-top: 1px solid rgba(255, 255, 255, 0.20); display: flex; justify-content: space-between; font-size: 10.5px; font-weight: 700; color: #D1FAE5; letter-spacing: 0.3px;">
+                      <span>142 ACTIVE ARTICLES</span>
+                      <span>6,840 TOTAL UNITS</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 3: Violet Size Breakdown Card with Pie Chart Icon -->
+                <div class="hero-carousel-slide">
+                  <div class="phone-hero-card card-bg-size">
+                    <div class="card-head-line">
+                      <div class="card-title-group">
+                        <div class="card-leading-icon-box">
+                          <!-- Icons.pie_chart_outline_rounded SVG -->
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                            <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+                          </svg>
+                        </div>
+                        <span class="card-head-title">SIZE MIX</span>
+                      </div>
+                      <span class="card-admin-pill">6,840 PCS</span>
+                    </div>
+
+                    <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+                      <span style="background: rgba(255, 255, 255, 0.15); border-radius: 6px; padding: 2px 6px; font-size: 10px;"><b>M / 38:</b> 2,450</span>
+                      <span style="background: rgba(255, 255, 255, 0.15); border-radius: 6px; padding: 2px 6px; font-size: 10px;"><b>L / 40:</b> 2,190</span>
+                      <span style="background: rgba(255, 255, 255, 0.15); border-radius: 6px; padding: 2px 6px; font-size: 10px;"><b>XL / 42:</b> 1,240</span>
+                      <span style="background: rgba(255, 255, 255, 0.15); border-radius: 6px; padding: 2px 6px; font-size: 10px;"><b>S / 36:</b> 680</span>
+                      <span style="background: rgba(244, 63, 94, 0.25); border-radius: 6px; padding: 2px 6px; font-size: 10px; color: #FDA4AF;"><b>XXL:</b> 280</span>
+                    </div>
+
+                    <div style="font-size: 10px; font-weight: 600; color: #E9D5FF; display: flex; justify-content: space-between;">
+                      <span>Kurtis 43%</span>
+                      <span>Shirts 30%</span>
+                      <span>Bottoms 17%</span>
+                      <span>Others 10%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dots Indicator & Dynamic Hint -->
+            <div>
+              <div class="carousel-dots">
+                <span id="p-dot-0" class="c-dot active" onclick="gotoPhoneSlide(0)"></span>
+                <span id="p-dot-1" class="c-dot" onclick="gotoPhoneSlide(1)"></span>
+                <span id="p-dot-2" class="c-dot" onclick="gotoPhoneSlide(2)"></span>
+              </div>
+              <div id="phone-hint-text" class="carousel-hint-text">Swipe for Stock Value & Size Mix ›</div>
+            </div>
+
+            <!-- 4. Quick Actions Row (Option B Multicolor) -->
+            <div class="quick-actions-row">
+              <div class="qa-item">
+                <div class="qa-icon-circle qa-scan">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+                    <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+                    <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+                    <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
+                    <line x1="7" y1="12" x2="17" y2="12"></line>
+                  </svg>
+                </div>
+                <span class="qa-label">Quick Scan</span>
+              </div>
+
+              <div class="qa-item">
+                <div class="qa-icon-circle qa-add">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </div>
+                <span class="qa-label">Add Article</span>
+              </div>
+
+              <div class="qa-item">
+                <div class="qa-icon-circle qa-update">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="1 4 1 10 7 10"></polyline>
+                    <polyline points="23 20 23 14 17 14"></polyline>
+                    <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+                  </svg>
+                </div>
+                <span class="qa-label">Update Stock</span>
+              </div>
+
+              <div class="qa-item">
+                <div class="qa-icon-circle qa-report">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                  </svg>
+                </div>
+                <span class="qa-label">Reports</span>
+              </div>
+            </div>
+
+            <!-- 5. Restock Shortage Alert Banner -->
+            <div class="shortage-banner">
+              <div class="shortage-left">
+                <span style="font-size: 16px;">⚠️</span>
+                <div>
+                  <div class="shortage-title">4 Articles Need Restocking</div>
+                  <div class="shortage-sub">3 Low Stock • 1 Out of Stock</div>
+                </div>
+              </div>
+              <span style="font-size: 14px; color: #FBBF24;">›</span>
+            </div>
+
+            <!-- 6. Stock Flow Trend Chart Card -->
+            <div class="chart-card-box">
+              <div class="chart-card-header">
+                <div class="chart-legend-row">
+                  <span><span class="chart-legend-dot dot-in"></span> Stock In</span>
+                  <span><span class="chart-legend-dot dot-out"></span> Stock Out</span>
+                </div>
+                <span class="card-period-pill" style="font-size: 9px; padding: 2px 7px;">This Month ▼</span>
+              </div>
+
+              <div class="chart-bars-wrap">
+                <div class="chart-day-col">
+                  <div class="chart-pair">
+                    <div class="c-bar in" style="height: 48px;"></div>
+                    <div class="c-bar out" style="height: 32px;"></div>
+                  </div>
+                  <span class="chart-day-label">20 Aug</span>
+                </div>
+                <div class="chart-day-col">
+                  <div class="chart-pair">
+                    <div class="c-bar in" style="height: 72px;"></div>
+                    <div class="c-bar out" style="height: 40px;"></div>
+                  </div>
+                  <span class="chart-day-label">21 Aug</span>
+                </div>
+                <div class="chart-day-col">
+                  <div class="chart-pair">
+                    <div class="c-bar in" style="height: 35px;"></div>
+                    <div class="c-bar out" style="height: 55px;"></div>
+                  </div>
+                  <span class="chart-day-label">22 Aug</span>
+                </div>
+                <div class="chart-day-col">
+                  <div class="chart-pair">
+                    <div class="c-bar in" style="height: 80px;"></div>
+                    <div class="c-bar out" style="height: 60px;"></div>
+                  </div>
+                  <span class="chart-day-label">23 Aug</span>
+                </div>
+                <div class="chart-day-col">
+                  <div class="chart-pair">
+                    <div class="c-bar in" style="height: 50px;"></div>
+                    <div class="c-bar out" style="height: 30px;"></div>
+                  </div>
+                  <span class="chart-day-label">24 Aug</span>
+                </div>
+                <div class="chart-day-col">
+                  <div class="chart-pair">
+                    <div class="c-bar in" style="height: 65px;"></div>
+                    <div class="c-bar out" style="height: 45px;"></div>
+                  </div>
+                  <span class="chart-day-label">25 Aug</span>
+                </div>
+                <div class="chart-day-col">
+                  <div class="chart-pair">
+                    <div class="c-bar in" style="height: 75px;"></div>
+                    <div class="c-bar out" style="height: 50px;"></div>
+                  </div>
+                  <span class="chart-day-label">26 Aug</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 7. Fast Moving Styles (Top Sellers) -->
+            <div>
+              <div class="phone-section-title-row" style="margin-bottom: 8px;">
+                <div style="display: flex; align-items: center; gap: 7px;">
+                  <div style="width: 24px; height: 24px; border-radius: 7px; background: #1E1B4B; border: 0.8px solid #3730A3; display: flex; align-items: center; justify-content: center; color: #818CF8;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                      <polyline points="17 6 23 6 23 12"></polyline>
+                    </svg>
+                  </div>
+                  <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.5px; color: #94A3B8; text-transform: uppercase;">Fast Moving Styles</span>
+                </div>
+                <a href="#" class="phone-section-link" style="color: #818CF8; font-size: 11px; font-weight: 700; text-transform: uppercase;">Reports ›</a>
+              </div>
+              <div class="top-sellers-scroll">
+                <div class="top-seller-chip">
+                  <div class="top-seller-thumb">
+                    <img src="assets/garments/kurti_rayon_set.jpg" alt="Rayon Kurti Set" />
+                    <span class="trending-sales-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                      <span>340 sold</span>
+                    </span>
+                  </div>
+                  <div class="top-seller-info">
+                    <div class="top-seller-name">ART-8820 Rayon</div>
+                    <div class="top-seller-meta">
+                      <span style="display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: #10B981; margin-right: 4px; vertical-align: middle;"></span>Kurti Set • 85 left
+                    </div>
+                  </div>
+                </div>
+
+                <div class="top-seller-chip">
+                  <div class="top-seller-thumb">
+                    <img src="assets/garments/linen_formal_shirt.jpg" alt="Linen Formal Shirt" />
+                    <span class="trending-sales-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                      <span>280 sold</span>
+                    </span>
+                  </div>
+                  <div class="top-seller-info">
+                    <div class="top-seller-name">ART-5012 Linen</div>
+                    <div class="top-seller-meta">
+                      <span style="display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: #10B981; margin-right: 4px; vertical-align: middle;"></span>Formal • 40 left
+                    </div>
+                  </div>
+                </div>
+
+                <div class="top-seller-chip">
+                  <div class="top-seller-thumb">
+                    <img src="assets/garments/denim_jeans.jpg" alt="Denim Jeans" />
+                    <span class="trending-sales-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                      <span>215 sold</span>
+                    </span>
+                  </div>
+                  <div class="top-seller-info">
+                    <div class="top-seller-name">ART-1090 Denim</div>
+                    <div class="top-seller-meta">
+                      <span style="display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: #10B981; margin-right: 4px; vertical-align: middle;"></span>Jeans • 24 left
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 8. Catalog Health Action Center -->
+            <div class="catalog-health-card">
+              <div class="catalog-health-head">
+                <div style="display: flex; align-items: center; gap: 7px;">
+                  <div style="width: 22px; height: 22px; border-radius: 6px; background: #064E3B; border: 0.8px solid #059669; display: flex; align-items: center; justify-content: center; color: #34D399;">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                      <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                    </svg>
+                  </div>
+                  <span class="catalog-health-title" style="font-size: 11px; font-weight: 800; letter-spacing: 0.5px; color: #94A3B8; text-transform: uppercase;">Catalog Health</span>
+                </div>
+                <span class="catalog-health-score">96% Complete</span>
+              </div>
+              <div class="catalog-health-chips">
+                <div class="ch-chip">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                  <span>3 Missing Photos</span>
+                </div>
+                <div class="ch-chip">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path></svg>
+                  <span>1 Unpriced</span>
+                </div>
+                <div class="ch-chip">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                  <span>2 Uncategorized</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 9. Floating Bottom Navigation Dock -->
+            <div class="phone-bottom-dock">
+              <div class="dock-tab active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                </svg>
+                <span>Home</span>
+              </div>
+              <div class="dock-tab">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                </svg>
+                <span>Catalog</span>
+              </div>
+              <div class="dock-tab">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="17 1 21 5 17 9"></polyline>
+                  <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                  <polyline points="7 23 3 19 7 15"></polyline>
+                  <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                </svg>
+                <span>Stock</span>
+              </div>
+              <div class="dock-tab">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                </svg>
+                <span>Scan</span>
+              </div>
+              <div class="dock-tab">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>History</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Android Bottom Gesture Bar -->
+          <div class="android-home-bar">
+            <div class="android-pill-line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Powerful Capabilities</span>
+        <h2 class="section-title">Built for High-Velocity Garments & Apparel Teams</h2>
+        <p class="section-desc">Every tool you need to eliminate stockouts, prevent shrinkage, and maintain 100% stock accuracy across multiple devices simultaneously.</p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1: Grid Weave Engine -->
+        <div class="feature-card">
+          <div class="feature-icon-box icon-indigo">
+            <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="rgba(79, 70, 229, 0.25)"></polygon>
+            </svg>
+          </div>
+          <h3>Grid Weave™ Sync Engine</h3>
+          <p>Multi-device inventory synchronization powered by Supabase Postgres. Coordinates inward purchase lots, barcode scans, and customer dispatches across all employee and admin devices with automated background cloud syncing.</p>
+        </div>
+
+        <!-- Feature 2: Barcode Scanner -->
+        <div class="feature-card">
+          <div class="feature-icon-box icon-teal">
+            <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+              <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+              <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+              <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
+              <line x1="7" y1="8" x2="7" y2="16"></line>
+              <line x1="12" y1="8" x2="12" y2="16"></line>
+              <line x1="17" y1="8" x2="17" y2="16"></line>
+              <line x1="3" y1="12" x2="21" y2="12" stroke="#14B8A6" stroke-width="2.5"></line>
+            </svg>
+          </div>
+          <h3>High-Speed Barcode & QR Scanner</h3>
+          <p>Continuous batch camera scanner with automatic audio beep feedback, LED torch assist, and instant photo lookup to process inward and outward garment orders in seconds.</p>
+        </div>
+
+        <!-- Feature 3: Garments Matrix -->
+        <div class="feature-card">
+          <div class="feature-icon-box icon-emerald">
+            <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" fill="rgba(16, 185, 129, 0.2)"></path>
+            </svg>
+          </div>
+          <h3>Garments & Variant Matrix</h3>
+          <p>Native support for apparel size matrices (S, M, L, XL, XXL / Waist 28–44), color variations, fabric categories, and instant size-wise stock distribution tallies.</p>
+        </div>
+
+        <!-- Feature 4: Staff Mode & PIN -->
+        <div class="feature-card">
+          <div class="feature-icon-box icon-amber">
+            <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="rgba(245, 158, 11, 0.2)"></path>
+              <circle cx="12" cy="11" r="2"></circle>
+              <path d="M12 13v3"></path>
+            </svg>
+          </div>
+          <h3>Staff Mode & Master PIN Lock</h3>
+          <p>Secure sensitive wholesale purchase prices and total firm valuation behind a 4-digit Master PIN. Floor staff operate with high productivity while business margins remain confidential.</p>
+        </div>
+
+        <!-- Feature 5: Reports & PDF Export -->
+        <div class="feature-card">
+          <div class="feature-icon-box icon-pink">
+            <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill="rgba(251, 113, 133, 0.2)"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </div>
+          <h3>One-Click PDF Reports & Export</h3>
+          <p>Generate clean daily, monthly, and custom date range stock transaction summaries. Instant PDF generation formatted and ready to share directly via WhatsApp, email, or printer.</p>
+        </div>
+
+        <!-- Feature 6: Device Registry -->
+        <div class="feature-card">
+          <div class="feature-icon-box icon-violet">
+            <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2" fill="rgba(139, 92, 246, 0.2)"></rect>
+              <line x1="12" y1="18" x2="12.01" y2="18"></line>
+            </svg>
+          </div>
+          <h3>Device Registry & Remote Revoke</h3>
+          <p>Authorize only trusted employee phones. Remotely revoke access and instantly sign out lost or retired employee devices directly from the administrator console.</p>
+        </div>
+
+        <!-- Feature 7: Shortage Alerts -->
+        <div class="feature-card">
+          <div class="feature-icon-box icon-rose">
+            <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" fill="rgba(244, 63, 94, 0.2)"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              <circle cx="18" cy="4" r="3" fill="#FB7185"></circle>
+            </svg>
+          </div>
+          <h3>Low-Stock & Shortage Alerts</h3>
+          <p>Automated inventory threshold monitoring with instant visual restock alert banners on the home dashboard, preventing stockouts on your fastest-selling garment designs.</p>
+        </div>
+
+        <!-- Feature 8: High-Res Photos -->
+        <div class="feature-card">
+          <div class="feature-icon-box icon-cyan">
+            <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" fill="rgba(6, 182, 212, 0.2)"></path>
+              <circle cx="12" cy="13" r="4"></circle>
+            </svg>
+          </div>
+          <h3>High-Res Garment Photo Catalog</h3>
+          <p>Capture fabric textures and apparel designs directly from phone camera. Automatically compressed and cached for ultra-fast visual inventory verification on warehouse aisles.</p>
+        </div>
+
+        <!-- Feature 9: Smart Search & Filters -->
+        <div class="feature-card">
+          <div class="feature-icon-box icon-indigo">
+            <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8" fill="rgba(79, 70, 229, 0.2)"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </div>
+          <h3>Instant Multi-Filter Search</h3>
+          <p>Sub-second search across garment article codes, brand names, apparel categories, fabric types, and size availability with instant auto-suggestions.</p>
+        </div>
+
+        <!-- Feature 10: Inward Purchase Lots -->
+        <div class="feature-card">
+          <div class="feature-icon-box icon-teal">
+            <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" fill="rgba(20, 184, 166, 0.2)"></path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              <polyline points="12 8 12 4 16 6" stroke="#2DD4BF"></polyline>
+            </svg>
+          </div>
+          <h3>Stock In & Supplier Purchase Lots</h3>
+          <p>Rapid inward entry workflow designed for factory shipments and wholesale buying lots, including supplier bill number tagging, wholesale cost entry, and size breakdown.</p>
+        </div>
+
+        <!-- Feature 11: Outward Dispatching -->
+        <div class="feature-card">
+          <div class="feature-icon-box icon-orange">
+            <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="3" width="15" height="13" fill="rgba(249, 115, 22, 0.2)"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+          </div>
+          <h3>Stock Out & Customer Dispatch</h3>
+          <p>High-speed order packing and showroom checkout. Instantly deduct pieces from inventory, record buyer/customer names, and log outgoing transaction timestamps.</p>
+        </div>
+
+        <!-- Feature 12: Live Sync & Network Status -->
+        <div class="feature-card">
+          <div class="feature-icon-box icon-purple">
+            <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="5" rx="9" ry="3" fill="rgba(168, 85, 247, 0.2)"></ellipse>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+            </svg>
+          </div>
+          <h3>Live Sync & Network Status Alerts</h3>
+          <p>Stock movements, scans, and catalog updates sync instantly across every registered device over Wi-Fi or mobile data. Immediate on-screen alerts flag any network drop mid-entry, so staff always know their data was recorded, not lost.</p>
+        </div>
+      </div>
+
+      <!-- Slogan Callout -->
+      <div class="cta-banner">
+        <h2>Ready to upgrade your garment inventory workflow?</h2>
+        <p>Join garment manufacturers, textile wholesalers, apparel distributors, and fashion retail stores managing millions in stock on StockGrid.</p>
+        <button class="btn-primary" onclick="alert('Download StockGrid for Android')">
+          <span>Get Started with StockGrid</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grid Weave Engine Architecture Section -->
+  <section id="architecture" class="arch-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" style="color: #818CF8;">Proprietary Architecture</span>
+        <h2 class="section-title">The Grid Weave™ Synchronization Engine</h2>
+        <p class="section-desc">How StockGrid coordinates inward shipments, sales dispatches, stock counts, and multi-staff device mesh into a unified, reliable cloud-synchronized source of truth.</p>
+      </div>
+
+      <div class="arch-showcase-grid">
+        <!-- Visual Engine Card -->
+        <div class="arch-visual-box">
+          <svg class="weave-engine-anim" viewBox="0 0 1024 1024">
+            <defs>
+              <clipPath id="pinkClipArch">
+                <rect x="476" y="476" width="548" height="548" />
+              </clipPath>
+            </defs>
+            <g transform="rotate(8 512 512)">
+              <!-- 1. Bottom Pink -->
+              <rect class="w-pink" x="302" y="548" width="420" height="72" rx="36" fill="#FB7185"/>
+              <!-- 2. Left Indigo (Over Pink at bottom-left) -->
+              <rect class="w-indigo" x="404" y="302" width="72" height="420" rx="36" fill="#4F46E5"/>
+              <!-- 3. Top Teal (Continuous unbroken capsule over Indigo at top-left) -->
+              <rect class="w-teal" x="302" y="404" width="420" height="72" rx="36" fill="#14B8A6"/>
+              <!-- 4. Right Amber (Over Teal at top-right) -->
+              <rect class="w-amber" x="548" y="302" width="72" height="420" rx="36" fill="#F59E0B"/>
+              <!-- 5. Pink Weave Crossing (Over Amber at bottom-right) -->
+              <g clip-path="url(#pinkClipArch)">
+                <rect class="w-pink" x="302" y="548" width="420" height="72" rx="36" fill="#FB7185"/>
+              </g>
+            </g>
+          </svg>
+
+          <h3 style="font-size: 22px; font-weight: 800; color: #FFFFFF; margin-bottom: 8px;">4-Stream Interlocking Fabric</h3>
+          <p style="font-size: 14px; color: var(--text-muted); max-width: 360px; margin: 0 auto 20px;">
+            Every stock movement is catalog-validated, timestamped, and synchronized via automated background cloud polling and instant pull-to-refresh.
+          </p>
+
+          <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: rgba(79, 70, 229, 0.15); border: 1px solid rgba(79, 70, 229, 0.3); border-radius: 999px; font-size: 12px; font-weight: 700; color: #818CF8;">
+            <span>⚡ Automated Cloud & Multi-Device Sync</span>
+          </div>
+        </div>
+
+        <!-- 4 Data Streams Breakdown -->
+        <div class="streams-stack">
+          <div class="stream-card">
+            <div class="stream-icon" style="color: #14B8A6;">
+              <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" fill="rgba(20, 184, 166, 0.2)"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            </div>
+            <div>
+              <div class="stream-title">Stream 1: Inward Stock & Purchases</div>
+              <div class="stream-desc">Fast inward entry for new manufacturing lots, supplier shipments, and size-wise garment batch arrivals.</div>
+            </div>
+          </div>
+
+          <div class="stream-card pink-stream">
+            <div class="stream-icon" style="color: #FB7185;">
+              <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="3" width="15" height="13" fill="rgba(251, 113, 133, 0.2)"></rect>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+              </svg>
+            </div>
+            <div>
+              <div class="stream-title">Stream 2: Outward Sales & Dispatches</div>
+              <div class="stream-desc">Immediate stock reduction on order dispatch, barcode checkout, and showroom sales with automated multi-device cloud synchronization.</div>
+            </div>
+          </div>
+
+          <div class="stream-card indigo-stream">
+            <div class="stream-icon" style="color: #818CF8;">
+              <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="rgba(79, 70, 229, 0.2)"></path>
+                <circle cx="12" cy="11" r="2"></circle>
+                <path d="M12 13v3"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="stream-title">Stream 3: Admin Financial Governance</div>
+              <div class="stream-desc">Master PIN security, wholesale purchase cost masking from floor staff, and real-time inventory valuation metrics.</div>
+            </div>
+          </div>
+
+          <div class="stream-card amber-stream">
+            <div class="stream-icon" style="color: #F59E0B;">
+              <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2" fill="rgba(245, 158, 11, 0.2)"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+            </div>
+            <div>
+              <div class="stream-title">Stream 4: Multi-Staff Device Mesh</div>
+              <div class="stream-desc">Centralized registry managing authorized employee phones with one-tap remote device revocation and local offline cache management.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Security & Access Control Section -->
+  <section id="security" class="security-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" style="color: #14B8A6;">Enterprise Governance</span>
+        <h2 class="section-title">Built-In Access Control & Security for Multi-Staff Teams</h2>
+        <p class="section-desc">Protect wholesale purchase margins, prevent warehouse shrinkage, and manage authorized employee devices from a centralized master console.</p>
+      </div>
+
+      <div class="security-showcase-grid">
+        <!-- Interactive Role Security Sandbox -->
+        <div class="security-card-box">
+          <div class="security-toggle-header">
+            <div>
+              <h3 style="font-size: 18px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px;">Staff Mode vs. Admin Mode</h3>
+              <p style="font-size: 13px; color: var(--text-muted);">Toggle between employee scanning and master admin views:</p>
+            </div>
+
+            <div class="role-toggle-group">
+              <button id="btn-staff-mode" class="role-btn active staff" onclick="toggleSecurityRole('staff')">👁️ Staff Mode</button>
+              <button id="btn-admin-mode" class="role-btn" onclick="toggleSecurityRole('admin')">🛡️ Admin Mode</button>
+            </div>
+          </div>
+
+          <!-- Mock Item Card -->
+          <div class="mockup-item-security-card">
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+              <div>
+                <div style="font-size: 11px; font-weight: 700; color: #818CF8; text-transform: uppercase; letter-spacing: 0.06em;">Warehouse #1 Inventory</div>
+                <div style="font-size: 18px; font-weight: 800; color: #FFFFFF;">Regal Garments Central Stock</div>
+                <div style="font-size: 12px; color: var(--text-muted);">Catalog: 142 Active Articles • Sizes: S, M, L, XL, XXL (28–44)</div>
+              </div>
+              <div style="text-align: right;">
+                <div style="font-size: 11px; color: var(--text-sub); text-transform: uppercase;">Total Inventory</div>
+                <div style="font-size: 20px; font-weight: 800; color: #10B981; font-family: 'JetBrains Mono';">6,840 Pcs</div>
+              </div>
+            </div>
+
+            <div class="sec-metric-dual-grid">
+              <div>
+                <div style="font-size: 11px; font-weight: 700; color: var(--text-sub); text-transform: uppercase; margin-bottom: 4px;">Floor Scanning & Stock In/Out</div>
+                <div style="font-size: 15px; font-weight: 800; color: #34D399;">✓ 100% Full Speed</div>
+              </div>
+
+              <div>
+                <div style="font-size: 11px; font-weight: 700; color: var(--text-sub); text-transform: uppercase; margin-bottom: 4px;">Total Firm Stock Value</div>
+                <div id="sec-price-val" class="sec-price-badge locked">🔒 Admin PIN Only</div>
+              </div>
+            </div>
+
+            <div id="sec-status-msg" style="margin-top: 14px; font-size: 12px; color: #14B8A6; display: flex; align-items: center; gap: 6px;">
+              <span>🔒</span>
+              <span><strong>Staff Mode Active:</strong> Floor workers can scan barcodes and update quantities, but Total Valuation and Financial Reports are hidden.</span>
+            </div>
+          </div>
+
+          <div style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
+            The 4-digit Master PIN ensures warehouse staff operate with peak scanning productivity while business financials and device administration remain private.
+          </div>
+        </div>
+
+        <!-- Centralized Device Registry Simulation -->
+        <div class="security-card-box">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <div>
+              <h3 style="font-size: 18px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px;">Remote Device Registry</h3>
+              <p style="font-size: 13px; color: var(--text-muted);">Manage employee phones with instant remote revocation</p>
+            </div>
+            <span style="font-size: 11px; font-weight: 700; color: #10B981; padding: 4px 10px; background: rgba(16,185,129,0.15); border-radius: 999px;">3 Active</span>
+          </div>
+
+          <div class="device-list">
+            <div class="device-row">
+              <div>
+                <div class="device-info-name">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#2DD4BF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                  </svg>
+                  <span>Floor Staff Scanner (OnePlus Nord)</span>
+                </div>
+                <div class="device-info-sub">Staff: Ramesh • Last Active: 2 mins ago</div>
+              </div>
+              <button class="btn-revoke" onclick="testRevokeDevice(this, 'Floor Staff Scanner')">Revoke Access</button>
+            </div>
+
+            <div class="device-row">
+              <div>
+                <div class="device-info-name">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#FB7185" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                  </svg>
+                  <span>Packing Desk (Samsung A34)</span>
+                </div>
+                <div class="device-info-sub">Staff: Suresh • Last Active: 14 mins ago</div>
+              </div>
+              <button class="btn-revoke" onclick="testRevokeDevice(this, 'Packing Desk')">Revoke Access</button>
+            </div>
+
+            <div class="device-row" style="border-left: 3px solid #4F46E5;">
+              <div>
+                <div class="device-info-name">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#818CF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <circle cx="12" cy="11" r="2"></circle>
+                  </svg>
+                  <span>Admin Station (Primary)</span>
+                </div>
+                <div class="device-info-sub">Master Device • Full Privileges</div>
+              </div>
+              <span style="font-size: 11px; font-weight: 700; color: #818CF8;">MASTER</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 20px; font-size: 12.5px; color: var(--text-sub); line-height: 1.5;">
+            💡 When an employee device is revoked, its session is immediately deactivated on the cloud, blocking further sync and clearing local access.
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Core Architectural Pillars -->
+      <div class="security-pillar-grid">
+        <div class="pillar-card">
+          <div class="feature-icon-box icon-amber">
+            <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="rgba(245, 158, 11, 0.2)"></path>
+              <circle cx="12" cy="11" r="2"></circle>
+              <path d="M12 13v3"></path>
+            </svg>
+          </div>
+          <h4>4-Digit Master PIN System</h4>
+          <p>Protected by secure PIN authentication and access guards. Rate limiting prevents unauthorized PIN attempts.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="feature-icon-box icon-teal">
+            <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="5" rx="9" ry="3" fill="rgba(20, 184, 166, 0.2)"></ellipse>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+              <rect x="14" y="14" width="7" height="6" rx="1" stroke="#2DD4BF" fill="rgba(20, 184, 166, 0.3)"></rect>
+            </svg>
+          </div>
+          <h4>Postgres Row Level Security (RLS)</h4>
+          <p>Strict database-level policy enforcement ensures each firm's articles, transactions, and photos are mathematically isolated from other accounts.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="feature-icon-box icon-rose">
+            <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+              <line x1="12" y1="2" x2="12" y2="12"></line>
+              <polyline points="2 12 12 22 22 12" stroke="#FB7185"></polyline>
+            </svg>
+          </div>
+          <h4>One-Tap Device Reset & Wipe</h4>
+          <p>The "Sign Out & Reset This Device" action securely purges all local offline cache, auth tokens, and temporary files from the device.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Help & FAQs Section (Featuring Label Printing Methods) -->
+  <section id="faq" class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" style="color: #2DD4BF;">Knowledge & Guidance</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-desc">Everything you need to know about garment label printing, barcode scanning, multi-staff sync, and network requirements.</p>
+      </div>
+
+      <div class="faq-grid">
+        <!-- FAQ 1: Label Printing -->
+        <div class="faq-item">
+          <div class="faq-item-head">
+            <div class="feature-icon-box icon-teal" style="width: 44px; height: 44px; margin-bottom: 0;">
+              <svg class="feature-icon-svg" style="width: 22px; height: 22px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8" rx="1" fill="rgba(20, 184, 166, 0.3)"></rect>
+              </svg>
+            </div>
+            <span class="faq-tag printing">Bluetooth & ESC/POS</span>
+          </div>
+          <h3 class="faq-question">How do I print barcode labels & price tags for garments?</h3>
+          <p class="faq-answer">
+            StockGrid supports direct wireless <strong>Bluetooth Thermal Label Printers</strong> (58mm, 80mm, and standard 50mm × 25mm / 2"×1" garment sticker rolls) using standard ESC/POS commands. You can also generate one-click high-resolution PDF sticker grids formatted for standard A4 adhesive paper to print with laser/inkjet printers.
+          </p>
+        </div>
+
+        <!-- FAQ 2: Barcode Scanning -->
+        <div class="faq-item">
+          <div class="faq-item-head">
+            <div class="feature-icon-box icon-indigo" style="width: 44px; height: 44px; margin-bottom: 0;">
+              <svg class="feature-icon-svg" style="width: 22px; height: 22px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+                <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+                <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+                <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
+                <line x1="7" y1="8" x2="7" y2="16"></line>
+                <line x1="12" y1="8" x2="12" y2="16"></line>
+                <line x1="17" y1="8" x2="17" y2="16"></line>
+                <line x1="3" y1="12" x2="21" y2="12" stroke="#818CF8" stroke-width="2"></line>
+              </svg>
+            </div>
+            <span class="faq-tag sync">Continuous Multi-Scan</span>
+          </div>
+          <h3 class="faq-question">Can I scan existing manufacturer barcodes on shipments?</h3>
+          <p class="faq-answer">
+            Yes! StockGrid's continuous batch camera scanner supports all 1D & 2D formats (EAN-13, UPC-A, Code 128, Code 39, QR Code). Features include instant audio beep feedback, continuous multi-item scanning, and LED flashlight assist for dimly lit stockrooms.
+          </p>
+        </div>
+
+        <!-- FAQ 3: Grid Weave Sync -->
+        <div class="faq-item">
+          <div class="faq-item-head">
+            <div class="feature-icon-box icon-violet" style="width: 44px; height: 44px; margin-bottom: 0;">
+              <svg class="feature-icon-svg" style="width: 22px; height: 22px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="rgba(139, 92, 246, 0.25)"></polygon>
+              </svg>
+            </div>
+            <span class="faq-tag offline">Cloud-Synced Mesh</span>
+          </div>
+          <h3 class="faq-question">How does multi-device sync work across floor staff?</h3>
+          <p class="faq-answer">
+            Powered by the <strong>Grid Weave™ Synchronization Engine</strong> and Supabase Postgres, stock movements recorded by staff automatically synchronize across all registered employee and admin devices with automated background polling and instant manual pull-to-refresh.
+          </p>
+        </div>
+
+        <!-- FAQ 4: Network & Cloud Architecture -->
+        <div class="faq-item">
+          <div class="faq-item-head">
+            <div class="feature-icon-box icon-emerald" style="width: 44px; height: 44px; margin-bottom: 0;">
+              <svg class="feature-icon-svg" style="width: 22px; height: 22px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="9" ry="3" fill="rgba(16, 185, 129, 0.2)"></ellipse>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+              </svg>
+            </div>
+            <span class="faq-tag sync">Cloud Architecture</span>
+          </div>
+          <h3 class="faq-question">What internet connectivity is required for StockGrid?</h3>
+          <p class="faq-answer">
+            StockGrid operates as a live, synchronized cloud platform powered by Supabase PostgreSQL. A standard mobile data connection (4G/5G) or local Wi-Fi network is required to record stock entries, scan barcodes, and sync transactions across devices. Instant error feedback and network status indicators alert staff immediately if a network drop occurs.
+          </p>
+        </div>
+
+        <!-- FAQ 5: Financial Privacy -->
+        <div class="faq-item">
+          <div class="faq-item-head">
+            <div class="feature-icon-box icon-amber" style="width: 44px; height: 44px; margin-bottom: 0;">
+              <svg class="feature-icon-svg" style="width: 22px; height: 22px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="rgba(245, 158, 11, 0.2)"></path>
+                <circle cx="12" cy="11" r="2"></circle>
+                <path d="M12 13v3"></path>
+              </svg>
+            </div>
+            <span class="faq-tag security">4-Digit Master PIN</span>
+          </div>
+          <h3 class="faq-question">Can floor workers see our wholesale purchase costs?</h3>
+          <p class="faq-answer">
+            No. In Staff Mode, sensitive financial figures like total inventory valuation (₹ 48,25,000), profit margins, and export reports remain private. Floor workers see piece counts and size distributions needed for operational scanning, protected by the 4-digit Master PIN.
+          </p>
+        </div>
+
+        <!-- FAQ 6: Garment Size Matrices -->
+        <div class="faq-item">
+          <div class="faq-item-head">
+            <div class="feature-icon-box icon-pink" style="width: 44px; height: 44px; margin-bottom: 0;">
+              <svg class="feature-icon-svg" style="width: 22px; height: 22px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" fill="rgba(251, 113, 133, 0.2)"></path>
+              </svg>
+            </div>
+            <span class="faq-tag sync">Apparel Size Matrix</span>
+          </div>
+          <h3 class="faq-question">How are garment sizes and apparel variants tracked?</h3>
+          <p class="faq-answer">
+            StockGrid natively supports standard apparel size matrices (S, M, L, XL, XXL, 3XL / Waist 28–44) across shirts, kurtis, denim, tops, and ethnic wear. Set minimum safety thresholds per size and receive instant shortage restock alert banners on your home screen.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
     <div class="container">
-      <p>© 2026 StockGrid (SRC93-tech). All rights reserved.</p>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="brand-logo-group">
+            <svg class="logo-icon-svg" viewBox="0 0 1024 1024" fill="none">
+              <rect x="302" y="404" width="420" height="72" rx="36" fill="#14B8A6"/>
+              <rect x="302" y="548" width="420" height="72" rx="36" fill="#FB7185"/>
+              <rect x="404" y="302" width="72" height="420" rx="36" fill="#4F46E5"/>
+              <rect x="548" y="302" width="72" height="420" rx="36" fill="#F59E0B"/>
+            </svg>
+            <span class="brand-title" style="font-size: 20px;">StockGrid</span>
+          </a>
+          <p>The modern, ultra-responsive multi-device inventory platform built for accuracy and speed.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#architecture">Cloud & Sync</a></li>
+            <li><a href="#security">Security Suite</a></li>
+            <li><a href="#faq">Help & FAQs</a></li>
+            <li><a href="privacy.html">Privacy Center</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal & Compliance</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="privacy.html#data-security">Data Protection</a></li>
+            <li><a href="privacy.html#user-rights">Data Deletion</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support & Help</h4>
+          <ul>
+            <li><a href="#faq">Help & FAQs</a></li>
+            <li><a href="#faq">Label & Barcode Printing</a></li>
+            <li><a href="mailto:src93.appsupport@gmail.com">src93.appsupport@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 StockGrid (SRC93-tech). All rights reserved.</span>
+        <span>Android Edition • Multi-Device Inventory Platform</span>
+      </div>
     </div>
   </footer>
 
-  <!-- Floating Back to Top Button on Mobile -->
-  <button id="backToTop" class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to top">↑</button>
-
   <script>
-    const btt = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        btt.classList.add('visible');
-      } else {
-        btt.classList.remove('visible');
+    let currentSlide = 0;
+    const totalSlides = 3;
+    const slideHints = [
+      'Swipe for Stock Value & Size Mix ›',
+      'Swipe for Size Mix ›',
+      '‹ Swipe back to Summary'
+    ];
+
+    function updateCarousel() {
+      const track = document.getElementById('phone-track');
+      if (track) {
+        track.style.transform = `translateX(-${currentSlide * 33.3333}%)`;
       }
-    });
+      const hint = document.getElementById('phone-hint-text');
+      if (hint) {
+        hint.innerText = slideHints[currentSlide];
+      }
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.getElementById('p-dot-' + i);
+        if (dot) {
+          if (i === currentSlide) {
+            dot.className = 'c-dot active';
+          } else {
+            dot.className = 'c-dot';
+          }
+        }
+      }
+    }
+
+    function gotoPhoneSlide(index) {
+      currentSlide = index;
+      updateCarousel();
+    }
+
+    function prevPhoneSlide() {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateCarousel();
+    }
+
+    function nextPhoneSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateCarousel();
+    }
+
+    function toggleSecurityRole(role) {
+      const btnStaff = document.getElementById('btn-staff-mode');
+      const btnAdmin = document.getElementById('btn-admin-mode');
+      const priceVal = document.getElementById('sec-price-val');
+      const statusMsg = document.getElementById('sec-status-msg');
+
+      if (role === 'staff') {
+        btnStaff.className = 'role-btn active staff';
+        btnAdmin.className = 'role-btn';
+        priceVal.className = 'sec-price-badge locked';
+        priceVal.innerText = '🔒 Admin PIN Only';
+        statusMsg.innerHTML = '<span>🔒</span><span><strong>Staff Mode Active:</strong> Floor staff can scan and dispatch stock, but Total Stock Valuation and Reports are hidden.</span>';
+        statusMsg.style.color = '#14B8A6';
+      } else {
+        btnStaff.className = 'role-btn';
+        btnAdmin.className = 'role-btn active';
+        priceVal.className = 'sec-price-badge unlocked';
+        priceVal.innerText = '₹ 48,25,000 (Unlocked)';
+        statusMsg.innerHTML = '<span>🔓</span><span><strong>Master Admin Mode:</strong> Full financial visibility enabled. Total firm stock value and management unlocked.</span>';
+        statusMsg.style.color = '#34D399';
+      }
+    }
+
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobileDrawer');
+      const backdrop = document.getElementById('drawerBackdrop');
+      const isActive = drawer.classList.contains('active');
+      if (isActive) {
+        drawer.classList.remove('active');
+        backdrop.classList.remove('active');
+        document.body.style.overflow = '';
+      } else {
+        drawer.classList.add('active');
+        backdrop.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
   </script>
 </body>
 </html>
-

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StockGrid - Empty Article Placeholder Options</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0F172A;
+      --card-bg: #1E293B;
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #F8FAFC;
+      --text-muted: #94A3B8;
+      --primary: #6366F1;
+      --primary-gradient: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+      --accent: #10B981;
+    }
+
+    body.light {
+      --bg: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --border: #E2E8F0;
+      --text: #0F172A;
+      --text-muted: #64748B;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 32px 20px;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .theme-toggle:hover {
+      border-color: var(--primary);
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+      gap: 24px;
+    }
+
+    .option-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      position: relative;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+    }
+
+    .option-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .option-badge.current {
+      background: rgba(99, 102, 241, 0.15);
+      color: #818CF8;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+
+    .option-badge.apparel {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34D399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .option-badge.inventory {
+      background: rgba(245, 158, 11, 0.15);
+      color: #FBBF24;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .option-badge.brand {
+      background: rgba(236, 72, 153, 0.15);
+      color: #F472B6;
+      border: 1px solid rgba(236, 72, 153, 0.3);
+    }
+
+    .option-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .option-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .preview-row {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      background: rgba(0, 0, 0, 0.15);
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px dashed var(--border);
+    }
+
+    body.light .preview-row {
+      background: #F1F5F9;
+    }
+
+    /* Mockup: Fast Moving Home Card */
+    .mock-home-card {
+      width: 140px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      flex-shrink: 0;
+    }
+
+    .mock-home-image {
+      height: 125px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .mock-badge {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: var(--primary-gradient);
+      color: white;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      z-index: 2;
+    }
+
+    .mock-home-info {
+      padding: 8px 10px;
+    }
+
+    .mock-id {
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mock-cat {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    .mock-stock-pill {
+      display: inline-block;
+      font-size: 9.5px;
+      font-weight: 700;
+      color: #10B981;
+      background: rgba(16, 185, 129, 0.12);
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-top: 5px;
+    }
+
+    /* Mockup: Catalog Grid Card */
+    .mock-grid-card {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .mock-grid-image {
+      height: 125px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .mock-grid-info {
+      padding: 10px 12px;
+    }
+
+    .mock-price {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    /* PLACEHOLDER STYLES */
+    /* Option A: Classic Image */
+    .ph-style-a {
+      background: #2C2C2C;
+      color: #757575;
+    }
+    body.light .ph-style-a {
+      background: #EEEEEE;
+      color: #9E9E9E;
+    }
+
+    /* Option B: Garment Hanger */
+    .ph-style-b {
+      background: #1E1B4B;
+      color: #818CF8;
+    }
+    body.light .ph-style-b {
+      background: #EEF2FF;
+      color: #6366F1;
+    }
+
+    /* Option C: Modern Inventory Box */
+    .ph-style-c {
+      background: #182234;
+      color: #60A5FA;
+    }
+    body.light .ph-style-c {
+      background: #F0FDF4;
+      color: #059669;
+    }
+
+    /* Option D: Greyish StockGrid Weave Monogram */
+    .ph-style-d {
+      background: #1E293B;
+      color: #64748B;
+    }
+    body.light .ph-style-d {
+      background: #F1F5F9;
+      border: 1px solid #E2E8F0;
+    }
+    .weave-dark-h1, .weave-dark-h2, .weave-dark-v1, .weave-dark-v2 {
+      fill: #475569;
+    }
+    body.light .weave-dark-h1,
+    body.light .weave-dark-h2,
+    body.light .weave-dark-v1,
+    body.light .weave-dark-v2 {
+      fill: #B0BCCD;
+    }
+
+    .label-tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .preview-col {
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>Article Placeholder Visual Options</h1>
+        <p class="subtitle">Compare how each empty-article placeholder looks in Fast Moving Styles and Catalog</p>
+      </div>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <span id="themeIcon">☀️</span> Switch to Light Mode
+      </button>
+    </header>
+
+    <div class="options-grid">
+      
+      <!-- OPTION A -->
+      <div class="option-card">
+        <span class="option-badge current">Option A</span>
+        <h2 class="option-title">Classic Photo Frame (Icons.image_outlined)</h2>
+        <p class="option-desc">Minimalist neutral photo placeholder icon representing an unuploaded photograph. Standard e-commerce convention.</p>
+        
+        <div class="preview-row">
+          <div class="preview-col">
+            <span class="label-tag">Home Carousel</span>
+            <div class="mock-home-card">
+              <div class="mock-home-image ph-style-a">
+                <span class="mock-badge">🔥 42 sold</span>
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
+                  <circle cx="9" cy="9" r="2"/>
+                  <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+                </svg>
+              </div>
+              <div class="mock-home-info">
+                <div class="mock-id">Art. 1205</div>
+                <div class="mock-cat">Rayon Kurti</div>
+                <div class="mock-stock-pill">● In Stock (28)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="preview-col" style="flex: 1;">
+            <span class="label-tag">Catalog Grid Tile</span>
+            <div class="mock-grid-card">
+              <div class="mock-grid-image ph-style-a">
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
+                  <circle cx="9" cy="9" r="2"/>
+                  <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+                </svg>
+              </div>
+              <div class="mock-grid-info">
+                <div class="mock-price">₹ 450</div>
+                <div class="mock-id">Art. 1205</div>
+                <div class="mock-cat">Rayon Kurti • M, L, XL</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OPTION B -->
+      <div class="option-card">
+        <span class="option-badge apparel">Option B</span>
+        <h2 class="option-title">Apparel Clothes Hanger (Icons.checkroom_rounded)</h2>
+        <p class="option-desc">Dedicated garment silhouette hanger with soft indigo background. Tailored specifically for fashion & garment firms.</p>
+        
+        <div class="preview-row">
+          <div class="preview-col">
+            <span class="label-tag">Home Carousel</span>
+            <div class="mock-home-card">
+              <div class="mock-home-image ph-style-b">
+                <span class="mock-badge">🔥 42 sold</span>
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 4a3 3 0 0 0-3 3c0 .8.4 1.5 1 2l-7.5 9A1.5 1.5 0 0 0 3.5 20h17a1.5 1.5 0 0 0 1-2l-7.5-9c.6-.5 1-1.2 1-2a3 3 0 0 0-3-3z"/>
+                </svg>
+              </div>
+              <div class="mock-home-info">
+                <div class="mock-id">Art. 1205</div>
+                <div class="mock-cat">Rayon Kurti</div>
+                <div class="mock-stock-pill">● In Stock (28)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="preview-col" style="flex: 1;">
+            <span class="label-tag">Catalog Grid Tile</span>
+            <div class="mock-grid-card">
+              <div class="mock-grid-image ph-style-b">
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 4a3 3 0 0 0-3 3c0 .8.4 1.5 1 2l-7.5 9A1.5 1.5 0 0 0 3.5 20h17a1.5 1.5 0 0 0 1-2l-7.5-9c.6-.5 1-1.2 1-2a3 3 0 0 0-3-3z"/>
+                </svg>
+              </div>
+              <div class="mock-grid-info">
+                <div class="mock-price">₹ 450</div>
+                <div class="mock-id">Art. 1205</div>
+                <div class="mock-cat">Rayon Kurti • M, L, XL</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OPTION C -->
+      <div class="option-card">
+        <span class="option-badge inventory">Option C</span>
+        <h2 class="option-title">Warehouse Inventory Box (Icons.inventory_2_outlined)</h2>
+        <p class="option-desc">Industrial inventory box icon representing packaged stock goods ready for dispatch/storage.</p>
+        
+        <div class="preview-row">
+          <div class="preview-col">
+            <span class="label-tag">Home Carousel</span>
+            <div class="mock-home-card">
+              <div class="mock-home-image ph-style-c">
+                <span class="mock-badge">🔥 42 sold</span>
+                <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+                  <path d="m3.3 7 8.7 5 8.7-5"/>
+                  <path d="M12 22V12"/>
+                </svg>
+              </div>
+              <div class="mock-home-info">
+                <div class="mock-id">Art. 1205</div>
+                <div class="mock-cat">Rayon Kurti</div>
+                <div class="mock-stock-pill">● In Stock (28)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="preview-col" style="flex: 1;">
+            <span class="label-tag">Catalog Grid Tile</span>
+            <div class="mock-grid-card">
+              <div class="mock-grid-image ph-style-c">
+                <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+                  <path d="m3.3 7 8.7 5 8.7-5"/>
+                  <path d="M12 22V12"/>
+                </svg>
+              </div>
+              <div class="mock-grid-info">
+                <div class="mock-price">₹ 450</div>
+                <div class="mock-id">Art. 1205</div>
+                <div class="mock-cat">Rayon Kurti • M, L, XL</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OPTION D (GREYISH WEAVE) -->
+      <div class="option-card" style="border: 2px solid #6366F1;">
+        <span class="option-badge brand" style="background: rgba(99, 102, 241, 0.2); color: #818CF8;">⭐ Option D: Greyish Brand Weave</span>
+        <h2 class="option-title">Monochrome StockGrid Weave Mark</h2>
+        <p class="option-desc">StockGrid's official woven "#" mark rendered in sophisticated slate and charcoal grey tones. Elegant watermark aesthetic.</p>
+        
+        <div class="preview-row">
+          <div class="preview-col">
+            <span class="label-tag">Home Carousel</span>
+            <div class="mock-home-card">
+              <div class="mock-home-image ph-style-d">
+                <span class="mock-badge">🔥 42 sold</span>
+                <svg class="weave-svg" width="52" height="52" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g transform="rotate(8 512 512)">
+                    <rect x="302" y="404" width="420" height="72" rx="36" class="weave-dark-h1"/>
+                    <rect x="302" y="548" width="420" height="72" rx="36" class="weave-dark-h2"/>
+                    <rect x="404" y="302" width="72" height="420" rx="36" class="weave-dark-v1"/>
+                    <rect x="548" y="302" width="72" height="420" rx="36" class="weave-dark-v2"/>
+                    <rect x="404" y="404" width="72" height="72" class="weave-dark-h1"/>
+                    <rect x="548" y="548" width="72" height="72" class="weave-dark-h2"/>
+                  </g>
+                </svg>
+              </div>
+              <div class="mock-home-info">
+                <div class="mock-id">Art. 1205</div>
+                <div class="mock-cat">Rayon Kurti</div>
+                <div class="mock-stock-pill">● In Stock (28)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="preview-col" style="flex: 1;">
+            <span class="label-tag">Catalog Grid Tile</span>
+            <div class="mock-grid-card">
+              <div class="mock-grid-image ph-style-d">
+                <svg class="weave-svg" width="58" height="58" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g transform="rotate(8 512 512)">
+                    <rect x="302" y="404" width="420" height="72" rx="36" class="weave-dark-h1"/>
+                    <rect x="302" y="548" width="420" height="72" rx="36" class="weave-dark-h2"/>
+                    <rect x="404" y="302" width="72" height="420" rx="36" class="weave-dark-v1"/>
+                    <rect x="548" y="302" width="72" height="420" rx="36" class="weave-dark-v2"/>
+                    <rect x="404" y="404" width="72" height="72" class="weave-dark-h1"/>
+                    <rect x="548" y="548" width="72" height="72" class="weave-dark-h2"/>
+                  </g>
+                </svg>
+              </div>
+              <div class="mock-grid-info">
+                <div class="mock-price">₹ 450</div>
+                <div class="mock-id">Art. 1205</div>
+                <div class="mock-cat">Rayon Kurti • M, L, XL</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const isLight = document.body.classList.toggle('light');
+      const icon = document.getElementById('themeIcon');
+      const btn = document.querySelector('.theme-toggle');
+      if (isLight) {
+        btn.innerHTML = '<span>🌙</span> Switch to Dark Mode';
+      } else {
+        btn.innerHTML = '<span>☀️</span> Switch to Light Mode';
+      }
+    }
+  </script>
+</body>
+</html>

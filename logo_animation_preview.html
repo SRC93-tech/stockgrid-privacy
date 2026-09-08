@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StockGrid Logo Animation Fix — Side-by-Side Verification</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #07090E;
+      --bg-card: #0F172A;
+      --bg-card-border: rgba(255, 255, 255, 0.08);
+      --teal: #14B8A6;
+      --pink: #FB7185;
+      --indigo: #4F46E5;
+      --amber: #F59E0B;
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --red-badge: #EF4444;
+      --green-badge: #10B981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      padding: 40px 24px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .badge.issue {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #F87171;
+    }
+    .badge.fixed {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34D399;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #FFFFFF 0%, #94A3B8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Controls Bar */
+    .controls-bar {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 16px;
+      padding: 18px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 36px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .ctrl-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .btn.active {
+      background: #4F46E5;
+      border-color: #6366F1;
+    }
+
+    .scrub-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+      min-width: 240px;
+    }
+
+    input[type="range"] {
+      flex: 1;
+      accent-color: #14B8A6;
+      cursor: pointer;
+    }
+
+    .progress-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: #14B8A6;
+      width: 48px;
+      text-align: right;
+    }
+
+    /* Comparison Grid */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 900px) {
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .compare-card {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 24px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    }
+    .compare-card.problem {
+      border-top: 4px solid var(--red-badge);
+    }
+    .compare-card.solution {
+      border-top: 4px solid var(--green-badge);
+      background: linear-gradient(180deg, rgba(20, 184, 166, 0.05) 0%, var(--bg-card) 100%);
+    }
+
+    .card-header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .canvas-stage {
+      width: 260px;
+      height: 260px;
+      background: #03020A;
+      border-radius: 36px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      position: relative;
+      box-shadow: inset 0 0 30px rgba(0,0,0,0.8), 0 10px 25px rgba(0,0,0,0.4);
+    }
+
+    .stage-light {
+      background: #FFFFFF;
+      border-color: rgba(0,0,0,0.1);
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.05), 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    canvas {
+      display: block;
+    }
+
+    .card-explanation {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 14px;
+      padding: 18px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+    .card-explanation strong {
+      color: var(--text-main);
+    }
+
+    .diag-list {
+      margin-top: 10px;
+      padding-left: 18px;
+    }
+    .diag-list li {
+      margin-bottom: 6px;
+    }
+
+    /* Multi-Size Showcase */
+    .showcase-section {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 40px;
+    }
+
+    .showcase-title {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .showcase-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .sizes-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: 32px;
+      justify-content: space-around;
+      padding: 24px;
+      background: #03020A;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .size-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .size-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Step Layer Breakdown */
+    .breakdown-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .breakdown-card {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+    }
+    .breakdown-step {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .breakdown-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 12px;
+    }
+    .breakdown-canvas {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 10px;
+      background: #03020A;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="badge fixed">Verified Solution Available</div>
+    <h1>StockGrid Logo Weave Animation Fix</h1>
+    <p class="subtitle">
+      Inspect the side-by-side comparison below. Scrub the slider or watch in slow motion to observe how the teal horizontal bar stays 100% continuous and unbroken without square patch artifacts.
+    </p>
+  </header>
+
+  <!-- Interactive Controls Bar -->
+  <div class="controls-bar">
+    <div class="ctrl-group">
+      <button id="btnPlayPause" class="btn active" onclick="togglePlay()">
+        <span id="playIcon">⏸</span> <span id="playText">Pause</span>
+      </button>
+      <button class="btn" onclick="setSpeed(0.25)">0.25x (Slow)</button>
+      <button class="btn" onclick="setSpeed(0.5)">0.5x</button>
+      <button class="btn active" id="btn1x" onclick="setSpeed(1.0)">1.0x (Normal)</button>
+    </div>
+
+    <div class="scrub-container">
+      <span style="font-size: 13px; font-weight: 600; color: var(--text-muted);">Timeline:</span>
+      <input type="range" id="timelineSlider" min="0" max="1000" value="0" oninput="onScrub(this.value)">
+      <span id="progressText" class="progress-val">0%</span>
+    </div>
+
+    <div class="ctrl-group">
+      <button id="btnBgToggle" class="btn" onclick="toggleBackground()">Light Canvas</button>
+    </div>
+  </div>
+
+  <!-- Comparison Grid -->
+  <div class="comparison-grid">
+    <!-- Current Broken Animation -->
+    <div class="compare-card problem">
+      <div class="card-header">
+        <div class="card-title">Current Broken Animation</div>
+        <div class="badge issue">Defective</div>
+      </div>
+
+      <div class="canvas-stage" id="stageOld">
+        <canvas id="canvasOld" width="200" height="200"></canvas>
+      </div>
+
+      <div class="card-explanation">
+        <strong>Why it feels broken:</strong>
+        <ul class="diag-list">
+          <li><strong>Violet bar cuts through:</strong> Left indigo/violet bar is drawn <em>on top of</em> the teal horizontal bar.</li>
+          <li><strong>Patch translation mismatch:</strong> The artificial square patch shifts with the teal bar origin, leaving the violet bar exposed from <code>X=421..476</code>.</li>
+          <li><strong>Sharp corners:</strong> The patch uses <code>drawRect</code> with sharp 90° corners that clip awkwardly.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Fixed Animation -->
+    <div class="compare-card solution">
+      <div class="card-header">
+        <div class="card-title">Fixed Seamless 5-Layer Weave</div>
+        <div class="badge fixed">100% Seamless</div>
+      </div>
+
+      <div class="canvas-stage" id="stageNew">
+        <canvas id="canvasNew" width="200" height="200"></canvas>
+      </div>
+
+      <div class="card-explanation">
+        <strong>How the fix works:</strong>
+        <ul class="diag-list">
+          <li><strong>Teal is 100% Unbroken:</strong> Top teal bar is drawn in one continuous solid capsule <em>after</em> the indigo vertical bar. Zero seams, zero gaps.</li>
+          <li><strong>Natural Over-Under Weave:</strong> Pink &gt; Amber &gt; Teal &gt; Indigo &gt; Pink in an authentic alternating cycle.</li>
+          <li><strong>Hann Window Cosine Easing:</strong> Silky smooth acceleration/deceleration with zero velocity at start/end for liquid motion.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Multi-Size Production Showcase -->
+  <div class="showcase-section">
+    <div class="showcase-title">Fixed Animation at All App Scale Factors</div>
+    <div class="showcase-desc">From splash & full-screen loaders down to micro 14px button spinners:</div>
+
+    <div class="sizes-row" id="multiSizeRow">
+      <div class="size-item">
+        <canvas id="size104" width="104" height="104"></canvas>
+        <span class="size-label">104px (Full Screen)</span>
+      </div>
+      <div class="size-item">
+        <canvas id="size88" width="88" height="88"></canvas>
+        <span class="size-label">88px (Default Loader)</span>
+      </div>
+      <div class="size-item">
+        <canvas id="size56" width="56" height="56"></canvas>
+        <span class="size-label">56px (Mark/Hero)</span>
+      </div>
+      <div class="size-item">
+        <canvas id="size38" width="38" height="38"></canvas>
+        <span class="size-label">38px (Header Bar)</span>
+      </div>
+      <div class="size-item">
+        <canvas id="size22" width="22" height="22"></canvas>
+        <span class="size-label">22px (Button Spinner)</span>
+      </div>
+      <div class="size-item">
+        <canvas id="size14" width="14" height="14"></canvas>
+        <span class="size-label">14px (Micro Tile)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5-Layer Mathematical Breakdown -->
+  <div class="showcase-section">
+    <div class="showcase-title">5-Layer Mathematical Weave Pipeline</div>
+    <div class="showcase-desc">How the alternating basket weave is assembled cleanly without any patch artifacts:</div>
+
+    <div class="breakdown-grid">
+      <div class="breakdown-card">
+        <div class="breakdown-step">LAYER 1</div>
+        <div class="breakdown-name" style="color: var(--pink);">Base Pink Bar</div>
+        <canvas class="breakdown-canvas" id="layer1" width="100" height="100"></canvas>
+        <p style="font-size: 12px; color: var(--text-muted);">Horizontal bottom bar drawn first.</p>
+      </div>
+      <div class="breakdown-card">
+        <div class="breakdown-step">LAYER 2</div>
+        <div class="breakdown-name" style="color: var(--indigo);">Left Indigo Bar</div>
+        <canvas class="breakdown-canvas" id="layer2" width="100" height="100"></canvas>
+        <p style="font-size: 12px; color: var(--text-muted);">Over Pink at bottom-left crossing.</p>
+      </div>
+      <div class="breakdown-card">
+        <div class="breakdown-step">LAYER 3</div>
+        <div class="breakdown-name" style="color: var(--teal);">Top Teal Bar</div>
+        <canvas class="breakdown-canvas" id="layer3" width="100" height="100"></canvas>
+        <p style="font-size: 12px; color: var(--text-muted);">Continuous bar over Indigo at top-left.</p>
+      </div>
+      <div class="breakdown-card">
+        <div class="breakdown-step">LAYER 4</div>
+        <div class="breakdown-name" style="color: var(--amber);">Right Amber Bar</div>
+        <canvas class="breakdown-canvas" id="layer4" width="100" height="100"></canvas>
+        <p style="font-size: 12px; color: var(--text-muted);">Over Teal at top-right crossing.</p>
+      </div>
+      <div class="breakdown-card">
+        <div class="breakdown-step">LAYER 5</div>
+        <div class="breakdown-name" style="color: var(--pink);">Pink Weave Crossing</div>
+        <canvas class="breakdown-canvas" id="layer5" width="100" height="100"></canvas>
+        <p style="font-size: 12px; color: var(--text-muted);">Clipped Pink capsule over Amber at bottom-right.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const TEAL = '#14B8A6';
+  const PINK = '#FB7185';
+  const INDIGO = '#4F46E5';
+  const AMBER = '#F59E0B';
+
+  let isPlaying = true;
+  let speed = 1.0;
+  let progress = 0.0;
+  let lastTimestamp = null;
+  const DURATION_MS = 650; // Original 650ms snappy cycle
+
+  // Easing: Raised Cosine (Hann Window)
+  function calcSlideSmooth(p, start, end) {
+    if (p < start || p > end) return 0.0;
+    const norm = (p - start) / (end - start);
+    return (1.0 - Math.cos(norm * 2 * Math.PI)) * 0.5;
+  }
+
+  // Old Easing: Sine Bell
+  function calcSlideOld(p, start, end) {
+    if (p < start || p > end) return 0.0;
+    const norm = (p - start) / (end - start);
+    return Math.sin(norm * Math.PI);
+  }
+
+  function drawRRect(ctx, x, y, w, h, r, color) {
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.roundRect(x, y, w, h, r);
+    ctx.fill();
+  }
+
+  // Draw Old Broken Implementation
+  function drawOldMark(canvas, p) {
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width;
+    const h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+
+    ctx.save();
+    ctx.scale(w / 1024, h / 1024);
+    ctx.translate(512, 512);
+    ctx.rotate(8 * Math.PI / 180);
+    ctx.translate(-512, -512);
+
+    const tealOffset = -55.0 * calcSlideOld(p, 0.0, 0.5);
+    const pinkOffset = 55.0 * calcSlideOld(p, 0.5, 1.0);
+    const indigoOffset = -55.0 * calcSlideOld(p, 0.0, 0.5);
+    const amberOffset = 55.0 * calcSlideOld(p, 0.5, 1.0);
+
+    // 1. Teal Bar
+    drawRRect(ctx, 302 + tealOffset, 404, 420, 72, 36, TEAL);
+    // 2. Pink Bar
+    drawRRect(ctx, 302 + pinkOffset, 548, 420, 72, 36, PINK);
+    // 3. Indigo Bar (cuts over Teal!)
+    drawRRect(ctx, 404, 302 + indigoOffset, 72, 420, 36, INDIGO);
+    // 4. Amber Bar
+    drawRRect(ctx, 548, 302 + amberOffset, 72, 420, 36, AMBER);
+
+    // Old Broken Patches
+    ctx.fillStyle = TEAL;
+    ctx.fillRect(404 + tealOffset, 404, 72, 72); // Square patch displaced incorrectly!
+    ctx.fillStyle = PINK;
+    ctx.fillRect(548 + pinkOffset, 548, 72, 72);
+
+    ctx.restore();
+  }
+
+  // Draw New Fixed Implementation
+  function drawNewMark(canvas, p, maxLayers = 5) {
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width;
+    const h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+
+    ctx.save();
+    ctx.scale(w / 1024, h / 1024);
+    ctx.translate(512, 512);
+    ctx.rotate(8 * Math.PI / 180);
+    ctx.translate(-512, -512);
+
+    const tealOffset = -44.0 * calcSlideSmooth(p, 0.0, 0.5);
+    const indigoOffset = -44.0 * calcSlideSmooth(p, 0.0, 0.5);
+    const pinkOffset = 44.0 * calcSlideSmooth(p, 0.5, 1.0);
+    const amberOffset = 44.0 * calcSlideSmooth(p, 0.5, 1.0);
+
+    const pinkX = 302 + pinkOffset, pinkY = 548, pinkW = 420, pinkH = 72;
+    const indigoX = 404, indigoY = 302 + indigoOffset, indigoW = 72, indigoH = 420;
+    const tealX = 302 + tealOffset, tealY = 404, tealW = 420, tealH = 72;
+    const amberX = 548, amberY = 302 + amberOffset, amberW = 72, amberH = 420;
+
+    // 1. Base Pink Bar
+    if (maxLayers >= 1) {
+      drawRRect(ctx, pinkX, pinkY, pinkW, pinkH, 36, PINK);
+    }
+    // 2. Left Indigo Bar (Over Pink at bottom-left)
+    if (maxLayers >= 2) {
+      drawRRect(ctx, indigoX, indigoY, indigoW, indigoH, 36, INDIGO);
+    }
+    // 3. Top Teal Bar (Continuous unbroken capsule over Indigo at top-left)
+    if (maxLayers >= 3) {
+      drawRRect(ctx, tealX, tealY, tealW, tealH, 36, TEAL);
+    }
+    // 4. Right Amber Bar (Over Teal at top-right)
+    if (maxLayers >= 4) {
+      drawRRect(ctx, amberX, amberY, amberW, amberH, 36, AMBER);
+    }
+    // 5. Pink Weave Crossing (Clipped Pink over Amber at bottom-right)
+    if (maxLayers >= 5) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(476, 476, 548, 548);
+      ctx.clip();
+      drawRRect(ctx, pinkX, pinkY, pinkW, pinkH, 36, PINK);
+      ctx.restore();
+    }
+
+    ctx.restore();
+  }
+
+  function renderAll() {
+    drawOldMark(document.getElementById('canvasOld'), progress);
+    drawNewMark(document.getElementById('canvasNew'), progress);
+
+    // Multi-sizes
+    ['size104', 'size88', 'size56', 'size38', 'size22', 'size14'].forEach(id => {
+      const c = document.getElementById(id);
+      if (c) drawNewMark(c, progress);
+    });
+
+    // Breakdown layers
+    for (let i = 1; i <= 5; i++) {
+      const c = document.getElementById('layer' + i);
+      if (c) drawNewMark(c, progress, i);
+    }
+
+    // Update scrubber UI
+    document.getElementById('timelineSlider').value = Math.round(progress * 1000);
+    document.getElementById('progressText').textContent = Math.round(progress * 100) + '%';
+  }
+
+  function animate(timestamp) {
+    if (!lastTimestamp) lastTimestamp = timestamp;
+    const delta = timestamp - lastTimestamp;
+    lastTimestamp = timestamp;
+
+    if (isPlaying) {
+      progress += (delta / (DURATION_MS / speed));
+      if (progress >= 1.0) progress = progress % 1.0;
+      renderAll();
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  function togglePlay() {
+    isPlaying = !isPlaying;
+    document.getElementById('playIcon').textContent = isPlaying ? '⏸' : '▶';
+    document.getElementById('playText').textContent = isPlaying ? 'Pause' : 'Play';
+    document.getElementById('btnPlayPause').classList.toggle('active', isPlaying);
+  }
+
+  function setSpeed(s) {
+    speed = s;
+    document.querySelectorAll('.ctrl-group .btn').forEach(b => {
+      if (b.textContent.includes('x')) b.classList.remove('active');
+    });
+    event.target.classList.add('active');
+  }
+
+  function onScrub(val) {
+    progress = val / 1000.0;
+    if (isPlaying) togglePlay();
+    renderAll();
+  }
+
+  function toggleBackground() {
+    const stages = [document.getElementById('stageOld'), document.getElementById('stageNew'), document.getElementById('multiSizeRow')];
+    stages.forEach(s => s.classList.toggle('stage-light'));
+    const btn = document.getElementById('btnBgToggle');
+    btn.textContent = stages[0].classList.contains('stage-light') ? 'Dark Canvas' : 'Light Canvas';
+  }
+
+  renderAll();
+  requestAnimationFrame(animate);
+</script>
+
+</body>
+</html>
