@@ -2258,6 +2258,269 @@
       }
     }
 
+
+    /* ==========================================================================
+       MOBILE-FIRST RESPONSIVE OPTIMIZATIONS (Smart Mobile UI & Touch Ergonomics)
+       ========================================================================== */
+
+    /* Touch target ergonomics */
+    button, a, .spec-pill, .btn-primary, .btn-secondary, .btn-primary-large, .dock-btn-install {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    button:active, a.btn-primary:active, a.btn-secondary:active, .btn-primary-large:active {
+      transform: scale(0.97) !important;
+    }
+
+    .mobile-only-badge {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 12px;
+      background: rgba(45, 212, 191, 0.12);
+      border: 1px solid rgba(45, 212, 191, 0.35);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #2DD4BF;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+    .m-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #2DD4BF;
+      box-shadow: 0 0 6px #2DD4BF;
+    }
+
+    .mobile-setup-steps {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      margin-top: 18px;
+      padding: 12px 14px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      font-size: 11.5px;
+      color: #CBD5E1;
+      width: fit-content;
+    }
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .step-num {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #4F46E5;
+      color: #FFF;
+      font-size: 10px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step-arrow {
+      color: #64748B;
+      font-size: 11px;
+    }
+
+    /* Mobile Floating Install Dock */
+    .mobile-sticky-dock {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      padding: 10px 16px;
+      padding-bottom: max(10px, env(safe-area-inset-bottom));
+      background: rgba(11, 15, 23, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6);
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mobile-sticky-dock.visible {
+      transform: translateY(0);
+    }
+    .dock-inner {
+      max-width: 440px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .dock-app-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .dock-app-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: #131B2E;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 2px;
+      flex-shrink: 0;
+    }
+    .dock-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #F8FAFC;
+      line-height: 1.2;
+    }
+    .dock-sub {
+      font-size: 11px;
+      color: #2DD4BF;
+      font-weight: 600;
+    }
+    .dock-btn-install {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 16px;
+      background: linear-gradient(135deg, #4F46E5 0%, #4338CA 100%);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      color: #FFF;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
+      flex-shrink: 0;
+    }
+
+    /* Tablet and Mobile Screen Breakpoints */
+    @media (max-width: 768px) {
+      .desktop-only-qr {
+        display: none !important;
+      }
+      .mobile-only-badge {
+        display: inline-flex;
+      }
+      .mobile-setup-steps {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .mobile-sticky-dock {
+        display: block;
+      }
+      .qr-showcase-wrapper {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        gap: 20px;
+      }
+      .qr-action-title {
+        font-size: 24px;
+        line-height: 1.25;
+      }
+      .qr-action-desc {
+        font-size: 14px;
+        margin-bottom: 18px;
+      }
+      .btn-primary-large {
+        width: 100%;
+        justify-content: center;
+        padding: 13px 20px;
+        font-size: 14px;
+      }
+
+      /* 2x2 Performance Metrics Grid on Mobile */
+      .perf-metrics-ribbon {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px;
+        padding: 14px;
+        margin-top: 24px;
+      }
+      .perf-metric-val {
+        font-size: 17px;
+      }
+      .perf-metric-lbl {
+        font-size: 10.5px;
+      }
+
+      /* Scanner Viewfinder Mobile Scaling */
+      .card-scanner-hero {
+        padding: 22px;
+        gap: 20px;
+      }
+      .scanner-viewfinder-box {
+        height: 180px;
+      }
+      .scan-match-card {
+        padding: 8px 12px;
+        max-width: 90%;
+      }
+      .match-name {
+        font-size: 12px;
+      }
+      .match-meta {
+        font-size: 10px;
+      }
+
+      /* Live Sync Feed Mobile */
+      .bento-flagship-card {
+        padding: 22px;
+      }
+      .sync-feed-item {
+        padding: 10px 12px;
+        font-size: 11.5px;
+      }
+
+      /* Master PIN Card Mobile */
+      .val-amount {
+        font-size: 22px;
+      }
+      .role-mode-pill {
+        font-size: 11px;
+        padding: 4px 10px;
+      }
+    }
+
+    /* Small Android Phones (<= 390px, e.g. 360px budget devices) */
+    @media (max-width: 390px) {
+      .container {
+        padding: 0 12px;
+      }
+      .hero-title {
+        font-size: 27px !important;
+        line-height: 1.2;
+      }
+      .perf-metrics-ribbon {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 8px;
+        padding: 10px;
+      }
+      .perf-metric-val {
+        font-size: 15px;
+      }
+      .perf-metric-lbl {
+        font-size: 9.5px;
+      }
+      .bento-card-title {
+        font-size: 20px;
+      }
+      .step-arrow {
+        display: none;
+      }
+      .mobile-setup-steps {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -3525,7 +3788,8 @@
   <section id="qr-install" class="qr-install-section">
     <div class="container">
       <div class="qr-showcase-wrapper">
-        <div class="qr-code-column">
+        <!-- Desktop QR Column (Shown on PC/Mac screens) -->
+        <div class="qr-code-column desktop-only-qr">
           <div class="qr-illuminated-box">
             <svg width="180" height="180" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- Top Left Corner -->
@@ -3585,21 +3849,45 @@
         </div>
 
         <div class="qr-action-column">
-          <div class="qr-pill-badge">ANDROID ENTERPRISE DEPLOYMENT</div>
+          <!-- Mobile-only Fast Download Banner -->
+          <div class="mobile-only-badge">
+            <span class="m-badge-dot"></span>
+            <span>Android Smartphone & Tablet Edition</span>
+          </div>
+
+          <div class="qr-pill-badge desktop-only-qr">ANDROID ENTERPRISE DEPLOYMENT</div>
           <h2 class="qr-action-title">Deploy StockGrid Across Your Warehouse in Minutes</h2>
           <p class="qr-action-desc">
             Engineered for all Android 8.0+ smartphones, warehouse barcode tablets, and rugged industrial scanners. Direct sideload APK with automated local SQLite initialization.
           </p>
 
           <div class="qr-cta-row">
-            <button class="btn-primary-large" onclick="alert('Downloading StockGrid APK v4.5')">
+            <a href="assets/StockGrid_v4.5.apk" download class="btn-primary-large" onclick="handleApkDownload(event)">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>
               </svg>
-              <span>Direct Download APK v4.5</span>
-            </button>
+              <span>Download StockGrid APK v4.5 (28.4 MB)</span>
+            </a>
+          </div>
+
+          <!-- Mobile 3-Step Instant Setup Guide -->
+          <div class="mobile-setup-steps">
+            <div class="step-item">
+              <span class="step-num">1</span>
+              <span>Tap Download APK above</span>
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="step-item">
+              <span class="step-num">2</span>
+              <span>Open from notification</span>
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="step-item">
+              <span class="step-num">3</span>
+              <span>Tap Install & start</span>
+            </div>
           </div>
 
           <div class="qr-trust-strip">
@@ -3911,5 +4199,55 @@
       }
     });
   </script>
+
+  <!-- ==========================================================================
+       MOBILE FLOATING INSTALL DOCK (Instant 1-Tap Access for Mobile Visitors)
+       ========================================================================== -->
+  <div id="mobileStickyDock" class="mobile-sticky-dock">
+    <div class="dock-inner">
+      <div class="dock-app-info">
+        <svg class="dock-app-icon" viewBox="0 0 1024 1024" fill="none">
+          <rect x="302" y="404" width="420" height="72" rx="36" fill="#14B8A6"/>
+          <rect x="302" y="548" width="420" height="72" rx="36" fill="#FB7185"/>
+          <rect x="404" y="302" width="72" height="420" rx="36" fill="#4F46E5"/>
+          <rect x="548" y="302" width="72" height="420" rx="36" fill="#F59E0B"/>
+        </svg>
+        <div class="dock-text">
+          <div class="dock-title">StockGrid for Android</div>
+          <div class="dock-sub">Theme 2.0 • Offline Ready</div>
+        </div>
+      </div>
+      <a href="#qr-install" class="dock-btn-install">
+        <span>Get APK</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <polyline points="19 12 12 19 5 12"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Show/hide mobile sticky dock on scroll
+    window.addEventListener('scroll', function() {
+      const dock = document.getElementById('mobileStickyDock');
+      if (!dock) return;
+      if (window.innerWidth <= 768) {
+        if (window.scrollY > 380) {
+          dock.classList.add('visible');
+        } else {
+          dock.classList.remove('visible');
+        }
+      } else {
+        dock.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    function handleApkDownload(e) {
+      // Direct APK download simulation or fallback
+      console.log('StockGrid APK v4.5 download triggered.');
+    }
+  </script>
+
 </body>
 </html>
