@@ -2847,6 +2847,116 @@
       }
     }
 
+
+    /* ==========================================================================
+       KEYNOTE FLOATING BADGES (Guaranteed Non-Overlapping Precision Positioning)
+       ========================================================================== */
+    .hero-keynote-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .phone-stage-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+    .mobile-badges-row {
+      display: contents; /* On desktop, badges position absolutely relative to .phone-stage-wrapper */
+    }
+    .keynote-floating-badge {
+      position: absolute;
+      z-index: 10;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #F8FAFC;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+      white-space: nowrap;
+      pointer-events: auto;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .keynote-floating-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6);
+    }
+    .badge-edge-sync {
+      border-color: rgba(45, 212, 191, 0.45);
+    }
+    .badge-pin-lock {
+      border-color: rgba(129, 140, 248, 0.45);
+    }
+    .pulse-dot-teal {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #2DD4BF;
+      box-shadow: 0 0 8px #2DD4BF;
+      animation: pulse 2s infinite;
+    }
+
+    /* 1. Ultra-Wide & Large Desktop (>= 1360px):
+          Badges float gracefully on the sides with 20px clearance outside the phone */
+    @media (min-width: 1360px) {
+      .badge-edge-sync {
+        right: calc(100% + 20px);
+        top: 140px;
+        left: auto;
+        bottom: auto;
+      }
+      .badge-pin-lock {
+        left: calc(100% + 20px);
+        top: 380px;
+        right: auto;
+        bottom: auto;
+      }
+    }
+
+    /* 2. Standard Laptops / Compact Desktop (1025px - 1359px):
+          Badges float cleanly ABOVE the phone with 16px vertical gap (0 overlap) */
+    @media (min-width: 1025px) and (max-width: 1359px) {
+      .badge-edge-sync {
+        bottom: calc(100% + 16px);
+        left: 0;
+        top: auto;
+        right: auto;
+      }
+      .badge-pin-lock {
+        bottom: calc(100% + 16px);
+        right: 0;
+        top: auto;
+        left: auto;
+      }
+    }
+
+    /* 3. Mobile & Tablets (<= 1024px):
+          Badges display in a centered horizontal row cleanly above the phone mockup */
+    @media (max-width: 1024px) {
+      .mobile-badges-row {
+        display: flex !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 20px;
+        width: 100%;
+      }
+      .keynote-floating-badge {
+        position: static !important;
+        margin: 0;
+        display: inline-flex;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -3067,8 +3177,25 @@
 
       <!-- RIGHT COLUMN: Authentic Android Phone with Real Live App Interface & Floating Badges -->
       <div class="hero-keynote-right">
+        <div class="phone-stage-wrapper">
+          <div class="mobile-badges-row">
+            <!-- Floating Pill Badge 1: Real-Time Edge Sync -->
+            <div class="keynote-floating-badge badge-edge-sync">
+              <span class="pulse-dot-teal"></span>
+              <span>Real-Time Edge Sync</span>
+            </div>
 
-        <div class="phone-mockup-wrapper">
+            <!-- Floating Pill Badge 2: Role-Based PIN Security -->
+            <div class="keynote-floating-badge badge-pin-lock">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              <span>Role-Based PIN Security</span>
+            </div>
+          </div>
+
+          <div class="phone-mockup-wrapper">
         <div class="phone-outer-shell">
           <!-- Android Status Bar with Camera Punch-Hole -->
           <div class="phone-status-bar">
@@ -3493,6 +3620,7 @@
           </div>
         </div>
       </div>
+        </div>
       </div>
 
     </div>
