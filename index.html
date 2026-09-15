@@ -1781,6 +1781,483 @@
         text-align: center;
       }
     }
+
+    /* ==========================================================================
+       FLAGSHIP MASTER SUITE: HYBRID MODEL STYLES (Option A + B + C)
+       ========================================================================== */
+
+    /* 1. Hero Performance Metrics Ribbon (Option A) */
+    .perf-metrics-ribbon {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 32px;
+      padding: 16px 20px;
+      background: rgba(19, 27, 46, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 18px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    }
+    .perf-metric-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .perf-metric-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .perf-metric-lbl {
+      font-size: 11.5px;
+      color: #94A3B8;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .color-teal { color: #2DD4BF; }
+    .color-emerald { color: #4ADE80; }
+    .color-pink { color: #FB7185; }
+    .color-purple { color: #C084FC; }
+    .color-indigo { color: #818CF8; }
+
+    /* 2. Interactive Product Bento Grid (Option B) */
+    .bento-interactive-section {
+      padding: 100px 0 60px;
+      position: relative;
+      background: radial-gradient(circle at 80% 20%, rgba(20, 184, 166, 0.07) 0%, transparent 50%),
+                  radial-gradient(circle at 20% 80%, rgba(79, 70, 229, 0.08) 0%, transparent 50%);
+    }
+    .section-badge-center {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(79, 70, 229, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #C7D2FE;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .bento-flagship-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .bento-flagship-card {
+      background: rgba(19, 27, 46, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 36px;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .bento-flagship-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.20);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    .card-scanner-hero {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 36px;
+      align-items: center;
+      border-color: rgba(20, 184, 166, 0.25);
+    }
+    .card-scanner-hero:hover {
+      border-color: rgba(20, 184, 166, 0.5);
+    }
+    .bento-card-tag {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .bento-card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: #F8FAFC;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+      line-height: 1.25;
+    }
+    .bento-card-desc {
+      font-size: 15px;
+      color: #94A3B8;
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
+    .scanner-spec-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .spec-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #E2E8F0;
+    }
+
+    /* Barcode Scanner Viewfinder Demo */
+    .scanner-viewfinder-box {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      background: #0B0F17;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);
+    }
+    .viewfinder-lens {
+      position: relative;
+      width: 85%;
+      height: 80%;
+    }
+    .reticle-corner {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border: 3px solid #2DD4BF;
+    }
+    .reticle-corner.top-left { top: 0; left: 0; border-right: none; border-bottom: none; border-radius: 4px 0 0 0; }
+    .reticle-corner.top-right { top: 0; right: 0; border-left: none; border-bottom: none; border-radius: 0 4px 0 0; }
+    .reticle-corner.bottom-left { bottom: 0; left: 0; border-right: none; border-top: none; border-radius: 0 0 0 4px; }
+    .reticle-corner.bottom-right { bottom: 0; right: 0; border-left: none; border-top: none; border-radius: 0 0 4px 0; }
+
+    /* Animated Laser Line */
+    @keyframes laserSweep {
+      0% { top: 10%; opacity: 0.2; }
+      50% { top: 85%; opacity: 1; }
+      100% { top: 10%; opacity: 0.2; }
+    }
+    .laser-scanner-line {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      height: 2.5px;
+      background: #EF4444;
+      box-shadow: 0 0 12px #EF4444, 0 0 24px rgba(239, 68, 68, 0.6);
+      animation: laserSweep 2.4s ease-in-out infinite;
+      z-index: 2;
+    }
+    .scan-match-card {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(45, 212, 191, 0.4);
+      border-radius: 12px;
+      padding: 12px 16px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      z-index: 3;
+      white-space: nowrap;
+    }
+    .match-badge {
+      font-size: 10px;
+      font-weight: 800;
+      color: #4ADE80;
+      letter-spacing: 0.8px;
+    }
+    .match-name {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #F8FAFC;
+      margin: 3px 0 2px;
+    }
+    .match-meta {
+      font-size: 11px;
+      color: #94A3B8;
+    }
+
+    /* Live Sync Audit Stream */
+    .card-sync-stream {
+      border-color: rgba(79, 70, 229, 0.25);
+    }
+    .card-sync-stream:hover {
+      border-color: rgba(79, 70, 229, 0.5);
+    }
+    .live-sync-audit-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .sync-feed-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+    .sync-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      margin-top: 5px;
+      flex-shrink: 0;
+      animation: pulseGlow 1.8s ease-in-out infinite;
+    }
+    .dot-emerald { background: #4ADE80; box-shadow: 0 0 8px #4ADE80; }
+    .dot-teal { background: #2DD4BF; box-shadow: 0 0 8px #2DD4BF; animation-delay: 0.6s; }
+    .dot-purple { background: #C084FC; box-shadow: 0 0 8px #C084FC; animation-delay: 1.2s; }
+    .sync-feed-text {
+      flex: 1;
+    }
+    .sync-feed-header {
+      font-size: 12px;
+      color: #F8FAFC;
+    }
+    .sync-feed-action {
+      font-size: 11.5px;
+      color: #94A3B8;
+      margin-top: 2px;
+    }
+
+    /* Role Based Master PIN Controls */
+    .card-role-security {
+      border-color: rgba(251, 113, 133, 0.25);
+    }
+    .card-role-security:hover {
+      border-color: rgba(251, 113, 133, 0.5);
+    }
+    .pin-role-interactive-card {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 18px;
+    }
+    .role-mode-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(74, 222, 128, 0.12);
+      border: 1px solid rgba(74, 222, 128, 0.35);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #4ADE80;
+      margin-bottom: 16px;
+    }
+    .role-valuation-display {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 12px;
+    }
+    .val-label {
+      font-size: 11px;
+      font-weight: 800;
+      color: #94A3B8;
+      letter-spacing: 0.8px;
+    }
+    .val-amount {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 26px;
+      font-weight: 800;
+      color: #F8FAFC;
+      letter-spacing: -0.5px;
+      margin-top: 2px;
+    }
+    .role-explanation {
+      font-size: 12px;
+      color: #94A3B8;
+      line-height: 1.5;
+    }
+
+    /* 3. Instant Desktop-to-Phone QR Installation Suite (Option C) */
+    .qr-install-section {
+      padding: 90px 0 50px;
+      position: relative;
+    }
+    .qr-showcase-wrapper {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 48px;
+      align-items: center;
+      background: rgba(19, 27, 46, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 28px;
+      padding: 48px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    }
+    .qr-code-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .qr-illuminated-box {
+      width: 220px;
+      height: 220px;
+      background: #FFFFFF;
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: 0 0 35px rgba(255, 255, 255, 0.2), 0 10px 25px rgba(0, 0, 0, 0.5);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qr-instruction-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #F8FAFC;
+      margin-bottom: 4px;
+    }
+    .qr-instruction-sub {
+      font-size: 12px;
+      color: #94A3B8;
+    }
+    .qr-action-column {
+      display: flex;
+      flex-direction: column;
+    }
+    .qr-pill-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 800;
+      color: #2DD4BF;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .qr-action-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: #F8FAFC;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+    .qr-action-desc {
+      font-size: 15.5px;
+      color: #94A3B8;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .btn-primary-large {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #4F46E5 0%, #4338CA 100%);
+      color: #FFFFFF;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      width: fit-content;
+      margin-bottom: 28px;
+    }
+    .btn-primary-large:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(79, 70, 229, 0.55);
+    }
+    .qr-trust-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 24px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .trust-icon {
+      font-size: 18px;
+      line-height: 1;
+    }
+    .trust-item strong {
+      display: block;
+      font-size: 12px;
+      color: #4ADE80;
+      margin-bottom: 2px;
+    }
+    .trust-item span {
+      display: block;
+      font-size: 11px;
+      color: #94A3B8;
+      line-height: 1.35;
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 1024px) {
+      .perf-metrics-ribbon {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .card-scanner-hero {
+        grid-template-columns: 1fr;
+      }
+      .qr-showcase-wrapper {
+        grid-template-columns: 1fr;
+        padding: 32px;
+      }
+      .qr-trust-strip {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+    }
+    @media (max-width: 640px) {
+      .perf-metrics-ribbon {
+        grid-template-columns: 1fr;
+        padding: 14px;
+      }
+      .bento-flagship-grid {
+        grid-template-columns: 1fr;
+      }
+      .bento-flagship-card {
+        padding: 24px;
+      }
+      .scanner-viewfinder-box {
+        height: 190px;
+      }
+      .qr-showcase-wrapper {
+        padding: 20px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1815,8 +2292,10 @@
 
       <ul class="nav-links">
         <li><a href="#features">Features</a></li>
+        <li><a href="#interactive-suite">Live Demo</a></li>
         <li><a href="#architecture">Cloud & Sync</a></li>
         <li><a href="#security">Security</a></li>
+        <li><a href="#qr-install">Get App</a></li>
         <li><a href="#faq">Help & FAQs</a></li>
         <li><a href="privacy.html">Privacy</a></li>
         <li><a href="terms.html">Terms</a></li>
@@ -1824,7 +2303,7 @@
 
       <div class="nav-actions">
         <a href="privacy.html" class="btn-secondary">Privacy Center</a>
-        <a href="#download" class="btn-primary">
+        <a href="#qr-install" class="btn-primary">
           <span>Get StockGrid</span>
           <span>→</span>
         </a>
@@ -1937,7 +2416,7 @@
     </div>
 
     <div class="drawer-footer-actions">
-      <a href="#download" class="btn-primary" style="width: 100%; justify-content: center;" onclick="toggleMobileMenu()">Get StockGrid Android</a>
+      <a href="#qr-install" class="btn-primary" style="width: 100%; justify-content: center;" onclick="toggleMobileMenu()">Get StockGrid Android</a>
       <a href="privacy.html" class="btn-secondary" style="width: 100%; text-align: center;" onclick="toggleMobileMenu()">Privacy Center</a>
     </div>
   </div>
@@ -1960,10 +2439,10 @@
       </p>
 
       <div class="hero-cta-group">
-        <button class="btn-primary" onclick="alert('Download StockGrid for Android')">
+        <a href="#qr-install" class="btn-primary">
           <span>Download Android App</span>
-        </button>
-        <a href="#features" class="btn-secondary">Explore Features</a>
+        </a>
+        <a href="#interactive-suite" class="btn-secondary">Explore Live Mechanics</a>
       </div>
 
       <!-- Live Brand Weave Animation Showcase -->
@@ -2004,6 +2483,27 @@
           <div class="loader-text-sub">Automated Cloud & Multi-Device Synchronization</div>
         </div>
       </div>
+
+      <!-- 4-Column Flagship Performance Ribbon (Option A) -->
+      <div class="perf-metrics-ribbon">
+        <div class="perf-metric-item">
+          <div class="perf-metric-val color-teal">&lt; 50ms</div>
+          <div class="perf-metric-lbl">Edge Sync Engine</div>
+        </div>
+        <div class="perf-metric-item">
+          <div class="perf-metric-val color-emerald">100%</div>
+          <div class="perf-metric-lbl">Offline SQLite Ready</div>
+        </div>
+        <div class="perf-metric-item">
+          <div class="perf-metric-val color-pink">AES-256</div>
+          <div class="perf-metric-lbl">PIN Role Isolation</div>
+        </div>
+        <div class="perf-metric-item">
+          <div class="perf-metric-val color-purple">Multi-Device</div>
+          <div class="perf-metric-lbl">Live Ledgers</div>
+        </div>
+      </div>
+
 
       <!-- Authentic Android Mobile Phone Mockup -->
       <div class="phone-mockup-wrapper">
@@ -2079,14 +2579,14 @@
                           <span class="metric-sub-arrow-in">↓</span>
                           <span class="metric-sub-tag">STOCK IN</span>
                         </div>
-                        <div class="metric-sub-num color-in">+1,420</div>
+                        <div class="metric-sub-num color-in">2,425</div>
                       </div>
                       <div class="metric-sub-card">
                         <div class="metric-sub-label-row">
                           <span class="metric-sub-arrow-out">↑</span>
                           <span class="metric-sub-tag">STOCK OUT</span>
                         </div>
-                        <div class="metric-sub-num color-out">-860</div>
+                        <div class="metric-sub-num color-out">1,865</div>
                       </div>
                     </div>
                   </div>
@@ -2435,6 +2935,117 @@
   </section>
 
   <!-- Features Section -->
+  
+  <!-- ==========================================================================
+       INTERACTIVE PRODUCT BENTO GRID (Option B Engine)
+       ========================================================================== -->
+  <section id="interactive-suite" class="bento-interactive-section">
+    <div class="container">
+      <div style="text-align: center;">
+        <div class="section-badge-center">
+          <span style="width: 8px; height: 8px; border-radius: 50%; background: #2DD4BF; display: inline-block;"></span>
+          <span>Live Hardware & Workflow Mechanics</span>
+        </div>
+      </div>
+      <h2 class="section-title text-center">Engineered for Garment Floor Reality</h2>
+      <p class="section-subtitle text-center" style="max-width: 680px; margin: 0 auto 10px;">
+        From dim warehouse corridors to multi-counter checkout, explore how StockGrid eliminates manual inventory friction.
+      </p>
+
+      <div class="bento-flagship-grid">
+        <!-- Card 1: Interactive Barcode Scanner Viewfinder (Full Width Top) -->
+        <div class="bento-flagship-card card-scanner-hero">
+          <div class="scanner-content-left">
+            <div class="bento-card-tag color-teal">CONTINUOUS BARCODE & CAMERA ENGINE</div>
+            <h3 class="bento-card-title">Instant Zero-Delay Garment Tag Lookup</h3>
+            <p class="bento-card-desc">
+              Point any Android phone camera at carton QR codes, EAN-13 garment hangtags, or roll stickers. Instant vibration haptics with continuous batch scanning even in dimly lit aisles.
+            </p>
+            <div class="scanner-spec-pills">
+              <span class="spec-pill">✓ EAN-13 & Code 128</span>
+              <span class="spec-pill">✓ Camera Torch Assist</span>
+              <span class="spec-pill">✓ Audio Beep Confirmation</span>
+              <span class="spec-pill">✓ Zero Lag Local SQLite</span>
+            </div>
+          </div>
+
+          <div class="scanner-viewfinder-box">
+            <div class="viewfinder-lens">
+              <div class="reticle-corner top-left"></div>
+              <div class="reticle-corner top-right"></div>
+              <div class="reticle-corner bottom-left"></div>
+              <div class="reticle-corner bottom-right"></div>
+              <!-- Animated Laser Scan Line -->
+              <div class="laser-scanner-line"></div>
+              <!-- Live Match Popup Card -->
+              <div class="scan-match-card">
+                <div class="match-badge">MATCH CONFIRMED</div>
+                <div class="match-name">ART-5570 • Rayon Kurti Set</div>
+                <div class="match-meta">Inward: +24 units • Size 30*40 • Synced</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Live Multi-Device Sync Stream (Split Left) -->
+        <div class="bento-flagship-card card-sync-stream">
+          <div class="bento-card-tag color-indigo">DISTRIBUTED LEDGER AUDIT</div>
+          <h3 class="bento-card-title">Sub-50ms Multi-Device Sync</h3>
+          <p class="bento-card-desc">
+            Every barcode scan, stock intake, and wholesale dispatch syncs across all billing counters and warehouse tablets in real time.
+          </p>
+
+          <div class="live-sync-audit-feed">
+            <div class="sync-feed-item">
+              <span class="sync-dot dot-emerald"></span>
+              <div class="sync-feed-text">
+                <div class="sync-feed-header"><strong>Counter 1 (OnePlus)</strong> • 09:04:12</div>
+                <div class="sync-feed-action">Dispatched 48 Kurti Sets • Outward</div>
+              </div>
+            </div>
+            <div class="sync-feed-item">
+              <span class="sync-dot dot-teal"></span>
+              <div class="sync-feed-text">
+                <div class="sync-feed-header"><strong>Warehouse Tab</strong> • 09:04:13</div>
+                <div class="sync-feed-action">Stock Ledger Updated: 2,425 In / 1,865 Out</div>
+              </div>
+            </div>
+            <div class="sync-feed-item">
+              <span class="sync-dot dot-purple"></span>
+              <div class="sync-feed-text">
+                <div class="sync-feed-header"><strong>Firm Owner Phone</strong> • 09:03:50</div>
+                <div class="sync-feed-action">Firm Valuation Synced • ₹ 10,30,050</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Role-Based Master PIN Controls (Split Right) -->
+        <div class="bento-flagship-card card-role-security">
+          <div class="bento-card-tag color-pink">TENANT PRIVACY & ROLE CONTROLS</div>
+          <h3 class="bento-card-title">Master PIN vs Floor Staff Mode</h3>
+          <p class="bento-card-desc">
+            Floor workers count, scan, and dispatch items without seeing your purchase costs, margins, or total company valuation.
+          </p>
+
+          <div class="pin-role-interactive-card">
+            <div class="role-mode-pill">
+              <span>🔒</span>
+              <span>Admin Mode (Unlocked)</span>
+            </div>
+            <div class="role-valuation-display">
+              <span class="val-label">TOTAL FIRM VALUATION</span>
+              <span class="val-amount">₹ 10,30,050</span>
+            </div>
+            <div class="role-explanation">
+              49 Active Articles • 3,492 Total Units • Financial ledgers and profit margins stay encrypted from staff phones.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="features" class="features-section">
     <div class="container">
       <div class="section-header">
@@ -2907,6 +3518,118 @@
   </section>
 
   <!-- Help & FAQs Section (Featuring Label Printing Methods) -->
+  
+  <!-- ==========================================================================
+       INSTANT DESKTOP-TO-PHONE QR INSTALLATION SUITE (Option C Conversion)
+       ========================================================================== -->
+  <section id="qr-install" class="qr-install-section">
+    <div class="container">
+      <div class="qr-showcase-wrapper">
+        <div class="qr-code-column">
+          <div class="qr-illuminated-box">
+            <svg width="180" height="180" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Top Left Corner -->
+  <rect x="15" y="15" width="50" height="50" rx="10" fill="#0B0F17" />
+  <rect x="25" y="25" width="30" height="30" rx="6" fill="#FFFFFF" />
+  <rect x="33" y="33" width="14" height="14" rx="3" fill="#0B0F17" />
+  <!-- Top Right Corner -->
+  <rect x="135" y="15" width="50" height="50" rx="10" fill="#0B0F17" />
+  <rect x="145" y="25" width="30" height="30" rx="6" fill="#FFFFFF" />
+  <rect x="153" y="33" width="14" height="14" rx="3" fill="#0B0F17" />
+  <!-- Bottom Left Corner -->
+  <rect x="15" y="135" width="50" height="50" rx="10" fill="#0B0F17" />
+  <rect x="25" y="145" width="30" height="30" rx="6" fill="#FFFFFF" />
+  <rect x="33" y="153" width="14" height="14" rx="3" fill="#0B0F17" />
+  <!-- QR Grid Cells -->
+  <rect x="75" y="20" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="95" y="20" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="115" y="20" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="75" y="40" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="105" y="40" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="85" y="60" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="105" y="60" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="125" y="60" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="20" y="75" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="40" y="75" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="60" y="75" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="75" y="85" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="95" y="85" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="115" y="85" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="135" y="85" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="155" y="85" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="175" y="85" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="85" y="105" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="105" y="105" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="125" y="105" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="165" y="105" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="20" y="115" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="40" y="115" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="75" y="125" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="95" y="125" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="135" y="125" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="155" y="125" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="85" y="145" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="105" y="145" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="125" y="145" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="145" y="145" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="165" y="145" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="75" y="165" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="95" y="165" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="115" y="165" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="135" y="165" width="10" height="10" rx="2" fill="#0B0F17"/>
+  <rect x="175" y="165" width="10" height="10" rx="2" fill="#0B0F17"/>
+</svg>
+          </div>
+          <div class="qr-instruction-title">Point Android Camera to Install</div>
+          <div class="qr-instruction-sub">Direct APK v4.5 • 28.4 MB • Instant Setup</div>
+        </div>
+
+        <div class="qr-action-column">
+          <div class="qr-pill-badge">ANDROID ENTERPRISE DEPLOYMENT</div>
+          <h2 class="qr-action-title">Deploy StockGrid Across Your Warehouse in Minutes</h2>
+          <p class="qr-action-desc">
+            Engineered for all Android 8.0+ smartphones, warehouse barcode tablets, and rugged industrial scanners. Direct sideload APK with automated local SQLite initialization.
+          </p>
+
+          <div class="qr-cta-row">
+            <button class="btn-primary-large" onclick="alert('Downloading StockGrid APK v4.5')">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Direct Download APK v4.5</span>
+            </button>
+          </div>
+
+          <div class="qr-trust-strip">
+            <div class="trust-item">
+              <span class="trust-icon">🛡️</span>
+              <div>
+                <strong>Google Play Protect Verified</strong>
+                <span>Clean package, zero third-party trackers</span>
+              </div>
+            </div>
+            <div class="trust-item">
+              <span class="trust-icon">⚡</span>
+              <div>
+                <strong>100% Offline SQLite Architecture</strong>
+                <span>Never halt billing when warehouse Wi-Fi drops</span>
+              </div>
+            </div>
+            <div class="trust-item">
+              <span class="trust-icon">🔒</span>
+              <div>
+                <strong>Supabase Row-Level Security</strong>
+                <span>Isolated Postgres tenant database encryption</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="faq" class="faq-section">
     <div class="container">
       <div class="section-header">
