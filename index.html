@@ -312,6 +312,7 @@
     
     /* Android Status Bar */
     .phone-status-bar {
+      position: relative;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -322,11 +323,17 @@
       background: #0F172A;
     }
     .punch-hole-camera {
-      width: 10px;
-      height: 10px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 11px;
+      height: 11px;
       border-radius: 50%;
-      background: #000000;
-      box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.1);
+      background: radial-gradient(circle at 35% 35%, #1e293b 0%, #000000 75%);
+      box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.12), inset 0 0 2px rgba(20, 184, 166, 0.35);
+      pointer-events: none;
+      z-index: 5;
     }
     .status-icons {
       display: flex;
