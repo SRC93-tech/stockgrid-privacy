@@ -2849,7 +2849,7 @@
 
 
     /* ==========================================================================
-       KEYNOTE FLOATING BADGES (Guaranteed Non-Overlapping Precision Positioning)
+       KEYNOTE PRODUCT CALLOUT BADGES (Positioned Directly Above Phone Mockup)
        ========================================================================== */
     .hero-keynote-right {
       display: flex;
@@ -2858,102 +2858,68 @@
       position: relative;
     }
     .phone-stage-wrapper {
-      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       width: 100%;
-      max-width: 380px;
+      max-width: 412px;
       margin: 0 auto;
     }
-    .mobile-badges-row {
-      display: contents; /* On desktop, badges position absolutely relative to .phone-stage-wrapper */
+    .phone-badges-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      width: 100%;
+      z-index: 5;
     }
-    .keynote-floating-badge {
-      position: absolute;
-      z-index: 10;
+    .keynote-pill-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 9px 18px;
-      background: rgba(15, 23, 42, 0.92);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      padding: 8px 16px;
+      background: rgba(15, 23, 42, 0.90);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 999px;
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 700;
       color: #F8FAFC;
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.40);
       white-space: nowrap;
-      pointer-events: auto;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .keynote-floating-badge:hover {
+    .keynote-pill-badge:hover {
       transform: translateY(-2px);
-      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.60);
     }
     .badge-edge-sync {
       border-color: rgba(45, 212, 191, 0.45);
+      background: rgba(45, 212, 191, 0.08);
     }
     .badge-pin-lock {
       border-color: rgba(129, 140, 248, 0.45);
+      background: rgba(129, 140, 248, 0.08);
     }
     .pulse-dot-teal {
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: #2DD4BF;
-      box-shadow: 0 0 8px #2DD4BF;
+      box-shadow: 0 0 10px #2DD4BF, 0 0 20px rgba(45, 212, 191, 0.6);
       animation: pulse 2s infinite;
     }
 
-    /* 1. Ultra-Wide & Large Desktop (>= 1360px):
-          Badges float gracefully on the sides with 20px clearance outside the phone */
-    @media (min-width: 1360px) {
-      .badge-edge-sync {
-        right: calc(100% + 20px);
-        top: 140px;
-        left: auto;
-        bottom: auto;
+    @media (max-width: 480px) {
+      .phone-badges-header {
+        flex-direction: row;
+        gap: 8px;
       }
-      .badge-pin-lock {
-        left: calc(100% + 20px);
-        top: 380px;
-        right: auto;
-        bottom: auto;
-      }
-    }
-
-    /* 2. Standard Laptops / Compact Desktop (1025px - 1359px):
-          Badges float cleanly ABOVE the phone with 16px vertical gap (0 overlap) */
-    @media (min-width: 1025px) and (max-width: 1359px) {
-      .badge-edge-sync {
-        bottom: calc(100% + 16px);
-        left: 0;
-        top: auto;
-        right: auto;
-      }
-      .badge-pin-lock {
-        bottom: calc(100% + 16px);
-        right: 0;
-        top: auto;
-        left: auto;
-      }
-    }
-
-    /* 3. Mobile & Tablets (<= 1024px):
-          Badges display in a centered horizontal row cleanly above the phone mockup */
-    @media (max-width: 1024px) {
-      .mobile-badges-row {
-        display: flex !important;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-        margin-bottom: 20px;
-        width: 100%;
-      }
-      .keynote-floating-badge {
-        position: static !important;
-        margin: 0;
-        display: inline-flex;
+      .keynote-pill-badge {
+        font-size: 11px;
+        padding: 6px 12px;
       }
     }
 
@@ -3178,16 +3144,15 @@
       <!-- RIGHT COLUMN: Authentic Android Phone with Real Live App Interface & Floating Badges -->
       <div class="hero-keynote-right">
         <div class="phone-stage-wrapper">
-          <div class="mobile-badges-row">
-            <!-- Floating Pill Badge 1: Real-Time Edge Sync -->
-            <div class="keynote-floating-badge badge-edge-sync">
+          <!-- Keynote Callout Badges: Centered Directly Above Phone Mockup (100% Visible, Zero Overlap) -->
+          <div class="phone-badges-header">
+            <div class="keynote-pill-badge badge-edge-sync">
               <span class="pulse-dot-teal"></span>
               <span>Real-Time Edge Sync</span>
             </div>
 
-            <!-- Floating Pill Badge 2: Role-Based PIN Security -->
-            <div class="keynote-floating-badge badge-pin-lock">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <div class="keynote-pill-badge badge-pin-lock">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
                 <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
               </svg>
