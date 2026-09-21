@@ -1554,10 +1554,11 @@
 
     /* Comprehensive Mobile Responsive Architecture */
     @media (max-width: 1024px) {
-      .features-grid { grid-template-columns: repeat(2, 1fr); }
-      .arch-showcase-grid { grid-template-columns: 1fr; gap: 30px; }
-      .security-showcase-grid { grid-template-columns: 1fr; gap: 30px; }
-      .security-pillar-grid { grid-template-columns: repeat(2, 1fr); }
+      .features-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .arch-showcase-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 30px; width: 100% !important; max-width: 100% !important; }
+      .security-showcase-grid { grid-template-columns: minmax(0, 1fr); gap: 30px; width: 100%; max-width: 100%; }
+      .security-pillar-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .arch-visual-box, .streams-wrapper { min-width: 0 !important; max-width: 100% !important; width: 100% !important; box-sizing: border-box !important; }
     }
 
     @media (max-width: 900px) {
@@ -2246,7 +2247,9 @@
         clear: both;
       }
       .bento-flagship-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
+        width: 100%;
+        max-width: 100%;
       }
       .bento-flagship-card {
         padding: 24px;
@@ -3378,8 +3381,11 @@
         padding: 10px 16px 24px !important;
         margin-left: -16px;
         margin-right: -16px;
+        max-width: calc(100% + 32px) !important;
+        width: calc(100% + 32px) !important;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        box-sizing: border-box !important;
       }
       .apple-bento-12-grid::-webkit-scrollbar {
         display: none;
@@ -3415,8 +3421,11 @@
         padding: 6px 16px 20px !important;
         margin-left: -16px;
         margin-right: -16px;
+        max-width: calc(100% + 32px) !important;
+        width: calc(100% + 32px) !important;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        box-sizing: border-box !important;
       }
       .streams-stack::-webkit-scrollbar {
         display: none;
