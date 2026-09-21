@@ -2790,46 +2790,70 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
     }
     .hero-keynote-right .phone-mockup-wrapper {
+      width: 100%;
       max-width: 380px;
       margin: 0 auto;
       box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.08);
       border-radius: 46px;
+      box-sizing: border-box;
     }
     
 
     /* Tablet & Mobile Keynote Cascade */
     @media (max-width: 1024px) {
       .hero-keynote-container {
-        grid-template-columns: 1fr;
-        gap: 40px;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 36px;
         text-align: center;
         padding: 0 16px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
       }
       .hero-keynote-left {
         text-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
       }
       .hero-title {
-        font-size: 38px;
+        font-size: clamp(28px, 5vw, 38px);
+        line-height: 1.15;
         text-align: center !important;
+        max-width: 680px;
+        margin-left: auto;
+        margin-right: auto;
+        overflow-wrap: break-word;
       }
       .hero-subtitle {
         text-align: center !important;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: clamp(14px, 3.5vw, 17px);
+        line-height: 1.55;
       }
       .hero-cta-group {
         justify-content: center;
+        width: 100%;
       }
       .perf-metrics-ribbon {
-        max-width: 480px;
+        max-width: 440px;
         grid-template-columns: repeat(2, 1fr);
         margin: 20px auto;
       }
       .keynote-mini-grid {
-        max-width: 480px;
+        max-width: 440px;
         margin: 0 auto;
       }
       
@@ -2840,17 +2864,187 @@
         padding: 0 18px;
         height: 56px;
       }
+      .desktop-br {
+        display: none;
+      }
     }
     @media (max-width: 640px) {
+      .hero-keynote-container {
+        padding: 0 12px;
+        gap: 24px;
+      }
       .hero-title {
-        font-size: 29px;
+        font-size: clamp(23px, 6.2vw, 29px);
+        line-height: 1.18;
+        margin-bottom: 14px;
+      }
+      .hero-subtitle {
+        font-size: 14px;
+        margin-bottom: 22px;
+        line-height: 1.5;
+        padding: 0 4px;
+      }
+      .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+        max-width: 310px;
+        margin: 0 auto 24px;
+        gap: 10px;
+      }
+      .hero-cta-group .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 18px;
+        box-sizing: border-box;
       }
       .keynote-mini-grid {
         grid-template-columns: 1fr;
-        max-width: 340px;
+        max-width: 100%;
+        width: 100%;
       }
       .perf-metrics-ribbon {
-        max-width: 340px;
+        max-width: 100%;
+        width: 100%;
+        padding: 10px 12px;
+        gap: 8px;
+      }
+      .perf-metric-val {
+        font-size: 16px;
+      }
+      .perf-metric-lbl {
+        font-size: 10px;
+      }
+      .hero-keynote-right .phone-mockup-wrapper,
+      .phone-mockup-wrapper {
+        width: 100% !important;
+        max-width: 334px !important;
+        margin: 0 auto 30px !important;
+      }
+      .phone-outer-shell {
+        border-width: 5px !important;
+        border-radius: 32px !important;
+      }
+      .phone-status-bar {
+        padding: 8px 12px 4px !important;
+        font-size: 11px !important;
+      }
+      .punch-hole-camera {
+        width: 9px !important;
+        height: 9px !important;
+      }
+      .phone-screen-body {
+        padding: 6px 8px 14px !important;
+        gap: 8px !important;
+      }
+      .phone-hero-card {
+        padding: 10px 12px !important;
+        min-height: 120px !important;
+      }
+      .metric-sub-card {
+        padding: 6px 8px !important;
+      }
+      .metric-sub-num {
+        font-size: 20px !important;
+      }
+      .quick-actions-row {
+        gap: 6px !important;
+      }
+      .qa-icon-circle {
+        width: 40px !important;
+        height: 40px !important;
+      }
+      .qa-icon-circle svg {
+        width: 18px !important;
+        height: 18px !important;
+      }
+      .qa-label {
+        font-size: 9.5px !important;
+      }
+      .shortage-banner {
+        padding: 8px 10px !important;
+        border-radius: 12px !important;
+      }
+      .shortage-title {
+        font-size: 11px !important;
+      }
+      .shortage-sub {
+        font-size: 9.5px !important;
+      }
+      .chart-card-box {
+        padding: 9px 10px !important;
+        border-radius: 14px !important;
+      }
+      .chart-bars-wrap {
+        height: 90px !important;
+      }
+      .chart-pair {
+        height: 72px !important;
+        gap: 1px !important;
+      }
+      .c-bar {
+        width: 5px !important;
+      }
+      .chart-day-label {
+        font-size: 8px !important;
+      }
+      .top-seller-chip {
+        min-width: 102px !important;
+      }
+      .top-seller-thumb {
+        height: 58px !important;
+      }
+      .catalog-health-card {
+        padding: 8px 10px !important;
+      }
+      .catalog-health-chips {
+        gap: 4px !important;
+      }
+      .ch-chip {
+        font-size: 9.5px !important;
+        padding: 3px 6px !important;
+      }
+      .phone-bottom-dock {
+        height: 42px !important;
+        padding: 2px 4px !important;
+      }
+      .dock-tab {
+        padding: 2px 4px !important;
+        font-size: 8px !important;
+      }
+      .dock-tab svg {
+        width: 12px !important;
+        height: 12px !important;
+      }
+    }
+
+    @media (max-width: 365px) {
+      .hero-keynote-container {
+        padding: 0 8px;
+      }
+      .hero-title {
+        font-size: 22px;
+      }
+      .hero-keynote-right .phone-mockup-wrapper,
+      .phone-mockup-wrapper {
+        max-width: 298px !important;
+      }
+      .phone-outer-shell {
+        border-width: 4px !important;
+        border-radius: 26px !important;
+      }
+      .qa-icon-circle {
+        width: 36px !important;
+        height: 36px !important;
+      }
+      .qa-icon-circle svg {
+        width: 16px !important;
+        height: 16px !important;
+      }
+      .qa-label {
+        font-size: 9px !important;
+      }
+      .metric-sub-num {
+        font-size: 18px !important;
       }
     }
 
@@ -2871,31 +3065,37 @@
       width: 100%;
       max-width: 412px;
       margin: 0 auto;
+      box-sizing: border-box;
     }
     .phone-badges-header {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
       width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
       z-index: 5;
     }
     .keynote-pill-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 16px;
+      padding: 7px 14px;
       background: rgba(15, 23, 42, 0.90);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 999px;
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 700;
       color: #F8FAFC;
       box-shadow: 0 10px 24px rgba(0, 0, 0, 0.40);
       white-space: nowrap;
+      max-width: 100%;
+      box-sizing: border-box;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     .keynote-pill-badge:hover {
@@ -2919,14 +3119,27 @@
       animation: pulse 2s infinite;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 768px) {
       .phone-badges-header {
-        flex-direction: row;
         gap: 8px;
+        padding: 0 6px;
       }
       .keynote-pill-badge {
         font-size: 11px;
-        padding: 6px 12px;
+        padding: 5px 11px;
+        gap: 6px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .phone-badges-header {
+        gap: 6px;
+        padding: 0 2px;
+      }
+      .keynote-pill-badge {
+        font-size: 10px;
+        padding: 4px 9px;
+        gap: 5px;
       }
     }
 
@@ -3194,7 +3407,7 @@
         <a href="#qr-install" class="nav-cta-btn">Download APK</a>
       </div>
 
-      <button class="mobile-menu-btn" onclick="toggleMobileDrawer()" aria-label="Toggle Navigation Menu">
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
           <line x1="4" y1="6" x2="20" y2="6" class="hb-line hb-top"></line>
           <line x1="4" y1="12" x2="20" y2="12" class="hb-line hb-mid"></line>
@@ -3317,7 +3530,7 @@
         </div>
 
         <h1 class="hero-title">
-          The Real-Time Multi-Device <br>
+          The Real-Time Multi-Device <br class="desktop-br">
           <span class="grad">Inventory Operating System</span>
         </h1>
 
@@ -4892,6 +5105,7 @@
         document.body.style.overflow = 'hidden';
       }
     }
+    window.toggleMobileDrawer = toggleMobileMenu;
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
