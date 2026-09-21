@@ -6,7 +6,7 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StockGrid — Next-Gen Multi-Device Inventory Platform</title>
+  <title>StockGrid &mdash; Next-Gen Multi-Device Inventory Platform</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -3341,16 +3341,149 @@
         min-height: 320px;
       }
     }
+    /* Mobile Card Rail & Swipe UX (< 640px) */
+    .mobile-swipe-hint {
+      display: none;
+    }
+
     @media (max-width: 640px) {
+      .mobile-swipe-hint {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        font-size: 11.5px;
+        font-weight: 700;
+        color: #94A3B8;
+        margin-bottom: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+      }
+      .mobile-swipe-hint svg {
+        stroke: #818CF8;
+        animation: nudgeRight 1.5s ease-in-out infinite;
+      }
+      @keyframes nudgeRight {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(5px); }
+      }
+
+      /* 12-Card Apple Bento Horizontal Snap Rail */
       .apple-bento-12-grid {
-        grid-template-columns: 1fr;
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
         gap: 14px;
+        padding: 10px 16px 24px !important;
+        margin-left: -16px;
+        margin-right: -16px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .apple-bento-12-grid::-webkit-scrollbar {
+        display: none;
+      }
+      .apple-bento-card {
+        flex: 0 0 82vw;
+        max-width: 300px;
+        min-width: 260px;
+        min-height: 250px;
+        scroll-snap-align: center;
+        box-sizing: border-box;
       }
       .bento-card-tall {
-        min-height: 280px;
+        min-height: 250px;
+      }
+      .bento-card-tall .bento-spotlight-graphic {
+        margin: 10px 0 8px;
+      }
+      .bento-card-small {
+        min-height: 250px;
       }
       .bento-heading {
-        font-size: 16.5px;
+        font-size: 16px;
+      }
+
+      /* Grid Weave 4-Stream Horizontal Snap Rail */
+      .streams-stack {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+        gap: 12px;
+        padding: 6px 16px 20px !important;
+        margin-left: -16px;
+        margin-right: -16px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .streams-stack::-webkit-scrollbar {
+        display: none;
+      }
+      .stream-card {
+        flex: 0 0 82vw;
+        max-width: 290px;
+        min-width: 250px;
+        scroll-snap-align: center;
+        box-sizing: border-box;
+      }
+    }
+
+    /* Mobile Floating Quick-Jump Dock (< 768px) */
+    .mobile-quick-dock {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .mobile-quick-dock {
+        display: flex;
+        position: fixed;
+        bottom: 16px;
+        left: 50%;
+        transform: translateX(-50%) translateY(100px);
+        z-index: 990;
+        background: rgba(15, 23, 42, 0.88);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.7), 0 0 20px rgba(79, 70, 229, 0.25);
+        border-radius: 999px;
+        padding: 5px 6px;
+        gap: 3px;
+        align-items: center;
+        max-width: calc(100vw - 28px);
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .mobile-quick-dock.visible {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .quick-dock-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        color: #94A3B8;
+        font-size: 11px;
+        font-weight: 600;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: all 0.2s ease;
+      }
+      .quick-dock-btn:hover, .quick-dock-btn.active {
+        color: #FFFFFF;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .quick-dock-btn.dock-btn-highlight {
+        background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%);
+        color: #FFFFFF;
+        font-weight: 700;
+        padding: 6px 12px;
+        box-shadow: 0 2px 10px rgba(79, 70, 229, 0.4);
       }
     }
 
@@ -3398,7 +3531,7 @@
       <ul class="nav-links">
         <li><a href="#interactive-suite">Hardware</a></li>
         <li><a href="#features">Features</a></li>
-        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#architecture">Grid Weave&trade;</a></li>
         <li><a href="#security">Security</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
@@ -3459,7 +3592,7 @@
                 <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
               </svg>
             </span>
-            <span>Cloud & Sync Engine</span>
+            <span>Grid Weave&trade; Synchronization Engine</span>
           </a>
         </li>
         <li>
@@ -3551,7 +3684,7 @@
         <div class="perf-metrics-ribbon">
           <div class="perf-metric-item">
             <div class="perf-metric-val color-teal">&lt; 50ms</div>
-            <div class="perf-metric-lbl">Edge Sync</div>
+            <div class="perf-metric-lbl">Grid Weave&trade; Sync</div>
           </div>
           <div class="perf-metric-item">
             <div class="perf-metric-val color-emerald">100%</div>
@@ -3593,7 +3726,7 @@
           <div class="phone-badges-header">
             <div class="keynote-pill-badge badge-edge-sync">
               <span class="pulse-dot-teal"></span>
-              <span>Real-Time Edge Sync</span>
+              <span>Grid Weave&trade; Synchronization Engine</span>
             </div>
 
             <div class="keynote-pill-badge badge-pin-lock">
@@ -4091,10 +4224,10 @@
 
         <!-- Card 2: Live Multi-Device Sync Stream (Split Left) -->
         <div class="bento-flagship-card card-sync-stream">
-          <div class="bento-card-tag color-indigo">DISTRIBUTED LEDGER AUDIT</div>
-          <h3 class="bento-card-title">Sub-50ms Multi-Device Sync</h3>
+          <div class="bento-card-tag color-indigo">GRID WEAVE&trade; SYNCHRONIZATION ENGINE</div>
+          <h3 class="bento-card-title">Grid Weave&trade; Sub-50ms Multi-Device Sync</h3>
           <p class="bento-card-desc">
-            Every barcode scan, stock intake, and wholesale dispatch syncs across all billing counters and warehouse tablets in real time.
+            Every barcode scan, stock intake, and wholesale dispatch syncs across all billing counters and warehouse tablets in real time via the Grid Weave&trade; engine.
           </p>
 
           <div class="live-sync-audit-feed">
@@ -4164,6 +4297,12 @@
         </p>
       </div>
 
+      <!-- Mobile Swipe Guide -->
+      <div class="mobile-swipe-hint">
+        <span>Swipe to explore 12 capabilities</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+
       <!-- 12-Card Apple Keynote Asymmetric Bento Suite (Option A Fidelity) -->
       <div class="apple-bento-12-grid">
         
@@ -4178,11 +4317,11 @@
                 <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
               </svg>
             </div>
-            <span class="bento-pill-tag tag-teal">&lt; 50ms Edge Sync</span>
+            <span class="bento-pill-tag tag-teal">Grid Weave&trade; Sync</span>
           </div>
           <div class="bento-card-body">
             <h3 class="bento-heading">Real-Time Sync Across Devices</h3>
-            <p class="bento-desc">Instant cloud synchronization powered by Supabase. Every stock adjustment updates all active team devices in milliseconds.</p>
+            <p class="bento-desc">Instant cloud synchronization powered by the Grid Weave&trade; engine &amp; Supabase. Every stock adjustment updates all active team devices in milliseconds.</p>
           </div>
         </div>
 
@@ -4441,7 +4580,7 @@
     <div class="container">
       <div class="section-header">
         <span class="section-tag" style="color: #818CF8;">Proprietary Architecture</span>
-        <h2 class="section-title">The Grid Weave™ Synchronization Engine</h2>
+        <h2 class="section-title">The Grid Weave&trade; Synchronization Engine</h2>
         <p class="section-desc">How StockGrid coordinates inward shipments, sales dispatches, stock counts, and multi-staff device mesh into a unified, reliable cloud-synchronized source of truth.</p>
       </div>
 
@@ -4484,7 +4623,12 @@
         </div>
 
         <!-- 4 Data Streams Breakdown -->
-        <div class="streams-stack">
+        <div class="streams-wrapper">
+          <div class="mobile-swipe-hint">
+            <span>Swipe to explore 4 sync streams</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+          <div class="streams-stack">
           <div class="stream-card">
             <div class="stream-icon" style="color: #14B8A6;">
               <svg class="feature-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -4540,6 +4684,7 @@
               <div class="stream-desc">Centralized registry managing authorized employee phones with one-tap remote device revocation and local offline cache management.</div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>
@@ -4896,7 +5041,7 @@
           </div>
           <h3 class="faq-question">How does multi-device sync work across floor staff?</h3>
           <p class="faq-answer">
-            Powered by the <strong>Grid Weave™ Synchronization Engine</strong> and Supabase Postgres, stock movements recorded by staff automatically synchronize across all registered employee and admin devices with automated background polling and instant manual pull-to-refresh.
+            Powered by the <strong>Grid Weave&trade; Synchronization Engine</strong> and Supabase Postgres, stock movements recorded by staff automatically synchronize across all registered employee and admin devices with automated background polling and instant manual pull-to-refresh.
           </p>
         </div>
 
@@ -4976,7 +5121,7 @@
           <h4>Product</h4>
           <ul>
             <li><a href="#features">Features</a></li>
-            <li><a href="#architecture">Cloud & Sync</a></li>
+            <li><a href="#architecture">Grid Weave&trade; Engine</a></li>
             <li><a href="#security">Security Suite</a></li>
             <li><a href="#faq">Help & FAQs</a></li>
             <li><a href="privacy.html">Privacy Center</a></li>
@@ -5086,6 +5231,7 @@
       const drawer = document.getElementById('mobileDrawer');
       const backdrop = document.getElementById('drawerBackdrop');
       const btn = document.querySelector('.mobile-menu-btn');
+      const dock = document.getElementById('mobileQuickDock');
       const isActive = drawer.classList.contains('active');
       if (isActive) {
         drawer.classList.remove('active');
@@ -5094,6 +5240,9 @@
           btn.setAttribute('aria-expanded', 'false');
           btn.classList.remove('open');
         }
+        if (dock && window.innerWidth <= 768 && window.scrollY > 380) {
+          dock.classList.add('visible');
+        }
         document.body.style.overflow = '';
       } else {
         drawer.classList.add('active');
@@ -5101,6 +5250,9 @@
         if (btn) {
           btn.setAttribute('aria-expanded', 'true');
           btn.classList.add('open');
+        }
+        if (dock) {
+          dock.classList.remove('visible');
         }
         document.body.style.overflow = 'hidden';
       }
@@ -5118,41 +5270,38 @@
   </script>
 
   <!-- ==========================================================================
-       MOBILE FLOATING INSTALL DOCK (Instant 1-Tap Access for Mobile Visitors)
+       MOBILE FLOATING QUICK-JUMP DOCK (1-Tap Navigation & Quick APK Download)
        ========================================================================== -->
-  <div id="mobileStickyDock" class="mobile-sticky-dock">
-    <div class="dock-inner">
-      <div class="dock-app-info">
-        <svg class="dock-app-icon" viewBox="0 0 1024 1024" fill="none">
-          <rect x="302" y="404" width="420" height="72" rx="36" fill="#14B8A6"/>
-          <rect x="302" y="548" width="420" height="72" rx="36" fill="#FB7185"/>
-          <rect x="404" y="302" width="72" height="420" rx="36" fill="#4F46E5"/>
-          <rect x="548" y="302" width="72" height="420" rx="36" fill="#F59E0B"/>
-        </svg>
-        <div class="dock-text">
-          <div class="dock-title">StockGrid for Android</div>
-          <div class="dock-sub">Theme 2.0 • Offline Ready</div>
-        </div>
-      </div>
-      <a href="#qr-install" class="dock-btn-install">
-        <span>Get APK</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="12" y1="5" x2="12" y2="19"></line>
-          <polyline points="19 12 12 19 5 12"></polyline>
-        </svg>
-      </a>
-    </div>
-  </div>
+  <nav id="mobileQuickDock" class="mobile-quick-dock" aria-label="Quick Mobile Navigation">
+    <a href="#interactive-suite" class="quick-dock-btn" data-section="interactive-suite">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      <span>Workflow</span>
+    </a>
+    <a href="#architecture" class="quick-dock-btn" data-section="architecture">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+      <span>Grid Weave&trade;</span>
+    </a>
+    <a href="#features" class="quick-dock-btn" data-section="features">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      <span>12 Bento</span>
+    </a>
+    <a href="#qr-install" class="quick-dock-btn dock-btn-highlight" data-section="qr-install">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span>APK</span>
+    </a>
+  </nav>
 
   <script>
-    // High-performance throttled scroll handler (60/120fps)
+    // High-performance throttled scroll handler for Mobile Quick Dock (60/120fps)
     let isScrollTicking = false;
     window.addEventListener('scroll', function() {
       if (!isScrollTicking) {
         window.requestAnimationFrame(function() {
-          const dock = document.getElementById('mobileStickyDock');
+          const dock = document.getElementById('mobileQuickDock');
+          const drawer = document.getElementById('mobileDrawer');
+          const isDrawerOpen = drawer && drawer.classList.contains('active');
           if (dock) {
-            if (window.innerWidth <= 768 && window.scrollY > 380) {
+            if (window.innerWidth <= 768 && window.scrollY > 380 && !isDrawerOpen) {
               dock.classList.add('visible');
             } else {
               dock.classList.remove('visible');
