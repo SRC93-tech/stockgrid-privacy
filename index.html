@@ -5,7 +5,7 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>StockGrid &mdash; Next-Gen Multi-Device Inventory Platform</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -3510,6 +3510,233 @@
       height: 100%;
     }
 
+
+    /* ==========================================================================
+       NEXT-GEN MOBILE RESPONSIVE ENGINE (320px - 768px Precision)
+       ========================================================================== */
+    :root {
+      --page-pad: 24px;
+    }
+    @media (max-width: 1024px) {
+      :root { --page-pad: 20px; }
+    }
+    @media (max-width: 768px) {
+      :root { --page-pad: 16px; }
+    }
+    @media (max-width: 480px) {
+      :root { --page-pad: 14px; }
+    }
+    @media (max-width: 360px) {
+      :root { --page-pad: 10px; }
+    }
+
+    /* Universal Viewport & Horizontal Overflow Lock */
+    html, body {
+      max-width: 100% !important;
+      overflow-x: hidden !important;
+      touch-action: pan-y;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    /* Unified Container Gutter across all sections */
+    .container,
+    .hero-keynote-container {
+      padding-left: var(--page-pad) !important;
+      padding-right: var(--page-pad) !important;
+      box-sizing: border-box !important;
+      width: 100% !important;
+      max-width: 1240px;
+    }
+
+    /* Edge-to-Edge Mobile Scroll Rails: Perfectly match container padding with zero overflow */
+    @media (max-width: 768px) {
+      .apple-bento-12-grid,
+      .streams-stack {
+        margin-left: calc(-1 * var(--page-pad)) !important;
+        margin-right: calc(-1 * var(--page-pad)) !important;
+        padding-left: var(--page-pad) !important;
+        padding-right: var(--page-pad) !important;
+        width: calc(100% + (2 * var(--page-pad))) !important;
+        max-width: calc(100% + (2 * var(--page-pad))) !important;
+        box-sizing: border-box !important;
+      }
+
+      /* Floating Header Touch Polish & Safe Area */
+      .navbar-wrapper {
+        top: max(8px, env(safe-area-inset-top, 8px)) !important;
+        padding: 0 var(--page-pad) !important;
+      }
+      .nav-floating-pill {
+        height: 52px !important;
+        padding: 0 14px !important;
+        border-radius: 999px !important;
+      }
+      .brand-title {
+        font-size: 18px !important;
+      }
+      .logo-icon-svg {
+        width: 30px !important;
+        height: 30px !important;
+      }
+
+      /* Slide-out Drawer Safe Area & Height */
+      .mobile-drawer {
+        height: 100dvh !important;
+        min-height: -webkit-fill-available;
+        padding-top: max(20px, env(safe-area-inset-top, 20px)) !important;
+        padding-bottom: max(20px, env(safe-area-inset-bottom, 20px)) !important;
+      }
+      .close-drawer-btn {
+        width: 44px !important;
+        height: 44px !important;
+        border-radius: 12px !important;
+      }
+
+      /* Floating Quick Dock Safe Area & Touch Ergonomics */
+      .mobile-quick-dock {
+        bottom: max(12px, env(safe-area-inset-bottom, 12px)) !important;
+        max-width: calc(100% - 24px) !important;
+        padding: 4px 6px !important;
+      }
+      .quick-dock-btn {
+        min-height: 38px !important;
+        padding: 7px 10px !important;
+        font-size: 11px !important;
+      }
+
+      /* Phone Mockup Fluid Sizing in Hero */
+      .hero-keynote-right .phone-mockup-wrapper,
+      .phone-mockup-wrapper {
+        max-width: min(340px, 100%) !important;
+        margin: 0 auto 30px !important;
+      }
+
+      /* Performance Ribbon & Cards */
+      .perf-metrics-ribbon {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+      }
+
+      /* CTA Buttons touch sizing */
+      .hero-cta-group .btn,
+      .hero-cta-group .btn-primary,
+      .hero-cta-group .btn-secondary {
+        min-height: 48px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 14px !important;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .quick-dock-btn {
+        padding: 6px 7px !important;
+        gap: 3px !important;
+      }
+      .quick-dock-btn span {
+        font-size: 10px !important;
+      }
+      .hero-title {
+        font-size: 24px !important;
+      }
+      .bento-card-title {
+        font-size: 19px !important;
+      }
+    }
+
+
+    /* ==========================================================================
+       MOBILE POLISH: SLEEK HERO PHONE MOCKUP & COMPACT DOCK
+       ========================================================================== */
+    @media (max-width: 768px) {
+      /* Single-line sleek keynote badges */
+      .phone-badges-header {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 6px !important;
+        width: 100% !important;
+        max-width: 340px !important;
+        margin: 0 auto 12px !important;
+      }
+      .keynote-pill-badge {
+        padding: 5px 9px !important;
+        font-size: 11px !important;
+        white-space: nowrap !important;
+        flex: 1 1 auto !important;
+        justify-content: center !important;
+      }
+
+      /* Compact Phone Mockup: Streamline height on real phones */
+      .phone-mockup-wrapper .chart-card-box,
+      .phone-mockup-wrapper .catalog-health-card,
+      .phone-mockup-wrapper .phone-bottom-dock {
+        display: none !important;
+      }
+      .phone-mockup-wrapper {
+        max-width: 320px !important;
+        margin: 0 auto 24px !important;
+        border-radius: 36px !important;
+      }
+      .phone-outer-shell {
+        border-radius: 36px !important;
+        border-width: 5px !important;
+      }
+      .phone-screen-body {
+        padding-bottom: 14px !important;
+      }
+
+      /* Mobile Quick Dock: 100% Fitted with zero clipping */
+      .mobile-quick-dock {
+        bottom: max(14px, env(safe-area-inset-bottom, 14px)) !important;
+        left: 50% !important;
+        transform: translateX(-50%) translateY(100px);
+        width: max-content !important;
+        max-width: calc(100% - 24px) !important;
+        padding: 4px 6px !important;
+        gap: 3px !important;
+        box-sizing: border-box !important;
+      }
+      .mobile-quick-dock.visible {
+        transform: translateX(-50%) translateY(0) !important;
+      }
+      .quick-dock-btn {
+        padding: 6px 9px !important;
+        font-size: 11px !important;
+        gap: 4px !important;
+        white-space: nowrap !important;
+      }
+      .quick-dock-btn svg {
+        width: 12px !important;
+        height: 12px !important;
+      }
+      .quick-dock-btn.dock-btn-highlight {
+        padding: 6px 12px !important;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .keynote-pill-badge {
+        font-size: 10px !important;
+        padding: 4px 7px !important;
+      }
+      .quick-dock-btn {
+        padding: 5px 7px !important;
+        font-size: 10px !important;
+        gap: 2px !important;
+      }
+      .quick-dock-btn.dock-btn-highlight {
+        padding: 5px 9px !important;
+      }
+      .phone-mockup-wrapper {
+        max-width: 295px !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -3601,7 +3828,7 @@
                 <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
               </svg>
             </span>
-            <span>Grid Weave&trade; Synchronization Engine</span>
+            <span>Grid Weave&trade; Sync</span>
           </a>
         </li>
         <li>
@@ -3735,7 +3962,7 @@
           <div class="phone-badges-header">
             <div class="keynote-pill-badge badge-edge-sync">
               <span class="pulse-dot-teal"></span>
-              <span>Grid Weave&trade; Synchronization Engine</span>
+              <span>Grid Weave&trade; Sync</span>
             </div>
 
             <div class="keynote-pill-badge badge-pin-lock">
@@ -3743,7 +3970,7 @@
                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
                 <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
               </svg>
-              <span>Role-Based PIN Security</span>
+              <span>Master PIN Lock</span>
             </div>
           </div>
 
@@ -5159,7 +5386,7 @@
 
       <div class="footer-bottom">
         <span>© 2026 StockGrid (SRC93-tech). All rights reserved.</span>
-        <span>Android Edition • Multi-Device Inventory Platform</span>
+        <span>Android Edition &bull; Multi-Device Inventory Platform</span>
       </div>
     </div>
   </footer>
@@ -5288,11 +5515,11 @@
     </a>
     <a href="#architecture" class="quick-dock-btn" data-section="architecture">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
-      <span>Grid Weave&trade;</span>
+      <span>Sync</span>
     </a>
     <a href="#features" class="quick-dock-btn" data-section="features">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-      <span>12 Bento</span>
+      <span>Features</span>
     </a>
     <a href="#qr-install" class="quick-dock-btn dock-btn-highlight" data-section="qr-install">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
