@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="refresh" content="1;url=https://play.google.com/store/apps/details?id=com.stockgrid.android&hl=en_IN">
   <title>Download StockGrid Android APK (v4.5)</title>
   <meta name="description" content="Official Android APK direct download for StockGrid - The Real-Time Multi-Device Inventory OS for Garments & Apparel.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -283,49 +284,44 @@
     <div class="download-card">
       <div class="status-badge">
         <span class="pulse-dot"></span>
-        <span id="status-text">Starting Download...</span>
+        <span id="status-text">Redirecting to Google Play...</span>
       </div>
 
-      <h1>StockGrid for Android</h1>
+      <h1>StockGrid on Google Play</h1>
       <p class="subtitle">Official release for warehouse smartphones, handheld scanners, and store tablets.</p>
 
-      <a id="download-btn" href="https://github.com/SRC93-tech/stockgrid-privacy/releases/download/v4.5.30/StockGrid_v4.5.apk" download="StockGrid_v4.5.apk" class="btn-download-primary">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-          <polyline points="7 10 12 15 17 10"></polyline>
-          <line x1="12" y1="15" x2="12" y2="3"></line>
+      <a id="download-btn" href="https://play.google.com/store/apps/details?id=com.stockgrid.android&hl=en_IN" class="btn-download-primary">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
         </svg>
-        <span>Download APK (41.6 MB)</span>
+        <span>Get it on Google Play</span>
       </a>
 
-      <a href="https://github.com/SRC93-tech/stockgrid-privacy/releases/download/v4.5.30/StockGrid_v4.5.apk" class="btn-download-mirror" download>
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-        </svg>
-        <span>GitHub CDN Mirror Link</span>
-      </a>
+      
 
-      <div class="meta-strip">
-        <span>Build v4.5.30+504</span>
-        <span>&bull;</span>
-        <span>Android 8.0+ Ready</span>
-        <span>&bull;</span>
-        <span>Direct Sideload</span>
-      </div>
+      <div class="meta-strip"><span>Google Play Verified</span><span>&bull;</span><span>Android 8.0+ Ready</span><span>&bull;</span><span>Official App Store Release</span></div>
 
       <div class="install-steps">
         <div class="install-steps-title">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A5B4FC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="16" x2="12" y2="12"></line>
-            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            <polyline points="12 6 12 12 14 14"></polyline>
           </svg>
-          Quick Android Sideload Guide
+          Google Play Direct Redirect
         </div>
         <div class="step-row">
           <div class="step-badge">1</div>
-          <div class="step-text">Tap <strong>Download anyway</strong> if Chrome or your browser warns about APK files.</div>
+          <div class="step-text">If not redirected automatically, tap the <strong>Get it on Google Play</strong> button above.</div>
         </div>
+        <div class="step-row">
+          <div class="step-badge">2</div>
+          <div class="step-text">On Google Play Store, tap <strong>Install</strong> to install the latest official release.</div>
+        </div>
+        <div class="step-row">
+          <div class="step-badge">3</div>
+          <div class="step-text">Open StockGrid to instantly initialize offline SQLite storage & staff roles.</div>
+        </div>
+      </div>
         <div class="step-row">
           <div class="step-badge">2</div>
           <div class="step-text">When finished, tap the notification or open <strong>Downloads</strong>.</div>
@@ -368,17 +364,12 @@
   </div>
 
   <script>
-    // Automatically initiate download after brief 800ms buffer
+    // Redirect to Google Play Store after brief 600ms buffer
     setTimeout(function() {
-      var link = document.createElement('a');
-      link.href = 'https://github.com/SRC93-tech/stockgrid-privacy/releases/download/v4.5.30/StockGrid_v4.5.apk';
-      link.download = 'StockGrid_v4.5.apk';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      window.location.href = "https://play.google.com/store/apps/details?id=com.stockgrid.android&hl=en_IN";
       var statusEl = document.getElementById('status-text');
-      if (statusEl) statusEl.textContent = 'Download In Progress';
-    }, 800);
+      if (statusEl) statusEl.textContent = 'Opening Google Play Store...';
+    }, 600);
   </script>
 
 </body>
