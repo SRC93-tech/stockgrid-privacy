@@ -3290,6 +3290,9 @@
     .glow-indigo { background: rgba(129, 140, 248, 0.08); box-shadow: 0 0 32px rgba(129, 140, 248, 0.28); border-color: rgba(129, 140, 248, 0.4); }
     .glow-amber { background: rgba(245, 158, 11, 0.08); box-shadow: 0 0 32px rgba(245, 158, 11, 0.28); border-color: rgba(245, 158, 11, 0.4); }
     .glow-emerald { background: rgba(74, 222, 128, 0.08); box-shadow: 0 0 32px rgba(74, 222, 128, 0.28); border-color: rgba(74, 222, 128, 0.4); }
+    .glow-teal { background: rgba(45, 212, 191, 0.08); box-shadow: 0 0 32px rgba(45, 212, 191, 0.28); border-color: rgba(45, 212, 191, 0.4); }
+    .glow-pink { background: rgba(251, 113, 133, 0.08); box-shadow: 0 0 32px rgba(251, 113, 133, 0.28); border-color: rgba(251, 113, 133, 0.4); }
+    .glow-blue { background: rgba(96, 165, 250, 0.08); box-shadow: 0 0 32px rgba(96, 165, 250, 0.28); border-color: rgba(96, 165, 250, 0.4); }
 
     .spotlight-badge {
       font-size: 11px;
@@ -3300,6 +3303,16 @@
     .color-indigo { color: #818CF8; }
     .color-amber { color: #F59E0B; }
     .color-emerald { color: #4ADE80; }
+    .color-teal { color: #2DD4BF; }
+    .color-pink { color: #FB7185; }
+    .color-blue { color: #60A5FA; }
+
+    /* On Desktop (>1024px), small cards preserve compact 200px height; tall spotlight cards showcase the center stage */
+    @media (min-width: 1025px) {
+      .bento-card-small .bento-spotlight-graphic {
+        display: none;
+      }
+    }
 
     .bento-card-body {
       display: flex;
@@ -3391,21 +3404,58 @@
         display: none;
       }
       .apple-bento-card {
-        flex: 0 0 82vw;
-        max-width: 300px;
-        min-width: 260px;
-        min-height: 250px;
+        flex: 0 0 84vw;
+        max-width: 310px;
+        min-width: 270px;
+        min-height: 380px;
+        padding: 20px;
         scroll-snap-align: center;
         box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
-      .bento-card-tall {
-        min-height: 250px;
-      }
-      .bento-card-tall .bento-spotlight-graphic {
-        margin: 10px 0 8px;
-      }
+      .bento-card-tall,
       .bento-card-small {
-        min-height: 250px;
+        min-height: 380px;
+      }
+      /* On mobile, each card has one clean, prominent glowing center icon */
+      .bento-card-top .bento-icon-box {
+        display: none;
+      }
+      .bento-card-top {
+        justify-content: flex-start;
+        margin-bottom: 8px;
+      }
+      .bento-spotlight-graphic {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 14px 0 12px;
+      }
+      .spotlight-circle {
+        width: 84px;
+        height: 84px;
+        margin-bottom: 10px;
+      }
+      .spotlight-circle svg {
+        width: 44px;
+        height: 44px;
+      }
+      .spotlight-badge {
+        font-size: 10.5px;
+        font-weight: 800;
+        letter-spacing: 0.8px;
+      }
+      .bento-heading {
+        font-size: 16.5px;
+        margin-bottom: 6px;
+      }
+      .bento-desc {
+        font-size: 13px;
+        line-height: 1.42;
+        color: #94A3B8;
       }
       .bento-heading {
         font-size: 16px;
@@ -4619,63 +4669,73 @@
 
       <!-- 12-Card Apple Keynote Asymmetric Bento Suite (Option A Fidelity) -->
       <div class="apple-bento-12-grid">
-        
-        <!-- CARD 1: Small Horizontal (Col 1, Row 1) -->
+        <!-- CARD 1: Real-Time Sync Across Devices -->
         <div class="apple-bento-card bento-pos-1 bento-card-small card-glow-teal">
           <div class="bento-card-top">
             <div class="bento-icon-box box-teal">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 1l4 4-4 4"/>
-                <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
-                <path d="M7 23l-4-4 4-4"/>
-                <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+                <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/>
               </svg>
             </div>
             <span class="bento-pill-tag tag-teal">Grid Weave&trade; Sync</span>
           </div>
+
+          <div class="bento-spotlight-graphic">
+            <div class="spotlight-circle glow-teal">
+              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/>
+              </svg>
+            </div>
+            <div class="spotlight-badge color-teal">REAL-TIME SYNC</div>
+          </div>
+
           <div class="bento-card-body">
             <h3 class="bento-heading">Real-Time Sync Across Devices</h3>
             <p class="bento-desc">Instant cloud synchronization powered by the Grid Weave&trade; engine &amp; Supabase. Every stock adjustment updates all active team devices in milliseconds.</p>
           </div>
         </div>
 
-        <!-- CARD 2: Small Horizontal (Col 1, Row 2) -->
+        <!-- CARD 2: Size &amp; Color Grid Breakdown -->
         <div class="apple-bento-card bento-pos-2 bento-card-small card-glow-amber">
           <div class="bento-card-top">
             <div class="bento-icon-box box-amber">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="7" height="7"/>
-                <rect x="14" y="3" width="7" height="7"/>
-                <rect x="14" y="14" width="7" height="7"/>
-                <rect x="3" y="14" width="7" height="7"/>
+                <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/>
               </svg>
             </div>
             <span class="bento-pill-tag tag-amber">Apparel Matrix</span>
           </div>
+
+          <div class="bento-spotlight-graphic">
+            <div class="spotlight-circle glow-amber">
+              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/>
+              </svg>
+            </div>
+            <div class="spotlight-badge color-amber">SIZE &amp; COLOR MATRIX</div>
+          </div>
+
           <div class="bento-card-body">
             <h3 class="bento-heading">Size &amp; Color Grid Breakdown</h3>
             <p class="bento-desc">Engineered for apparel. Track size runs (S, M, L, XL, XXL) and color variants per article without bloated SKU clutter.</p>
           </div>
         </div>
 
-        <!-- CARD 3: TALL SPOTLIGHT (Col 2, Rows 1-2) -->
+        <!-- CARD 3: 100% Offline Architecture -->
         <div class="apple-bento-card bento-pos-3 bento-card-tall card-glow-purple">
           <div class="bento-card-top">
             <div class="bento-icon-box box-purple">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C084FC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <ellipse cx="12" cy="5" rx="9" ry="3"/>
-                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
-                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><line x1="2" y1="2" x2="22" y2="22"/>
               </svg>
             </div>
             <span class="bento-pill-tag tag-purple">Zero Wi-Fi Dependency</span>
           </div>
-          
+
           <div class="bento-spotlight-graphic">
             <div class="spotlight-circle glow-purple">
               <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#C084FC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/>
-                <line x1="2" y1="2" x2="22" y2="22"/>
+                <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><line x1="2" y1="2" x2="22" y2="22"/>
               </svg>
             </div>
             <div class="spotlight-badge color-purple">LOCAL SQLITE ENGINE</div>
@@ -4687,13 +4747,12 @@
           </div>
         </div>
 
-        <!-- CARD 4: TALL SPOTLIGHT (Col 3, Rows 1-2) -->
+        <!-- CARD 4: Enterprise PIN Role Isolation -->
         <div class="apple-bento-card bento-pos-4 bento-card-tall card-glow-indigo">
           <div class="bento-card-top">
             <div class="bento-icon-box box-indigo">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><rect x="9" y="10" width="6" height="5" rx="1"/><path d="M10 10V8a2 2 0 0 1 4 0v2"/>
               </svg>
             </div>
             <span class="bento-pill-tag tag-indigo">AES-256 PIN Shield</span>
@@ -4702,9 +4761,7 @@
           <div class="bento-spotlight-graphic">
             <div class="spotlight-circle glow-indigo">
               <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                <circle cx="12" cy="11" r="2.5"/>
-                <path d="M12 13.5v3"/>
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><rect x="9" y="10" width="6" height="5" rx="1"/><path d="M10 10V8a2 2 0 0 1 4 0v2"/>
               </svg>
             </div>
             <div class="spotlight-badge color-indigo">ROLE ISOLATION</div>
@@ -4716,51 +4773,64 @@
           </div>
         </div>
 
-        <!-- CARD 5: Small Horizontal (Col 4, Row 1) -->
+        <!-- CARD 5: Continuous Barcode Engine -->
         <div class="apple-bento-card bento-pos-5 bento-card-small card-glow-pink">
           <div class="bento-card-top">
             <div class="bento-icon-box box-pink">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FB7185" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 7V5a2 2 0 0 1 2-2h2"/>
-                <path d="M17 3h2a2 2 0 0 1 2 2v2"/>
-                <path d="M21 17v2a2 2 0 0 1-2 2h-2"/>
-                <path d="M7 21H5a2 2 0 0 1-2-2v-2"/>
-                <line x1="3" y1="12" x2="21" y2="12"/>
+                <path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><line x1="7" y1="8" x2="7" y2="16"/><line x1="10" y1="8" x2="10" y2="16"/><line x1="13" y1="8" x2="13" y2="16"/><line x1="17" y1="8" x2="17" y2="16"/><line x1="3" y1="12" x2="21" y2="12" stroke-width="2"/>
               </svg>
             </div>
             <span class="bento-pill-tag tag-pink">EAN-13 &amp; Code 128</span>
           </div>
+
+          <div class="bento-spotlight-graphic">
+            <div class="spotlight-circle glow-pink">
+              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#FB7185" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><line x1="7" y1="8" x2="7" y2="16"/><line x1="10" y1="8" x2="10" y2="16"/><line x1="13" y1="8" x2="13" y2="16"/><line x1="17" y1="8" x2="17" y2="16"/><line x1="3" y1="12" x2="21" y2="12" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="spotlight-badge color-pink">CONTINUOUS SCANNER</div>
+          </div>
+
           <div class="bento-card-body">
             <h3 class="bento-heading">Continuous Barcode Engine</h3>
             <p class="bento-desc">Rapid camera autofocus with torch assist and instant audio confirmation for dimly lit textile aisles and garment cartons.</p>
           </div>
         </div>
 
-        <!-- CARD 6: Small Horizontal (Col 4, Row 2) -->
+        <!-- CARD 6: Stock Flow &amp; 7-Day Trend -->
         <div class="apple-bento-card bento-pos-6 bento-card-small card-glow-emerald">
           <div class="bento-card-top">
             <div class="bento-icon-box box-emerald">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
-                <polyline points="16 7 22 7 22 13"/>
+                <path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 6-6"/><path d="M17 6h4v4"/>
               </svg>
             </div>
             <span class="bento-pill-tag tag-emerald">Live Velocity</span>
           </div>
+
+          <div class="bento-spotlight-graphic">
+            <div class="spotlight-circle glow-emerald">
+              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 6-6"/><path d="M17 6h4v4"/>
+              </svg>
+            </div>
+            <div class="spotlight-badge color-emerald">FLOW &amp; ANALYTICS</div>
+          </div>
+
           <div class="bento-card-body">
             <h3 class="bento-heading">Stock Flow &amp; 7-Day Trend</h3>
             <p class="bento-desc">Visual daily inward purchase lots vs customer dispatches. Spot top-selling articles and reordering bottlenecks at a glance.</p>
           </div>
         </div>
 
-        <!-- CARD 7: TALL SPOTLIGHT (Col 1, Rows 3-4) -->
+        <!-- CARD 7: Thermal Label &amp; Hangtag Printing -->
         <div class="apple-bento-card bento-pos-7 bento-card-tall card-glow-amber">
           <div class="bento-card-top">
             <div class="bento-icon-box box-amber">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6 9 6 2 18 2 18 9"/>
-                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
-                <rect x="6" y="14" width="12" height="8"/>
+                <path d="m7 7 10 10-5 5V2l5 5L7 17"/><path d="M19 8a5 5 0 0 1 0 8"/><path d="M21 5a9 9 0 0 1 0 14"/>
               </svg>
             </div>
             <span class="bento-pill-tag tag-amber">ESC/POS Thermal</span>
@@ -4769,10 +4839,7 @@
           <div class="bento-spotlight-graphic">
             <div class="spotlight-circle glow-amber">
               <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="4" y="4" width="16" height="16" rx="2"/>
-                <line x1="8" y1="8" x2="16" y2="8"/>
-                <line x1="8" y1="12" x2="16" y2="12"/>
-                <line x1="8" y1="16" x2="12" y2="16"/>
+                <path d="m7 7 10 10-5 5V2l5 5L7 17"/><path d="M19 8a5 5 0 0 1 0 8"/><path d="M21 5a9 9 0 0 1 0 14"/>
               </svg>
             </div>
             <div class="spotlight-badge color-amber">BLUETOOTH &amp; USB</div>
@@ -4784,86 +4851,116 @@
           </div>
         </div>
 
-        <!-- CARD 8: Small Horizontal (Col 2, Row 3) -->
+        <!-- CARD 8: Automated Restock Alerts -->
         <div class="apple-bento-card bento-pos-8 bento-card-small card-glow-pink">
           <div class="bento-card-top">
             <div class="bento-icon-box box-pink">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FB7185" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><circle cx="18" cy="4" r="2.5" fill="#FB7185"/>
               </svg>
             </div>
             <span class="bento-pill-tag tag-pink">Threshold Alerts</span>
           </div>
+
+          <div class="bento-spotlight-graphic">
+            <div class="spotlight-circle glow-pink">
+              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#FB7185" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><circle cx="18" cy="4" r="2.5" fill="#FB7185"/>
+              </svg>
+            </div>
+            <div class="spotlight-badge color-pink">RESTOCK ALERTS</div>
+          </div>
+
           <div class="bento-card-body">
             <h3 class="bento-heading">Automated Restock Alerts</h3>
             <p class="bento-desc">Set custom minimum safety buffers per article variant. Visual warning banners trigger before inventory completely runs out.</p>
           </div>
         </div>
 
-        <!-- CARD 9: Small Horizontal (Col 2, Row 4) -->
+        <!-- CARD 9: Instant Spreadsheet Export -->
         <div class="apple-bento-card bento-pos-9 bento-card-small card-glow-teal">
           <div class="bento-card-top">
             <div class="bento-icon-box box-teal">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                <polyline points="14 2 14 8 20 8"/>
-                <line x1="16" y1="13" x2="8" y2="13"/>
-                <line x1="16" y1="17" x2="8" y2="17"/>
-                <polyline points="10 9 9 9 8 9"/>
+                <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 9v12"/><path d="M14 13l3 3m0 0l3-3m-3 3V13"/>
               </svg>
             </div>
             <span class="bento-pill-tag tag-teal">CSV &amp; Excel</span>
           </div>
+
+          <div class="bento-spotlight-graphic">
+            <div class="spotlight-circle glow-teal">
+              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 9v12"/><path d="M14 13l3 3m0 0l3-3m-3 3V13"/>
+              </svg>
+            </div>
+            <div class="spotlight-badge color-teal">EXCEL &amp; CSV EXPORT</div>
+          </div>
+
           <div class="bento-card-body">
             <h3 class="bento-heading">Instant Spreadsheet Export</h3>
             <p class="bento-desc">Generate detailed stock status reports, valuation breakdowns, and audit discrepancy logs to Excel with one tap.</p>
           </div>
         </div>
 
-        <!-- CARD 10: Small Horizontal (Col 3, Row 3) -->
+        <!-- CARD 10: Staff Audit Trail &amp; History -->
         <div class="apple-bento-card bento-pos-10 bento-card-small card-glow-blue">
           <div class="bento-card-top">
             <div class="bento-icon-box box-blue">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <polyline points="12 6 12 12 16 14"/>
+                <circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/><path d="M19 12a7 7 0 1 0-7 7"/>
               </svg>
             </div>
             <span class="bento-pill-tag tag-blue">Immutable Audit</span>
           </div>
+
+          <div class="bento-spotlight-graphic">
+            <div class="spotlight-circle glow-blue">
+              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/><path d="M19 12a7 7 0 1 0-7 7"/>
+              </svg>
+            </div>
+            <div class="spotlight-badge color-blue">STAFF AUDIT TRAIL</div>
+          </div>
+
           <div class="bento-card-body">
             <h3 class="bento-heading">Staff Audit Trail &amp; History</h3>
             <p class="bento-desc">Every single adjustment logs employee username, device ID, timestamp, and adjustment reason for 100% loss prevention.</p>
           </div>
         </div>
 
-        <!-- CARD 11: Small Horizontal (Col 3, Row 4) -->
+        <!-- CARD 11: Multi-Counter &amp; Warehouse Scale -->
         <div class="apple-bento-card bento-pos-11 bento-card-small card-glow-indigo">
           <div class="bento-card-top">
             <div class="bento-icon-box box-indigo">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
-                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
-                <line x1="6" y1="6" x2="6.01" y2="6"/>
-                <line x1="6" y1="18" x2="6.01" y2="18"/>
+                <rect x="2" y="2" width="8" height="8" rx="2"/><rect x="14" y="2" width="8" height="8" rx="2"/><rect x="8" y="14" width="8" height="8" rx="2"/><path d="M6 10v2a2 2 0 0 0 2 2h4"/><path d="M18 10v2a2 2 0 0 1-2 2h-4"/>
               </svg>
             </div>
             <span class="bento-pill-tag tag-indigo">Infinite Scale</span>
           </div>
+
+          <div class="bento-spotlight-graphic">
+            <div class="spotlight-circle glow-indigo">
+              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="8" height="8" rx="2"/><rect x="14" y="2" width="8" height="8" rx="2"/><rect x="8" y="14" width="8" height="8" rx="2"/><path d="M6 10v2a2 2 0 0 0 2 2h4"/><path d="M18 10v2a2 2 0 0 1-2 2h-4"/>
+              </svg>
+            </div>
+            <div class="spotlight-badge color-indigo">MULTI-COUNTER MESH</div>
+          </div>
+
           <div class="bento-card-body">
             <h3 class="bento-heading">Multi-Counter &amp; Warehouse Scale</h3>
             <p class="bento-desc">Deploy seamlessly across 2 to 50+ staff devices across cutting tables, godowns, and billing counters simultaneously.</p>
           </div>
         </div>
 
-        <!-- CARD 12: TALL SPOTLIGHT (Col 4, Rows 3-4) -->
+        <!-- CARD 12: Google Play Protect Verified -->
         <div class="apple-bento-card bento-pos-12 bento-card-tall card-glow-emerald">
           <div class="bento-card-top">
             <div class="bento-icon-box box-emerald">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                <polyline points="9 12 11 14 15 10"/>
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
               </svg>
             </div>
             <span class="bento-pill-tag tag-emerald">Play Protect</span>
@@ -4872,14 +4969,18 @@
           <div class="bento-spotlight-graphic">
             <div class="spotlight-circle glow-emerald">
               <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                <path d="M9 12l2 2 4-4"/>
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
               </svg>
             </div>
             <div class="spotlight-badge color-emerald">ZERO TRACKERS</div>
           </div>
 
           <div class="bento-card-body">
+            <h3 class="bento-heading">Google Play Protect Verified</h3>
+            <p class="bento-desc">Zero telemetry, zero third-party SDKs, and zero behavioral trackers. Verified and signed directly through the official Google Play Console.</p>
+          </div>
+        </div>
+<div class="bento-card-body">
             <h3 class="bento-heading">Google Play Protect Verified</h3>
             <p class="bento-desc">Clean, secure Android build. Zero advertising frameworks, zero third-party telemetry. Your private inventory and supplier data never leak.</p>
           </div>
