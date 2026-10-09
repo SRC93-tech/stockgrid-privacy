@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.stockgrid.android",
+      "sha256_cert_fingerprints": [
+        "AF:2B:88:76:C7:7E:5D:08:65:C5:55:F5:0F:C5:D0:7B:13:04:DF:7E:F3:C9:A6:19:12:F6:57:9F:EF:C2:A2:EB"
+      ]
+    }
+  }
+]
