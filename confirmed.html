@@ -344,24 +344,24 @@
     <!-- Main Confirmation Card -->
     <div class="auth-card">
       <!-- Emerald Success Ring with Glowing Checkmark -->
-      <div class="success-hero-circle">
+      <div class="success-hero-circle" id="heroCircle">
         <svg class="check-svg" viewBox="0 0 24 24">
           <polyline points="20 6 9 17 4 12"></polyline>
         </svg>
       </div>
 
-      <div class="status-badge">
+      <div class="status-badge" id="statusBadge">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
         <span>Email Verified</span>
       </div>
 
-      <h1 class="auth-title">You're All Set!</h1>
-      <p class="auth-desc">
+      <h1 class="auth-title" id="pageTitle">You're All Set!</h1>
+      <p class="auth-desc" id="pageDesc">
         Your email address has been confirmed and your administrator account is now active.
       </p>
 
       <!-- Clear Action Guidance -->
-      <div class="steps-box">
+      <div class="steps-box" id="stepsBox">
         <div class="steps-title">Next Steps</div>
         <div class="step-item">
           <span class="step-num">1</span>
@@ -387,5 +387,67 @@
     </div>
   </div>
 
+  <script>
+    const SUPABASE_URL = 'https://ihfuagjmkdjehndmrqnl.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImloZnVhZ2pta2RqZWhuZG1ycW5sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUwNzM2NTYsImV4cCI6MjEwMDY0OTY1Nn0.-x75iKONO1iBrBqc0SzJh0EvpY1Rtzqs5uWAJRco-tE';
+
+    function getParam(name) {
+      const fromHash = new URLSearchParams(window.location.hash.substring(1)).get(name);
+      return fromHash || new URLSearchParams(window.location.search).get(name);
+    }
+
+    function showProblem(message) {
+      document.getElementById('heroCircle').style.display = 'none';
+      document.getElementById('statusBadge').style.display = 'none';
+      document.getElementById('stepsBox').style.display = 'none';
+      document.getElementById('pageTitle').textContent = 'This link did not work';
+      document.getElementById('pageDesc').textContent = message;
+    }
+
+    // The email link now comes straight to this page with a one-time token_hash
+    // (on a phone with the StockGrid app, Android opens the app instead and this
+    // page is never reached). Confirm it here, so the email gets verified even
+    // when the link is opened on a PC. Links from before that change were already
+    // confirmed by Supabase before redirecting here, so they carry no token_hash
+    // and just show the page as it is.
+    function showSuccess() {
+      document.getElementById('heroCircle').style.display = '';
+      document.getElementById('statusBadge').style.display = '';
+      document.getElementById('stepsBox').style.display = '';
+      document.getElementById('pageTitle').textContent = "You're All Set!";
+      document.getElementById('pageDesc').textContent =
+        'Your email address has been confirmed and your administrator account is now active.';
+    }
+
+    (async () => {
+      const description = getParam('error_description');
+      if (getParam('error') && description) {
+        showProblem(description);
+        return;
+      }
+
+      const tokenHash = getParam('token_hash');
+      if (!tokenHash) return;
+
+      // Not "Email Verified" until it really is.
+      const type = getParam('type') || 'signup';
+      document.getElementById('heroCircle').style.display = 'none';
+      document.getElementById('statusBadge').style.display = 'none';
+      document.getElementById('stepsBox').style.display = 'none';
+      document.getElementById('pageTitle').textContent = 'Confirming...';
+      document.getElementById('pageDesc').textContent = '';
+      try {
+        const response = await fetch(`${SUPABASE_URL}/auth/v1/verify`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_ANON_KEY },
+          body: JSON.stringify({ type: type, token_hash: tokenHash })
+        });
+        if (!response.ok) throw new Error('verify failed');
+        showSuccess();
+      } catch (err) {
+        showProblem('This confirmation link has expired or was already used. If you have not signed in yet, open the StockGrid app and try signing in; otherwise request a new link.');
+      }
+    })();
+  </script>
 </body>
 </html>
