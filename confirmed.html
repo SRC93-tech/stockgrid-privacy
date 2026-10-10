@@ -410,13 +410,13 @@
     // when the link is opened on a PC. Links from before that change were already
     // confirmed by Supabase before redirecting here, so they carry no token_hash
     // and just show the page as it is.
-    function showSuccess() {
+    function showSuccess(title, description) {
       document.getElementById('heroCircle').style.display = '';
       document.getElementById('statusBadge').style.display = '';
       document.getElementById('stepsBox').style.display = '';
-      document.getElementById('pageTitle').textContent = "You're All Set!";
+      document.getElementById('pageTitle').textContent = title || "You're All Set!";
       document.getElementById('pageDesc').textContent =
-        'Your email address has been confirmed and your administrator account is now active.';
+        description || 'Your email address has been confirmed and your administrator account is now active.';
     }
 
     (async () => {
@@ -443,7 +443,20 @@
           body: JSON.stringify({ type: type, token_hash: tokenHash })
         });
         if (!response.ok) throw new Error('verify failed');
-        showSuccess();
+        const data = await response.json().catch(() => ({}));
+        if (type === 'email_change') {
+          // Changing the sign-in email is confirmed from BOTH inboxes. The first
+          // click comes back without a session; only the second finishes it.
+          if (data.access_token) {
+            showSuccess('Email changed', 'Your sign-in email address has been changed. Use the new address next time you sign in.');
+          } else {
+            showSuccess('Almost there', 'This link is confirmed. Open the link we also sent to your other email address (the old one and the new one both need confirming) to finish the change.');
+            document.getElementById('statusBadge').style.display = 'none';
+            document.getElementById('stepsBox').style.display = 'none';
+          }
+        } else {
+          showSuccess();
+        }
       } catch (err) {
         showProblem('This confirmation link has expired or was already used. If you have not signed in yet, open the StockGrid app and try signing in; otherwise request a new link.');
       }
